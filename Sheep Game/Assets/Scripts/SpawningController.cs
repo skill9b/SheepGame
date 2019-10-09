@@ -139,7 +139,6 @@ public class SpawningController : MonoBehaviour
         }
         else
         {
-
             waveCount++;
         }
     }
