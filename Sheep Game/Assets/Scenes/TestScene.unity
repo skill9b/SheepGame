@@ -318,6 +318,21 @@ MonoBehaviour:
       type: 3}
     count: 2
     rate: 1
+  - name: Wave2
+    sheepEnemy: {fileID: 7915623186855024290, guid: a9e6845def22c364fbcdf2032351e29e,
+      type: 3}
+    count: 2
+    rate: 1
+  - name: Wave2
+    sheepEnemy: {fileID: 7915623186855024290, guid: a9e6845def22c364fbcdf2032351e29e,
+      type: 3}
+    count: 2
+    rate: 1
+  - name: Wave2
+    sheepEnemy: {fileID: 7915623186855024290, guid: a9e6845def22c364fbcdf2032351e29e,
+      type: 3}
+    count: 2
+    rate: 1
   SpawnPointTop: {fileID: 1172312806}
   SpawnPointBottom: {fileID: 965120694}
   timeBetweenWaves: 1
@@ -572,11 +587,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8751795009152711365, guid: 889ed9f7262746040acda31da1afec64,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlayer
-      objectReference: {fileID: 0}
     - target: {fileID: 8751795009152711418, guid: 889ed9f7262746040acda31da1afec64,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -631,6 +641,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751795009152711365, guid: 889ed9f7262746040acda31da1afec64,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlayer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889ed9f7262746040acda31da1afec64, type: 3}
