@@ -12,6 +12,7 @@ public class SpawningController : MonoBehaviour
         WAITING,
         COUNTING
     }
+
     private SpawnState state = SpawnState.COUNTING;
 
     [System.Serializable]
@@ -26,7 +27,9 @@ public class SpawningController : MonoBehaviour
     public Wave[] waves;
     private int waveCount = 0;   // default is 0
 
-    public Transform[] spawnPoints;
+    // public Transform[] spawnPoints;
+    public Transform SpawnPointTop;
+    public Transform SpawnPointBottom;
 
     public float timeBetweenWaves = 5.0f;   // 5 seconds
     private float waveCountdown;
@@ -37,16 +40,15 @@ public class SpawningController : MonoBehaviour
     // ******** FUNCTIONS ******** //
     void Start()
     {
-        if (spawnPoints.Length == 0)
-        {
-            Debug.LogError("No spawn points referenced.");
-        }
+        //if (spawnPoints.Length == 0)
+        //{
+        //    Debug.LogError("No spawn points referenced.");
+        //}
         waveCountdown = timeBetweenWaves;
     }
 
     void Update()
     {
-
         // Check if player has killed all the enemies
         if (state == SpawnState.WAITING)
         {
@@ -114,16 +116,14 @@ public class SpawningController : MonoBehaviour
 
     void SpawnEnemy(Transform _enemy)
     {
-        if (spawnPoints.Length == 0)
-        {
-            Debug.LogError("No spawn points referenced.");
-        }
+        // Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        // x point of SpawnPointTop, random y point between SpawnPointTop & SpawnPointBottom
 
-        Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        Instantiate(_enemy, _sp.position, _sp.rotation);
+        float randomY = Random.Range((int)SpawnPointTop.position.y, (int)SpawnPointBottom.position.y);
+        Vector3 position = new Vector3(SpawnPointTop.position.x, randomY, SpawnPointTop.position.z);
+        Instantiate(_enemy, position, SpawnPointTop.rotation);
         Debug.Log("Spawning enemy: " + _enemy.name);
     }
-
 
     void startNextWave()
     {
