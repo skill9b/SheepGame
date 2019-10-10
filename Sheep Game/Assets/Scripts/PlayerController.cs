@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
        public float speed;
        private Rigidbody2D rb2d;
+       public int woolPoint;
     // private bool moving;
     //
         void Start()
