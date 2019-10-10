@@ -12,7 +12,7 @@ public class SheepController : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         distanceFromEnemy = 1;
-        speed = 1.0f;
+        speed = 5.0f;
     }
 
     void Update()
@@ -22,5 +22,10 @@ public class SheepController : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log("hi");
     }
 }
