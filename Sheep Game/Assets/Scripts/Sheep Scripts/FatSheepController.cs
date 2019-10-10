@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeSheepController : ParentSheepController
+public class FatSheepController : ParentSheepController
 {
 
     public Transform tinySheepObject;
@@ -13,9 +13,18 @@ public class MeleeSheepController : ParentSheepController
         // Play death sound
         // GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().AddWool(woolPoints);
 
-        Instantiate(tinySheepObject, transform.position, Quaternion.identity);
+        Vector3 sheep1pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        Vector3 sheep2pos = new Vector3(transform.position.x + 10, transform.position.y, transform.position.z);
+        Vector3 sheep3pos = new Vector3(transform.position.x - 10, transform.position.y, transform.position.z);
+        Vector3 sheep4pos = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z + 1);
+        Vector3 sheep5pos = new Vector3(transform.position.x, transform.position.y - 10, transform.position.z - 1);
+
+        Instantiate(tinySheepObject, sheep1pos, Quaternion.identity);
+        Instantiate(tinySheepObject, sheep2pos, Quaternion.identity);
+        Instantiate(tinySheepObject, sheep3pos, Quaternion.identity);
+        Instantiate(tinySheepObject, sheep4pos, Quaternion.identity);
+        Instantiate(tinySheepObject, sheep5pos, Quaternion.identity);
 
         Destroy(gameObject);
-
     }
 }

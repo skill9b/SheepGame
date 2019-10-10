@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 7915623186855024290}
   - component: {fileID: 1701164876000264929}
   - component: {fileID: 2690754941243624453}
+  - component: {fileID: -6692109352937176359}
   m_Layer: 0
-  m_Name: Sheep
+  m_Name: Sheep_Tiny
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,6 +75,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.36779705, y: 0.3601339}
   m_EdgeRadius: 0
+--- !u!114 &-6692109352937176359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5670207259689230208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a620d059590da3428fca6504847956c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  speed: 4
+  distanceFromEnemy: 1
+  woolPoints: 5
+  target: {fileID: 8751795009152711418, guid: 889ed9f7262746040acda31da1afec64, type: 3}
+  fence: {fileID: 0}
 --- !u!1 &5681214420767329839
 GameObject:
   m_ObjectHideFlags: 0
