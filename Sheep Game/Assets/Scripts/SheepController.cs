@@ -6,6 +6,7 @@ public class SheepController : MonoBehaviour
 {
     public float speed;
     public int distanceFromEnemy;
+    public int Health = 3;
     public Transform target;
 
     void Start()
@@ -27,5 +28,20 @@ public class SheepController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("hi");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Health -= 1;
+
+            Destroy(collision.gameObject);
+
+            if (Health == 0)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
