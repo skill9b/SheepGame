@@ -9,9 +9,11 @@ public class GunController : MonoBehaviour
     public Camera camera;
 
     [SerializeField] float Speed = 4;
-    private Vector3 Target;
-
     [SerializeField] float Offset = 0;
+    [SerializeField] float FireRate = 1;
+
+    private Vector3 Target;
+    private float LastShot = 0;
 
     // Update is called once per frame
     void Update()
@@ -27,17 +29,23 @@ public class GunController : MonoBehaviour
             float distance = difference.magnitude;
             Vector2 direction = difference / distance;
             direction.Normalize();
-            Fire(direction, rotationZ);
 
+
+            Fire(direction, rotationZ);
 
         }
     }
 
     void Fire(Vector2 direction, float rotationZ)
     {
-        GameObject b = Instantiate(Bullet) as GameObject;
-        b.transform.position = Gun.transform.position;
-        b.transform.rotation = Quaternion.Euler(0, 0, rotationZ);
-        b.GetComponent<Rigidbody2D>().velocity = -direction * Speed;
+       if (Time.time > FireRate + LastShot)
+        {
+            GameObject b = Instantiate(Bullet) as GameObject;
+            b.transform.position = Gun.transform.position;
+            b.transform.rotation = Quaternion.Euler(0, 0, rotationZ);
+            b.GetComponent<Rigidbody2D>().velocity = -direction * Speed;
+
+            LastShot = Time.time;
+        }
     }
 }

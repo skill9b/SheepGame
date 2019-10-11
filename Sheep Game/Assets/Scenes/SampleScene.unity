@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7044d37804dd642ad423752d5c556d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 7
   woolPoint: 0
 --- !u!1 &893721902
 GameObject:
@@ -576,6 +576,7 @@ MonoBehaviour:
   camera: {fileID: 519420031}
   Speed: 6
   Offset: 180
+  FireRate: 0.5
 --- !u!1 &995218114
 GameObject:
   m_ObjectHideFlags: 0
