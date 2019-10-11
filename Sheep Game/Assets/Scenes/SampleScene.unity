@@ -127,6 +127,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 876119793}
     m_Modifications:
+    - target: {fileID: 8751795009152711365, guid: 889ed9f7262746040acda31da1afec64,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlayer
+      objectReference: {fileID: 0}
     - target: {fileID: 8751795009152711418, guid: 889ed9f7262746040acda31da1afec64,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -191,11 +196,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8751795009152711365, guid: 889ed9f7262746040acda31da1afec64,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlayer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889ed9f7262746040acda31da1afec64, type: 3}
@@ -289,7 +289,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -305,22 +304,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
---- !u!114 &519420030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eca71f6fc7f562745a6e99bef6804d9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bullet: {fileID: 5116687139915379231, guid: c0111ed5e23c1c8449bc1d56856426cf, type: 3}
-  Player: {fileID: 893721902}
-  Speed: 6
-  Offset: 360
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -506,6 +489,7 @@ GameObject:
   m_Component:
   - component: {fileID: 893721903}
   - component: {fileID: 893721904}
+  - component: {fileID: 893721905}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -575,6 +559,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &893721905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893721902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca71f6fc7f562745a6e99bef6804d9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bullet: {fileID: 5116687139915379231, guid: c0111ed5e23c1c8449bc1d56856426cf, type: 3}
+  Gun: {fileID: 893721902}
+  camera: {fileID: 519420031}
+  Speed: 6
+  Offset: 180
 --- !u!1 &995218114
 GameObject:
   m_ObjectHideFlags: 0
