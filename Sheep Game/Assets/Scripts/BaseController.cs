@@ -29,17 +29,6 @@ public class BaseController : MonoBehaviour
             Debug.Log(health);
         }
     }
-  // void OnTriggerStay2D(Collider2D collision)
-  // {
-  //     Debug.Log(health);
-  //     health--;
-  //     Debug.Log(health);
-  // }
-  // void OnTriggerExit2D(Collider2D collision)
-  // {
-  //     Debug.Log(health);
-  //     health--;
-  //     Debug.Log(health);
-  // }
+
 
 }
