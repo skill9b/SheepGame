@@ -14,6 +14,7 @@ public class SheepController : MonoBehaviour
     private bool inRange = false; //In range for attacking
     public float attackSpeed;
     float nextShootTime;
+
     enum State
     {
         Moving, 
