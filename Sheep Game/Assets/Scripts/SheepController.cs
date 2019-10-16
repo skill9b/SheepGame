@@ -7,9 +7,11 @@ public class SheepController : MonoBehaviour
     public GameObject Base;
     public BaseController baseController;
 
+
     public float speed;
     public int distanceFromEnemy;
-    public int Health = 3;
+    public int health;
+    public int woolPoints;
     private Vector2 target;
     private bool inRange = false; //In range for attacking
     public float attackSpeed;
@@ -55,10 +57,14 @@ public class SheepController : MonoBehaviour
                 }
         }
 
-        if (Health <= 0)
+        // Death
+        if (health <= 0)
         {
+            // Instantiate death animation
+            // Instantiate dropping wool
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().woolCount += woolPoints;
+            GameObject.FindWithTag("SpawnManager").GetComponent<SpawningController>().deadSheep += 1;
             Destroy(gameObject);
-            Debug.Log("uwu");
         }
     }
 
@@ -72,6 +78,7 @@ public class SheepController : MonoBehaviour
 
     public void TakeDamage(int _score)
     {
-        Health -= _score;
+        health -= _score;
+        Debug.Log("Taking damage!");
     }
 }

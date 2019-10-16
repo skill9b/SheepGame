@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawningController : MonoBehaviour
 {
@@ -33,18 +34,18 @@ public class SpawningController : MonoBehaviour
 
     public float timeBetweenWaves = 5.0f;   // 5 seconds
     private float waveCountdown;
-
     private float searchCountdown = 1.0f;
 
+    public Text remainingWaves;
+    public Text remainingSheep;
+    public int deadSheep;
+    int currentWaveMaxSheep;
 
     // ******** FUNCTIONS ******** //
     void Start()
     {
-        //if (spawnPoints.Length == 0)
-        //{
-        //    Debug.LogError("No spawn points referenced.");
-        //}
         waveCountdown = timeBetweenWaves;
+        currentWaveMaxSheep = waves[0].count;
     }
 
     void Update()
@@ -77,12 +78,18 @@ public class SpawningController : MonoBehaviour
         {
             waveCountdown -= Time.deltaTime;    // countsdown second by second
         }
+
+        // Display remaining waves and sheep in current wave
+        remainingWaves.text = "Remaining Waves: " + (waves.Length - waveCount).ToString();
+        remainingSheep.text = "Remaining Sheep: " + (currentWaveMaxSheep - deadSheep).ToString();
     }
 
     IEnumerator SpawnWave(Wave _wave)
     {
         Debug.Log("Spawning Wave: " + _wave.name);
         state = SpawnState.SPAWNING;
+
+        currentWaveMaxSheep = _wave.count;
 
         // Spawn logic
         for (int i = 0; i < _wave.count; i++)
@@ -116,9 +123,6 @@ public class SpawningController : MonoBehaviour
 
     void SpawnEnemy(Transform _enemy)
     {
-        // Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        // x point of SpawnPointTop, random y point between SpawnPointTop & SpawnPointBottom
-
         float randomY = Random.Range((int)SpawnPointTop.position.y, (int)SpawnPointBottom.position.y);
         Vector3 position = new Vector3(SpawnPointTop.position.x, randomY, SpawnPointTop.position.z);
         Instantiate(_enemy, position, SpawnPointTop.rotation);
@@ -128,6 +132,8 @@ public class SpawningController : MonoBehaviour
     void startNextWave()
     {
         Debug.Log("Wave completed.");
+
+        deadSheep = 0;
 
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;

@@ -48,9 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Base: {fileID: 103594734325402333, guid: 25994170128b93b4386305952b887887, type: 3}
   baseController: {fileID: 0}
-  speed: 5
+  speed: 3
   distanceFromEnemy: 1
-  Health: 3
+  health: 10
+  woolPoints: 10
   attackSpeed: 5
 --- !u!50 &1500368200885085679
 Rigidbody2D:
@@ -83,7 +84,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.001915738, y: 0.0019155741}
