@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseController : MonoBehaviour
+public class NPCBigBadWolfController : MonoBehaviour
 {
-    public float health;
-
-
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(health);
-
+        
     }
 
     // Update is called once per frame
@@ -19,14 +15,4 @@ public class BaseController : MonoBehaviour
     {
         
     }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (health > 0)
-        {
-            health--;
-        }
-    }
-
-
 }
