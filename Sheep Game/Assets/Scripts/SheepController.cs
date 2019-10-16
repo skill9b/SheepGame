@@ -4,23 +4,49 @@ using UnityEngine;
 
 public class SheepController : MonoBehaviour
 {
+    public GameObject Base;
+    public BaseController baseController;
+
     public float speed;
     public int distanceFromEnemy;
     public int Health = 3;
-    public Transform target;
+    private Vector2 target;
+    private bool inRange = false; //In range for attacking
+
+    enum State
+    {
+        Moving, 
+        Attacking,
+        Idle
+    };
+
+    State currentState;
 
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        distanceFromEnemy = 1;
+        baseController = Base.GetComponent<BaseController>(); //Get script of base
+        currentState = State.Moving;
+        target = new Vector2 (transform.position.x - 1000, transform.position.y);
+        distanceFromEnemy = 10;
     }
 
     void Update()
     {
-
-        if (Vector2.Distance(transform.position, target.position) > distanceFromEnemy)
+        switch (currentState)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            case State.Moving:
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime); //Set always to move left
+                    break;
+                }
+                
+            case State.Attacking:
+                {
+                    //Add timer so that sheep attack every 1.5s
+                    baseController.health--;
+                    Debug.Log(baseController.health);
+                    break;
+                }
         }
     }
 
@@ -41,6 +67,14 @@ public class SheepController : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Base")
+        {
+            currentState = State.Attacking;
         }
     }
 }
