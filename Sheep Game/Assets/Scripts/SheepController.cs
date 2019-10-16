@@ -7,20 +7,20 @@ public class SheepController : MonoBehaviour
     public float speed;
     public int distanceFromEnemy;
     public int Health = 3;
-    public Transform target;
+    private Vector2 target;
 
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        target = new Vector2 (transform.position.x - 1000, transform.position.y);
         distanceFromEnemy = 1;
     }
 
     void Update()
     {
 
-        if (Vector2.Distance(transform.position, target.position) > distanceFromEnemy)
+        if (Vector2.Distance(transform.position, target) > distanceFromEnemy)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime); //Set always to move left
         }
     }
 
