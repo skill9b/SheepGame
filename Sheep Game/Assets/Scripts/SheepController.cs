@@ -13,7 +13,6 @@ public class SheepController : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         distanceFromEnemy = 1;
-        speed = 5.0f;
     }
 
     void Update()
