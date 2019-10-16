@@ -11,8 +11,10 @@ public class GunController : MonoBehaviour
     [SerializeField] float Speed = 4;
     [SerializeField] float Offset = 0;
     [SerializeField] float FireRate = 1;
-    [SerializeField] int Cooldown = 0;
-    private int BulletCount = 0; 
+    [SerializeField] int Mag = 5;
+    [SerializeField] float CooldowntimeFULL = 5f;
+    [SerializeField] int CooldowntimeNOTFULL = 2;
+    private int BulletCount = 0;
 
     private Vector3 Target;
     private float LastShot = 0;
@@ -32,34 +34,51 @@ public class GunController : MonoBehaviour
             Vector2 direction = difference / distance;
             direction.Normalize();
 
-
             Fire(direction, rotationZ);
-
         }
     }
 
-    IEnumerator Wait(int Seconds)
+   //WaitForSecond returns a IEnumerator type, which is why it's it's own function
+   IEnumerator Wait(float Seconds)
     {
-        yield return new WaitForSeconds(Seconds);
+        yield return new WaitForSeconds(Seconds);   //Scaled time (No Idea what that means)
+        BulletCount -= 1;   //The cooldown reduces bulletcount by 1
     }
 
     void Fire(Vector2 direction, float rotationZ)
     {
        if (Time.time > FireRate + LastShot)
         {
-            GameObject b = Instantiate(Bullet) as GameObject;
-            b.transform.position = Gun.transform.position;
-            b.transform.rotation = Quaternion.Euler(0, 0, rotationZ);
-            b.GetComponent<Rigidbody2D>().velocity = -direction * Speed;
+            if (BulletCount == Mag) //if the mag has been used up make player wait long
+            {
+                StartCoroutine(Wait(CooldowntimeFULL)); 
+            }
 
-            BulletCount += 1;
+            //Regular Shooting
+            if (BulletCount != Mag)
+            {
+                GameObject b = Instantiate(Bullet) as GameObject;
+                b.transform.position = Gun.transform.position;
+                b.transform.rotation = Quaternion.Euler(0, 0, rotationZ);
+                b.GetComponent<Rigidbody2D>().velocity = -direction * Speed;
 
-            LastShot = Time.time;
-        }
+                BulletCount += 1;
 
-        if (BulletCount == Cooldown)
-        {
-            
+                if (Time.time > CooldowntimeNOTFULL + LastShot) //Reduce the "Heat" cool down by a bit everytime the player doesn't shoot"
+                {
+                    if (BulletCount != 0)
+                    {
+                        BulletCount -= 1;
+                    }
+
+                    {
+                        //Adds ambience to code :)
+                    }
+                }
+
+                LastShot = Time.time;
+                Debug.Log(BulletCount);
+            }
         }
     }
 }
