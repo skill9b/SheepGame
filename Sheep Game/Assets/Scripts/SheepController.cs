@@ -7,7 +7,6 @@ public class SheepController : MonoBehaviour
     public GameObject Base;
     public BaseController baseController;
 
-
     public float speed;
     public int distanceFromEnemy;
     public int health;

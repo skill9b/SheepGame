@@ -436,6 +436,9 @@ MonoBehaviour:
   SpawnPointTop: {fileID: 1172312806}
   SpawnPointBottom: {fileID: 965120694}
   timeBetweenWaves: 1
+  remainingWaves: {fileID: 0}
+  remainingSheep: {fileID: 0}
+  deadSheep: 0
 --- !u!4 &218123118
 Transform:
   m_ObjectHideFlags: 0
@@ -906,11 +909,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8751795009152711365, guid: 889ed9f7262746040acda31da1afec64,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlayer
-      objectReference: {fileID: 0}
     - target: {fileID: 8751795009152711418, guid: 889ed9f7262746040acda31da1afec64,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -965,6 +963,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751795009152711365, guid: 889ed9f7262746040acda31da1afec64,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlayer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889ed9f7262746040acda31da1afec64, type: 3}
