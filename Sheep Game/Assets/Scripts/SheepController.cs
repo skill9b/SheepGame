@@ -54,26 +54,11 @@ public class SheepController : MonoBehaviour
                     break;
                 }
         }
-    }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        Debug.Log("hi");
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Bullet")
+        if (Health <= 0)
         {
-            Health -= 1;
-
-            Destroy(collision.gameObject);
-
-            if (Health == 0)
-            {
-                Destroy(gameObject);
-                Debug.Log("uwu");
-            }
+            Destroy(gameObject);
+            Debug.Log("uwu");
         }
     }
 
@@ -83,5 +68,10 @@ public class SheepController : MonoBehaviour
         {
             currentState = State.Attacking;
         }
+    }
+
+    public void TakeDamage(int _score)
+    {
+        Health -= _score;
     }
 }

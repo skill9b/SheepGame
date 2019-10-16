@@ -5,12 +5,15 @@ using UnityEngine;
 public class NPCHumptyDumptyController : MonoBehaviour
 {
     float speed;
+    public float yeetSpeed;
+
     public float fireRate;
 
     public GameObject bullet;
     public Transform shootingPoint;
     float nextShootTime;
     float nextYeetTime;
+    Vector3 originalPosition; 
 
     public Transform topLeft;
     public Transform bottomRight;
@@ -18,6 +21,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        originalPosition = transform.position;
 
         speed = Random.Range(5, 25);
 
@@ -28,7 +32,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             YeetTheEgghead();
         }
@@ -39,9 +43,9 @@ public class NPCHumptyDumptyController : MonoBehaviour
         //Shoot
         if ((other.tag == "Enemy"))
         {
-            Vector3 Target = new Vector3(Random.Range(topLeft.position.x, bottomRight.position.x), Random.Range(bottomRight.position.y, topLeft.position.y), transform.position.z);
+            Vector3 target = new Vector3(Random.Range(topLeft.position.x, bottomRight.position.x), Random.Range(bottomRight.position.y, topLeft.position.y), transform.position.z);
 
-            Vector3 difference = Target - shootingPoint.transform.position;
+            Vector3 difference = target - shootingPoint.transform.position;
 
             float distance = difference.magnitude;
             Vector2 direction = difference / distance;
@@ -70,7 +74,6 @@ public class NPCHumptyDumptyController : MonoBehaviour
 
     void YeetTheEgghead()
     {
-        // Yeet the egghead
         Vector3 target = new Vector3(Random.Range(topLeft.position.x, bottomRight.position.x), Random.Range(bottomRight.position.y, topLeft.position.y), transform.position.z);
 
         Vector3 difference = target - transform.position;
@@ -85,11 +88,10 @@ public class NPCHumptyDumptyController : MonoBehaviour
         if (Time.time > fireRate + nextYeetTime)
         {
             transform.rotation = Quaternion.Euler(0, 0, rotationZ);
-            GetComponent<Rigidbody2D>().velocity = direction * 25;
+            GetComponent<Rigidbody2D>().velocity = direction * yeetSpeed;
 
             nextYeetTime = Time.time;
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -97,7 +99,13 @@ public class NPCHumptyDumptyController : MonoBehaviour
         if (other.tag == "Enemy")
         {
             Destroy(gameObject);
-            other.GetComponent<SheepController>().Die(); 
+            other.GetComponent<SheepController>().TakeDamage(100);
+        }
+
+        if (other.tag == "Floor")
+        {
+            Instantiate(gameObject, originalPosition, Quaternion.Euler(0,0,0));
+            Destroy(gameObject);
         }
     }
 }

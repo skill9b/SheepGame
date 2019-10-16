@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destroyer : MonoBehaviour
+public class BulletController : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    public int damage;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.tag == "Bullet")
+
+        if (other.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
+            other.GetComponent<SheepController>().TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }
