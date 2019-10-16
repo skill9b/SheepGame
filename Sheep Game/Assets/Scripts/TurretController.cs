@@ -43,11 +43,11 @@ public class TurretController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         //Shoot
-        if ((other.tag == "Enemy") && (nextShootTime<Time.time))
+        if ((other.tag == "Enemy"))
         {
             Vector3 Target = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z); //Gets position of target and stores in vector
 
-            Vector3 difference = Target;// - shootingPoint.transform.position;
+            Vector3 difference = Target - shootingPoint.transform.position;
 
             float distance = difference.magnitude;
             Vector2 direction = difference / distance;
@@ -73,7 +73,7 @@ public class TurretController : MonoBehaviour
             GameObject b = Instantiate(Bullet) as GameObject;
             b.transform.position = shootingPoint.transform.position;
             b.transform.rotation = Quaternion.Euler(0, 0, rotationZ);
-            b.GetComponent<Rigidbody2D>().velocity = -direction * Speed;
+            b.GetComponent<Rigidbody2D>().velocity = direction * Speed;
 
             nextShootTime = Time.time;
         }

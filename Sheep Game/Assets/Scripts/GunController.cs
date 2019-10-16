@@ -11,6 +11,8 @@ public class GunController : MonoBehaviour
     [SerializeField] float Speed = 4;
     [SerializeField] float Offset = 0;
     [SerializeField] float FireRate = 1;
+    [SerializeField] int Cooldown = 0;
+    private int BulletCount = 0; 
 
     private Vector3 Target;
     private float LastShot = 0;
@@ -36,6 +38,11 @@ public class GunController : MonoBehaviour
         }
     }
 
+    IEnumerator Wait(int Seconds)
+    {
+        yield return new WaitForSeconds(Seconds);
+    }
+
     void Fire(Vector2 direction, float rotationZ)
     {
        if (Time.time > FireRate + LastShot)
@@ -45,7 +52,14 @@ public class GunController : MonoBehaviour
             b.transform.rotation = Quaternion.Euler(0, 0, rotationZ);
             b.GetComponent<Rigidbody2D>().velocity = -direction * Speed;
 
+            BulletCount += 1;
+
             LastShot = Time.time;
+        }
+
+        if (BulletCount == Cooldown)
+        {
+            
         }
     }
 }
