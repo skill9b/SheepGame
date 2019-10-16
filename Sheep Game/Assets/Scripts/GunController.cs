@@ -72,7 +72,7 @@ public class GunController : MonoBehaviour
                     }
 
                     {
-                        //Adds ambience to code :)
+                        Debug.Log("hi uwu");    //Adds ambience to code :)
                     }
                 }
 

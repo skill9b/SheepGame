@@ -12,7 +12,8 @@ public class SheepController : MonoBehaviour
     public int Health = 3;
     private Vector2 target;
     private bool inRange = false; //In range for attacking
-
+    public float attackSpeed;
+    float nextShootTime;
     enum State
     {
         Moving, 
@@ -43,8 +44,12 @@ public class SheepController : MonoBehaviour
             case State.Attacking:
                 {
                     //Add timer so that sheep attack every 1.5s
-                    baseController.health--;
-                    Debug.Log(baseController.health);
+                    if (Time.time > attackSpeed + nextShootTime)
+                    {
+                        baseController.health--;
+                        Debug.Log(baseController.health);
+                        nextShootTime = Time.time;
+                    }
                     break;
                 }
         }
@@ -66,6 +71,7 @@ public class SheepController : MonoBehaviour
             if (Health == 0)
             {
                 Destroy(gameObject);
+                Debug.Log("uwu");
             }
         }
     }
