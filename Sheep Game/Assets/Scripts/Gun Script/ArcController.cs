@@ -6,14 +6,14 @@ public class ArcController : MonoBehaviour
 {
     public GameObject Bullet;
     public GameObject Gun;
-    public Camera camera;
+    public Camera MainCamera;
 
     [SerializeField] float SpeedController = 100;
     [SerializeField] float Offset = 0;
     [SerializeField] float FireRate = 1;
     [SerializeField] int Mag = 5;
-    [SerializeField] float CooldowntimeFULL = 5f;
-    [SerializeField] int CooldowntimeNOTFULL = 2;
+    [SerializeField] float CooldowntimeFull = 5f;
+    [SerializeField] int CooldowntimeNotFull = 2;
     private int BulletCount = 0;
 
     private Vector3 Target;
@@ -23,7 +23,7 @@ public class ArcController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Target = camera.ScreenToWorldPoint(new Vector3(transform.position.x, (-Input.mousePosition.y) + Offset, transform.position.z));
+        Target = MainCamera.ScreenToWorldPoint(new Vector3(transform.position.x, (-Input.mousePosition.y) + Offset, transform.position.z));
 
         Vector3 difference = Target - Gun.transform.position;
 
@@ -60,7 +60,7 @@ public class ArcController : MonoBehaviour
         {
             if (BulletCount == Mag) //if the mag has been used up make player wait long
             {
-                StartCoroutine(Wait(CooldowntimeFULL)); 
+                StartCoroutine(Wait(CooldowntimeFull)); 
             }
 
             //Regular Shooting
@@ -72,7 +72,7 @@ public class ArcController : MonoBehaviour
 
                 BulletCount += 1;
 
-                if (Time.time > CooldowntimeNOTFULL + LastShot) //Reduce the "Heat" cool down by a bit everytime the player doesn't shoot"
+                if (Time.time > CooldowntimeNotFull + LastShot) //Reduce the "Heat" cool down by a bit everytime the player doesn't shoot"
                 {
                     if (BulletCount != 0)
                     {

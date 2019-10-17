@@ -16,12 +16,16 @@ public class ShootingRangeController : MonoBehaviour
         
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Enemy")
         {
+            Debug.Log("NPCs fire.");
             NPCHumptyDumptyController hd = GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>();
             hd.Fire();
+
+            //TurretController turret = GameObject.FindGameObjectWithTag("Turret").GetComponent<TurretController>();
+            //turret.Fire(other.transform.position);
         } 
     }
 }

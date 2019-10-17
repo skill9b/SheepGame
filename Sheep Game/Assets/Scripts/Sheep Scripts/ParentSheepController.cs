@@ -49,7 +49,7 @@ public class ParentSheepController : MonoBehaviour
                     if (Time.time > attackSpeed + nextAttackTime)
                     {
                         baseController.health--;
-                        Debug.Log(baseController.health);
+                        // Debug.Log(baseController.health);
                         nextAttackTime = Time.time;
                     }
                     break;
@@ -66,18 +66,23 @@ public class ParentSheepController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (collision.gameObject.tag == "Base")
+        if (other.gameObject.tag == "Base")
         {
             currentState = State.Attacking;
+        }
+
+        if (other.gameObject.tag == "ShootingRange")
+        {
+            TurretController turret = GameObject.FindGameObjectWithTag("Turret").GetComponent<TurretController>();
+            turret.Fire(other.transform.position);
         }
     }
 
     public void TakeDamage(int _score)
     {
         health -= _score;
-        Debug.Log("Taking damage!");
     }
 
     public virtual void Die()

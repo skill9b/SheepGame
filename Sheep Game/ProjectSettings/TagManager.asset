@@ -11,6 +11,7 @@ TagManager:
   - SpawnManager
   - ShootingRange
   - HumptyDumpty
+  - Turret
   layers:
   - Default
   - TransparentFX

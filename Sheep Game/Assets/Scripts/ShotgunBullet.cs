@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShotgunBullet : MonoBehaviour
 {
     public GameObject Sheep;
-    public SheepController SheepScript;
+    public ParentSheepController SheepScript;
 
     [SerializeField] float Seconds = 1;
     [SerializeField] int Mag = 6;
@@ -21,7 +21,7 @@ public class ShotgunBullet : MonoBehaviour
 
     private void Start()
     {
-        SheepScript = Sheep.GetComponent<SheepController>();
+        SheepScript = Sheep.GetComponent<ParentSheepController>();
 
     }
 
