@@ -18,6 +18,9 @@ public class NPCHumptyDumptyController : MonoBehaviour
     public Transform topLeft;
     public Transform bottomRight;
 
+    float rotationZ;
+    Vector2 direction;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,29 +41,20 @@ public class NPCHumptyDumptyController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+
+    public void Fire()
     {
-        //Shoot
-        if ((other.tag == "Enemy"))
-        {
-            Vector3 target = new Vector3(Random.Range(topLeft.position.x, bottomRight.position.x), Random.Range(bottomRight.position.y, topLeft.position.y), transform.position.z);
+        Vector3 target = new Vector3(Random.Range(topLeft.position.x, bottomRight.position.x), Random.Range(bottomRight.position.y, topLeft.position.y), transform.position.z);
 
-            Vector3 difference = target - shootingPoint.transform.position;
+        Vector3 difference = target - shootingPoint.transform.position;
 
-            float distance = difference.magnitude;
-            Vector2 direction = difference / distance;
-            direction.Normalize();
+        float distance = difference.magnitude;
+        direction = difference / distance;
+        direction.Normalize();
 
-            float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-            shootingPoint.transform.rotation = Quaternion.Euler(0, 0, rotationZ);
+        rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        shootingPoint.transform.rotation = Quaternion.Euler(0, 0, rotationZ);
 
-            Fire(direction, rotationZ);
-        }
-
-    }
-
-    void Fire(Vector2 direction, float rotationZ)
-    {
         if (Time.time > fireRate + nextShootTime)
         {
             GameObject b = Instantiate(bullet) as GameObject;
@@ -99,13 +93,18 @@ public class NPCHumptyDumptyController : MonoBehaviour
         if (other.tag == "Enemy")
         {
             Destroy(gameObject);
-            other.GetComponent<SheepController>().TakeDamage(100);
+            other.GetComponent<ParentSheepController>().TakeDamage(100);
         }
 
         if (other.tag == "Floor")
         {
             Instantiate(gameObject, originalPosition, Quaternion.Euler(0,0,0));
             Destroy(gameObject);
+        }
+
+        if (other.tag == "Chimney")
+        {
+            // dont go thorugh
         }
     }
 }

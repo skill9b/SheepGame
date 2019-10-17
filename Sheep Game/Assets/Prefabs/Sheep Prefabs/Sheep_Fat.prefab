@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5670207259689230208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 8131440555017733477}
   m_Father: {fileID: 0}
@@ -71,12 +71,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bbf487abcde824192d692dfe3a6d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
-  speed: 3
+  Base: {fileID: 103594734325402333, guid: 25994170128b93b4386305952b887887, type: 3}
+  baseController: {fileID: 0}
+  health: 10
+  speed: 2
   distanceFromEnemy: 1
-  woolPoints: 0
-  target: {fileID: 8751795009152711418, guid: 889ed9f7262746040acda31da1afec64, type: 3}
-  fence: {fileID: 0}
+  woolPoints: 5
+  attackSpeed: 5
+  currentState: 0
   tinySheepObject: {fileID: 7915623186855024290, guid: 07ecfa84f8e2ef442b6a03b9f45f995f,
     type: 3}
 --- !u!1 &5681214420767329839

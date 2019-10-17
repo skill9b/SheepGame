@@ -20,15 +20,17 @@ public class SpawningController : MonoBehaviour
     public class Wave
     {
         public string name;
-        public Transform sheepEnemy;
+        public Transform sheepMelee;
+        public Transform sheepFat;
+        public Transform sheepRam;
+        public Transform sheepFast;
         public int count;
         public float rate;
     }
 
     public Wave[] waves;
     private int waveCount = 0;   // default is 0
-
-    // public Transform[] spawnPoints;
+    
     public Transform SpawnPointTop;
     public Transform SpawnPointBottom;
 
@@ -95,24 +97,35 @@ public class SpawningController : MonoBehaviour
         for (int i = 0; i < _wave.count; i++)
         {
 
-            //Transform enemyToSpawn;
-            //float rate = Random.Range(0.0f, 1.0f);
+            Transform enemyToSpawn;
+            float rate = Random.Range(0.0f, 1.0f);
 
-            //if (rate < 0.6)
-            //{
-            //    enemyToSpawn = _wave.firstEnemy;
-            //}
-            //else if (rate < 0.8)
-            //{
-            //    enemyToSpawn = _wave.secondEnemy;
+            if (rate < 0.25)
+            {
+                enemyToSpawn = _wave.sheepMelee;
+            }
+            else if (rate < 0.5)
+            {
+                enemyToSpawn = _wave.sheepFat;
 
-            //}
-            //else
-            //{
-            //    enemyToSpawn = _wave.thirdEnemy;
-            //}
+            }
+            else if (rate < 0.75)
+            {
+                enemyToSpawn = _wave.sheepRam;
 
-            SpawnEnemy(_wave.sheepEnemy);
+            }
+            else
+            {
+                enemyToSpawn = _wave.sheepFast;
+            }
+
+            SpawnEnemy(enemyToSpawn);
+
+            //SpawnEnemy(_wave.sheepMelee);
+            //SpawnEnemy(_wave.sheepFat);
+            //SpawnEnemy(_wave.sheepRam);
+            //SpawnEnemy(_wave.sheepFast);
+
             yield return new WaitForSeconds(1.0f / _wave.rate); // wait before spawning next enemy
         }
 

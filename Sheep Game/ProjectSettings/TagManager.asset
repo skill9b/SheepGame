@@ -9,6 +9,8 @@ TagManager:
   - Base
   - Floor
   - SpawnManager
+  - ShootingRange
+  - HumptyDumpty
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,12 @@ public class BulletController : MonoBehaviour
 
         if (other.gameObject.tag == "Enemy")
         {
-            other.GetComponent<SheepController>().TakeDamage(damage);
+            other.GetComponent<ParentSheepController>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
+
+        if (other.gameObject.tag == "Floor")
+        {
             Destroy(gameObject);
         }
     }
