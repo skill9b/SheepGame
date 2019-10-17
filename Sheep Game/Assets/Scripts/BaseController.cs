@@ -6,6 +6,13 @@ public class BaseController : MonoBehaviour
 {
     public float health;
 
+    enum State
+    {
+        Moving,
+        Attacking,
+        Idle
+    };
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,13 +27,33 @@ public class BaseController : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (health > 0)
+        if (other.gameObject.tag == "Enemy")
         {
-            health--;
+            other.GetComponent<ParentSheepController>().currentState = (ParentSheepController.State)State.Attacking;
+            
+        }
+
+        
+    }
+
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy") 
+        {
+            other.GetComponent<ParentSheepController>().currentState = (ParentSheepController.State)State.Attacking;
         }
     }
 
 
+
+   //private void OnCollisionEnter2D(Collider2D other)
+   //{
+   //    if (other.gameObject.tag == "Enemy")
+   //    {
+   //        other.GetComponent<ParentSheepController>().currentState = (ParentSheepController.State)State.Attacking;
+   //    }
+   //}
 }

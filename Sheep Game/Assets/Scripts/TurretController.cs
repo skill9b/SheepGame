@@ -39,6 +39,7 @@ public class TurretController : MonoBehaviour
         //Shoot if a enemy has entered range
         if ((other.tag == "Enemy"))
         {
+            Debug.Log("Shoot");
             Vector3 Target = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z); //Gets position of target and stores in vector
 
             Vector3 difference = Target - shootingPoint.transform.position; //Difference is distance between the target (enemy) and shooting point in vector form

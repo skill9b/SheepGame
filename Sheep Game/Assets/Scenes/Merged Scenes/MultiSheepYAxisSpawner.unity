@@ -296,7 +296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &182861169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -892,11 +892,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8751795009152711365, guid: 889ed9f7262746040acda31da1afec64,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlayer
-      objectReference: {fileID: 0}
     - target: {fileID: 8751795009152711418, guid: 889ed9f7262746040acda31da1afec64,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -951,6 +946,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751795009152711365, guid: 889ed9f7262746040acda31da1afec64,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlayer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889ed9f7262746040acda31da1afec64, type: 3}

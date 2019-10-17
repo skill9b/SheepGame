@@ -9,9 +9,8 @@ public class FatSheepController : ParentSheepController
 
     public override void Die()
     {
-        // Instantiate(deathEffect, transform.position, Quaternion.identity);
-        // Play death sound
-        // GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().AddWool(woolPoints);
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().woolCount += woolPoints;
+        GameObject.FindWithTag("SpawnManager").GetComponent<SpawningController>().deadSheep += 1;
 
         Vector3 sheep1pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         Vector3 sheep2pos = new Vector3(transform.position.x + 10, transform.position.y, transform.position.z);
