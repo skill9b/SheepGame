@@ -14,6 +14,9 @@ TagManager:
   - Turret
   - Wolf
   - HealthBar
+  - SpawnPointTop
+  - SpawnPointBottom
+  - UpgradesMenu
   layers:
   - Default
   - TransparentFX

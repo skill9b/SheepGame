@@ -23,7 +23,7 @@ public class BigBadWolfController : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         initPosition = transform.position;
 
-        blowingCountdown = 1.0f;
+        blowingCountdown = 0.5f;
         storedCountdown = blowingCountdown;
         storedCooldown = blowingCooldown;
     }

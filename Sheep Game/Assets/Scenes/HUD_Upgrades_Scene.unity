@@ -127,6 +127,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 876119793}
     m_Modifications:
+    - target: {fileID: 8751795009152711365, guid: 889ed9f7262746040acda31da1afec64,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlayer
+      objectReference: {fileID: 0}
     - target: {fileID: 8751795009152711418, guid: 889ed9f7262746040acda31da1afec64,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -191,11 +196,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8751795009152711365, guid: 889ed9f7262746040acda31da1afec64,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlayer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889ed9f7262746040acda31da1afec64, type: 3}
@@ -482,7 +482,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!224 &451102187
 RectTransform:

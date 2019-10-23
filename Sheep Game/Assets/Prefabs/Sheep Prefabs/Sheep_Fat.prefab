@@ -72,11 +72,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bbf487abcde824192d692dfe3a6d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Base: {fileID: 103594734325402333, guid: 25994170128b93b4386305952b887887, type: 3}
   baseController: {fileID: 0}
   animator: {fileID: 4739635115909862005}
-  health: 10
-  speed: 2
+  health: 5
+  speed: 1
   distanceFromEnemy: 1
   woolPoints: 5
   attackSpeed: 1

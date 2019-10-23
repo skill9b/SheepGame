@@ -49,7 +49,7 @@ public class ParentSheepController : MonoBehaviour
                     if (Time.time > attackSpeed + nextAttackTime)
                     {
                         baseController.currentHealth--;
-                        Debug.Log(baseController.currentHealth);
+                        // Debug.Log(baseController.currentHealth);
                         nextAttackTime = Time.time;
                     }
                     break;

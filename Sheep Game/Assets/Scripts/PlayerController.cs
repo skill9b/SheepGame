@@ -16,31 +16,6 @@ public class PlayerController : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
     }
-        
-        
-    // void FixedUpdate()
-    // {
-    //     float moveVertical = Input.GetAxis ("Vertical");
-    //
-    //     if (moveVertical != 0)
-    //     {
-    //         moving = true;
-    //     }
-    //     else
-    //     {
-    //         moving = false;
-    //     }
-    //
-    //     Vector2 movement = new Vector2(0, moveVertical);
-    //     if (moving)
-    //     {
-    //         rb2d.AddForce(movement * speed);
-    //     }
-    //     else
-    //     {
-    //         rb2d.velocity = Vector2.zero;
-    //     }
-    // }
 
     void Update()
     {

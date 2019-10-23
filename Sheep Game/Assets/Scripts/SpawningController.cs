@@ -43,6 +43,8 @@ public class SpawningController : MonoBehaviour
     public int deadSheep;
     int currentWaveMaxSheep;
 
+    public GameObject upgradesMenu;
+
     // ******** FUNCTIONS ******** //
     void Start()
     {
@@ -139,12 +141,12 @@ public class SpawningController : MonoBehaviour
         float randomY = Random.Range((int)SpawnPointTop.position.y, (int)SpawnPointBottom.position.y);
         Vector3 position = new Vector3(SpawnPointTop.position.x, randomY, SpawnPointTop.position.z);
         Instantiate(_enemy, position, SpawnPointTop.rotation);
-        // Debug.Log("Spawning enemy: " + _enemy.name);
+        Debug.Log("Spawning enemy: " + _enemy.name);
     }
 
     void startNextWave()
     {
-        // Debug.Log("Wave completed.");
+        Debug.Log("Wave completed.");
 
         deadSheep = 0;
 
@@ -154,7 +156,11 @@ public class SpawningController : MonoBehaviour
         if (waveCount + 1 > waves.Length - 1)
         {
             waveCount = 0;
-            // Debug.Log("All waves complete!");
+
+            upgradesMenu.SetActive(true);
+            // set everything else to inactive???
+            GameObject.FindGameObjectWithTag("Base").SetActive(false);
+            Debug.Log("All waves complete!");
         }
         else
         {

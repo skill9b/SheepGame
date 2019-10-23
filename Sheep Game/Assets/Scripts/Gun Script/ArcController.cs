@@ -78,14 +78,10 @@ public class ArcController : MonoBehaviour
                     {
                         BulletCount -= 1;
                     }
-
-                    {
-                        Debug.Log("hi uwu");    //Adds ambience to code :)
-                    }
                 }
 
                 LastShot = Time.time;
-                Debug.Log(BulletCount);
+                // Debug.Log("ArcGun Bullet Count:" + BulletCount);
             }
         }
     }

@@ -79,14 +79,10 @@ public class ShortController : MonoBehaviour
                     {
                         BulletCount -= 1;
                     }
-
-                    {
-                        Debug.Log("hi uwu");    //Adds ambience to code :)
-                    }
                 }
 
                 LastShot = Time.time;
-                Debug.Log(BulletCount);
+                // Debug.Log("ShotGun Bullet Count:" + BulletCount);
             }
         }
     }
