@@ -4,25 +4,14 @@ using UnityEngine;
 
 public class ShortBulletController : MonoBehaviour
 {
-    public GameObject Sheep;
-    public ParentSheepController SheepScript;
+    public int damage;
+    public int Seconds = 1;
 
-    [SerializeField] float Seconds = 1;
-    [SerializeField] int Mag = 6;
-    
-    private int EnemyCount = 0;
-    private int Damage = 0;
-
+    //WaitForSecond returns a IEnumerator type, which is why it's it's own function
     IEnumerator Wait(float Seconds)
     {
-        yield return new WaitForSecondsRealtime(Seconds);   //Scaled time (No Idea what that means)
+        yield return new WaitForSeconds(Seconds);   //Scaled time (No Idea what that means)
         Destroy(gameObject);
-    }
-
-    private void Start()
-    {
-        SheepScript = Sheep.GetComponent<ParentSheepController>();
-
     }
 
     private void Update()
@@ -30,24 +19,17 @@ public class ShortBulletController : MonoBehaviour
         StartCoroutine(Wait(Seconds));
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.tag == "Enemy")
+
+        if (other.gameObject.tag == "Enemy")
         {
-            EnemyCount++;
-          
-            Damage = (Mag - EnemyCount) / EnemyCount;
+            other.GetComponent<ParentSheepController>().TakeDamage(damage);
+            //Destroy(gameObject);
+        }
 
-            if (EnemyCount > Mag)
-            {
-                SheepScript.health -= 1;
-            }
-
-            if (EnemyCount < Mag)
-            {
-                SheepScript.health -= Damage;
-            }
-
+        if (other.gameObject.tag == "Floor")
+        {
             Destroy(gameObject);
         }
     }

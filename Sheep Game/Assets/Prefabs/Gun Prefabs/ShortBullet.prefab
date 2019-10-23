@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2611781428512604875}
   - component: {fileID: 263934227553097593}
   - component: {fileID: 2194984223447505754}
+  - component: {fileID: -1461872426944772847}
   m_Layer: 0
   m_Name: ShortBullet
   m_TagString: Untagged
@@ -124,7 +125,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0227611d421cf40a61e7ccbc641fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sheep: {fileID: 5670207259689230208, guid: a9e6845def22c364fbcdf2032351e29e, type: 3}
-  SheepScript: {fileID: 0}
+  damage: 100
   Seconds: 1
-  Mag: 6
+--- !u!50 &-1461872426944772847
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7102115590979812567}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 100
+  m_AngularDrag: 100
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
