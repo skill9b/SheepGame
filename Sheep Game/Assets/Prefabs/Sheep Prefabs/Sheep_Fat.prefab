@@ -79,7 +79,7 @@ MonoBehaviour:
   speed: 2
   distanceFromEnemy: 1
   woolPoints: 5
-  attackSpeed: 5
+  attackSpeed: 1
   currentState: 0
   tinySheepObject: {fileID: 7915623186855024290, guid: 07ecfa84f8e2ef442b6a03b9f45f995f,
     type: 3}

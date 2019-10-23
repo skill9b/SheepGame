@@ -13,6 +13,7 @@ TagManager:
   - HumptyDumpty
   - Turret
   - Wolf
+  - HealthBar
   layers:
   - Default
   - TransparentFX

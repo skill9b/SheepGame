@@ -25,6 +25,8 @@ public class BaseController : MonoBehaviour
     void Update()
     {
         GameObject.FindGameObjectWithTag("HealthBar").GetComponent<SimpleHealthBar>().UpdateBar(currentHealth, maxHealth);
+
+        Debug.Log("currentHealth:" + currentHealth);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
