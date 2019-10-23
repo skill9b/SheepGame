@@ -88,7 +88,7 @@ public class SpawningController : MonoBehaviour
 
     IEnumerator SpawnWave(Wave _wave)
     {
-        Debug.Log("Spawning Wave: " + _wave.name);
+        // Debug.Log("Spawning Wave: " + _wave.name);
         state = SpawnState.SPAWNING;
 
         currentWaveMaxSheep = _wave.count;
@@ -139,12 +139,12 @@ public class SpawningController : MonoBehaviour
         float randomY = Random.Range((int)SpawnPointTop.position.y, (int)SpawnPointBottom.position.y);
         Vector3 position = new Vector3(SpawnPointTop.position.x, randomY, SpawnPointTop.position.z);
         Instantiate(_enemy, position, SpawnPointTop.rotation);
-        Debug.Log("Spawning enemy: " + _enemy.name);
+        // Debug.Log("Spawning enemy: " + _enemy.name);
     }
 
     void startNextWave()
     {
-        Debug.Log("Wave completed.");
+        // Debug.Log("Wave completed.");
 
         deadSheep = 0;
 
@@ -154,7 +154,7 @@ public class SpawningController : MonoBehaviour
         if (waveCount + 1 > waves.Length - 1)
         {
             waveCount = 0;
-            Debug.Log("All waves complete!");
+            // Debug.Log("All waves complete!");
         }
         else
         {

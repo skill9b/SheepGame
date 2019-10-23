@@ -12,6 +12,7 @@ TagManager:
   - ShootingRange
   - HumptyDumpty
   - Turret
+  - Wolf
   layers:
   - Default
   - TransparentFX

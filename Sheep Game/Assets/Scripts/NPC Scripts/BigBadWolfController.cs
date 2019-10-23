@@ -10,38 +10,58 @@ public class BigBadWolfController : MonoBehaviour
 
     bool canBlow = true;
     bool isBlowing = false;
-    public float blowingCountdown;
+    float blowingCountdown;
     public float blowingCooldown;
+    float storedCountdown;
+    float storedCooldown;
+
+    GameObject[] sheepInstances;
 
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         initPosition = transform.position;
+
+        blowingCountdown = 1.0f;
+        storedCountdown = blowingCountdown;
+        storedCooldown = blowingCooldown;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && canBlow == true && isBlowing == false)
+        if (Input.GetKeyDown(KeyCode.Q) && (canBlow == true) && (isBlowing == false))
         {
             canBlow = false;
             isBlowing = true;
-            initPosition += new Vector3(0, 1, 0);
-            rb2d.MovePosition(initPosition);
-            blowingCountdown -= 1;
+        }
+
+        if (canBlow == false && isBlowing == true)
+        {
+            // Move all sheep instances back a few steps
+            sheepInstances = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject sheep in sheepInstances)
+            {
+                sheep.transform.position += new Vector3(0.2f,0,0);
+            }
+
+            blowingCountdown -= Time.deltaTime;
         }
 
         if (blowingCountdown <= 0)
         {
-
-            blowingCooldown -= 1;
+            blowingCooldown -= Time.deltaTime;
+            canBlow = false;
             isBlowing = false;
         }
 
         if (blowingCooldown <= 0)
         {
+            blowingCountdown = storedCountdown;
+            blowingCooldown = storedCooldown;
             canBlow = true;
+            isBlowing = false;
         }
 
     }

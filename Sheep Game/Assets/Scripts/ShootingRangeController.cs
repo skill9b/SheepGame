@@ -20,7 +20,6 @@ public class ShootingRangeController : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            Debug.Log("NPCs fire.");
             NPCHumptyDumptyController hd = GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>();
             hd.Fire();
 

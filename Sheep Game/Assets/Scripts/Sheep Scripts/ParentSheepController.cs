@@ -6,7 +6,7 @@ public class ParentSheepController : MonoBehaviour
 {
     public GameObject Base;
     public BaseController baseController;
-
+    public Animator animator;
     public int health;
     public float speed;
     public int distanceFromEnemy;
@@ -26,7 +26,6 @@ public class ParentSheepController : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Spawning");
         baseController = Base.GetComponent<BaseController>(); //Get script of base
         currentState = State.Moving;
         target = new Vector2(transform.position.x - 1000, transform.position.y);
@@ -39,12 +38,14 @@ public class ParentSheepController : MonoBehaviour
         {
             case State.Moving:
                 {
+                    animator.SetBool("Attacking", false);
                     transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime); //Set always to move left
                     break;
                 }
 
             case State.Attacking:
                 {
+                    animator.SetBool("Attacking", true);
                     //Add timer so that sheep attack every 1.5s
                     if (Time.time > attackSpeed + nextAttackTime)
                     {
