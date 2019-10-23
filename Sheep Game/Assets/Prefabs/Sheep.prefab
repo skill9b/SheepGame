@@ -43,16 +43,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5670207259689230208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1bf2c758c65d674e97df011059ef5de, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a620d059590da3428fca6504847956c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Base: {fileID: 103594734325402333, guid: 25994170128b93b4386305952b887887, type: 3}
   baseController: {fileID: 0}
-  speed: 3
-  distanceFromEnemy: 1
   health: 10
-  woolPoints: 10
+  speed: 2
+  distanceFromEnemy: 2
+  woolPoints: 12
   attackSpeed: 5
+  currentState: 0
 --- !u!50 &1500368200885085679
 Rigidbody2D:
   serializedVersion: 4
