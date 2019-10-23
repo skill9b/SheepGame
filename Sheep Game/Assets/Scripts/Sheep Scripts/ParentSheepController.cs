@@ -26,7 +26,6 @@ public class ParentSheepController : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Spawning");
         baseController = Base.GetComponent<BaseController>(); //Get script of base
         currentState = State.Moving;
         target = new Vector2(transform.position.x - 1000, transform.position.y);
