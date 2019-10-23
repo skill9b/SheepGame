@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ParentSheepController : MonoBehaviour
 {
-    public GameObject Base;
     public BaseController baseController;
     public Animator animator;
     public int health;
@@ -26,7 +25,7 @@ public class ParentSheepController : MonoBehaviour
 
     void Start()
     {
-        baseController = Base.GetComponent<BaseController>(); //Get script of base
+        baseController = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>(); //Get script of base
         currentState = State.Moving;
         target = new Vector2(transform.position.x - 1000, transform.position.y);
         distanceFromEnemy = 10;
@@ -49,8 +48,8 @@ public class ParentSheepController : MonoBehaviour
                     //Add timer so that sheep attack every 1.5s
                     if (Time.time > attackSpeed + nextAttackTime)
                     {
-                        baseController.health--;
-                        // Debug.Log(baseController.health);
+                        baseController.currentHealth--;
+                        Debug.Log(baseController.currentHealth);
                         nextAttackTime = Time.time;
                     }
                     break;

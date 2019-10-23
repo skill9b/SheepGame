@@ -79,7 +79,7 @@ MonoBehaviour:
   speed: 2
   distanceFromEnemy: 1
   woolPoints: 10
-  attackSpeed: 5
+  attackSpeed: 1
   currentState: 0
 --- !u!95 &-1206059512696264035
 Animator:
