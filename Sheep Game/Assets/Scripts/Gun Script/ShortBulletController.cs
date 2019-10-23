@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotgunBullet : MonoBehaviour
+public class ShortBulletController : MonoBehaviour
 {
     public GameObject Sheep;
     public ParentSheepController SheepScript;

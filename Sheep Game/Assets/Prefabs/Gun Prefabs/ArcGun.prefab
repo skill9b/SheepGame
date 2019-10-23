@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1289057070121217491}
   - component: {fileID: 1289057070121217484}
+  - component: {fileID: -358089596199565125}
   m_Layer: 0
   m_Name: ArcGun
   m_TagString: Untagged
@@ -79,3 +80,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-358089596199565125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289057070121217490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a989b9b06309f184198284a8411b64b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bullet: {fileID: 0}
+  Gun: {fileID: 0}
+  MainCamera: {fileID: 0}
+  SpeedController: 100
+  Offset: 0
+  FireRate: 1
+  Mag: 5
+  CooldowntimeFull: 5
+  CooldowntimeNotFull: 2

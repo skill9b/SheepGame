@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1289057070121217491}
   - component: {fileID: 1289057070121217484}
-  - component: {fileID: 1289057070121217485}
+  - component: {fileID: -5671998598695756817}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: LongGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1289057070121217485
+--- !u!114 &-5671998598695756817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,15 +89,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1289057070121217490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eca71f6fc7f562745a6e99bef6804d9e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a3231a3992025f4dac6c790d5b80696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 5116687139915379231, guid: c0111ed5e23c1c8449bc1d56856426cf, type: 3}
-  Gun: {fileID: 1289057070121217490}
-  camera: {fileID: 0}
-  Speed: 6
-  Offset: 180
-  FireRate: 0.5
+  Bullet: {fileID: 0}
+  Gun: {fileID: 0}
+  MainCamera: {fileID: 0}
+  Speed: 4
+  Offset: 0
+  FireRate: 1
   Mag: 5
-  CooldowntimeFULL: 5
-  CooldowntimeNOTFULL: 2
+  CooldowntimeFull: 5
+  CooldowntimeNotFull: 2
