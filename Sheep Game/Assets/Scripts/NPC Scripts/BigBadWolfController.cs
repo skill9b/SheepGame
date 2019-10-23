@@ -11,9 +11,9 @@ public class BigBadWolfController : MonoBehaviour
     bool canBlow = true;
     bool isBlowing = false;
     float blowingCountdown;
+    public float blowingCooldown;
     float storedCountdown;
     float storedCooldown;
-    public float blowingCooldown;
 
     GameObject[] sheepInstances;
 
@@ -23,9 +23,9 @@ public class BigBadWolfController : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         initPosition = transform.position;
 
+        blowingCountdown = 1.0f;
         storedCountdown = blowingCountdown;
         storedCooldown = blowingCooldown;
-        blowingCountdown = 1.0f;
     }
 
     // Update is called once per frame
@@ -44,7 +44,7 @@ public class BigBadWolfController : MonoBehaviour
             sheepInstances = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject sheep in sheepInstances)
             {
-                sheep.transform.position += new Vector3(0.5f,0,0);
+                sheep.transform.position += new Vector3(0.3f,0,0);
             }
 
             blowingCountdown -= Time.deltaTime;
@@ -64,9 +64,8 @@ public class BigBadWolfController : MonoBehaviour
             blowingCountdown = storedCountdown;
             blowingCooldown = storedCooldown;
             canBlow = true;
+            isBlowing = false;
         }
-
-        // *** Reset countdown and cooldowns
 
     }
 }
