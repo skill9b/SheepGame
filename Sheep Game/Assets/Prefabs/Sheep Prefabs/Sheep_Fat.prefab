@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7915623186855024290}
   - component: {fileID: 2690754941243624453}
   - component: {fileID: 5603868607439001899}
+  - component: {fileID: 4739635115909862005}
   m_Layer: 0
   m_Name: Sheep_Fat
   m_TagString: Enemy
@@ -73,6 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Base: {fileID: 103594734325402333, guid: 25994170128b93b4386305952b887887, type: 3}
   baseController: {fileID: 0}
+  animator: {fileID: 4739635115909862005}
   health: 10
   speed: 2
   distanceFromEnemy: 1
@@ -81,6 +83,25 @@ MonoBehaviour:
   currentState: 0
   tinySheepObject: {fileID: 7915623186855024290, guid: 07ecfa84f8e2ef442b6a03b9f45f995f,
     type: 3}
+--- !u!95 &4739635115909862005
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5670207259689230208}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5e44ac4a8ddf2614d8c7fdf7afaf11d8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5681214420767329839
 GameObject:
   m_ObjectHideFlags: 0
