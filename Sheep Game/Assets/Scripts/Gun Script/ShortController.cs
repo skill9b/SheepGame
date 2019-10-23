@@ -68,6 +68,7 @@ public class ShortController : MonoBehaviour
             {
                 GameObject b = Instantiate(Bullet) as GameObject;
                 b.transform.position = Gun.transform.position;
+                b.transform.position += Vector3.right * 1.8f; 
                 b.GetComponent<Rigidbody2D>().velocity = -direction * Speed;
 
                 BulletCount += 1;

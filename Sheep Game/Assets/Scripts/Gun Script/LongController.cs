@@ -68,7 +68,8 @@ public class LongController : MonoBehaviour
             {
                 GameObject b = Instantiate(Bullet) as GameObject;
                 b.transform.position = Gun.transform.position;
-                b.GetComponent<Rigidbody2D>().velocity = -direction * Speed;
+                b.GetComponent<Rigidbody2D>().velocity = //-direction * Speed;
+                b.GetComponent<Rigidbody2D>().velocity += Vector2.right * Speed;
 
                 BulletCount += 1;
 

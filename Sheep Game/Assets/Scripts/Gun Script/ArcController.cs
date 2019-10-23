@@ -8,7 +8,7 @@ public class ArcController : MonoBehaviour
     public GameObject Gun;
     public Camera MainCamera;
 
-    [SerializeField] float Speed = 4;
+    [SerializeField] float SpeedController = 100;
     [SerializeField] float Offset = 0;
     [SerializeField] float FireRate = 1;
     [SerializeField] int Mag = 5;
@@ -18,6 +18,7 @@ public class ArcController : MonoBehaviour
 
     private Vector3 Target;
     private float LastShot = 0;
+    private float Speed;
 
     // Update is called once per frame
     void Update()
@@ -25,8 +26,6 @@ public class ArcController : MonoBehaviour
         Target = MainCamera.ScreenToWorldPoint(new Vector3(transform.position.x, (-Input.mousePosition.y) + Offset, transform.position.z));
 
         Vector3 difference = Target - Gun.transform.position;
-        float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        Gun.transform.rotation = Quaternion.Euler(0, 0, rotationZ);
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -34,7 +33,17 @@ public class ArcController : MonoBehaviour
             Vector2 direction = difference / distance;
             direction.Normalize();
 
-            Fire(direction, rotationZ);
+
+            if (Input.mousePosition.x == 0)
+            {
+                Speed = 0;
+            }
+            else
+            {
+                Speed = Input.mousePosition.x / SpeedController;
+            }
+
+            Fire(direction, Speed);
         }
     }
 
@@ -45,7 +54,7 @@ public class ArcController : MonoBehaviour
         BulletCount -= 1;   //The cooldown reduces bulletcount by 1
     }
 
-    void Fire(Vector2 direction, float rotationZ)
+    void Fire(Vector2 direction, float Speed)
     {
         if (Time.time > FireRate + LastShot)
         {
@@ -59,7 +68,6 @@ public class ArcController : MonoBehaviour
             {
                 GameObject b = Instantiate(Bullet) as GameObject;
                 b.transform.position = Gun.transform.position;
-                b.transform.rotation = Quaternion.Euler(0, 0, rotationZ);
                 b.GetComponent<Rigidbody2D>().velocity = -direction * Speed;
 
                 BulletCount += 1;
