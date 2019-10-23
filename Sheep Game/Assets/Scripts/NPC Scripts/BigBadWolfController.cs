@@ -39,12 +39,11 @@ public class BigBadWolfController : MonoBehaviour
 
         if (canBlow == false && isBlowing == true)
         {
-            Debug.Log("Q key hit. Blow!");
             // Move all sheep instances back a few steps
             sheepInstances = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject sheep in sheepInstances)
             {
-                sheep.transform.position += new Vector3(0.3f,0,0);
+                sheep.transform.position += new Vector3(0.2f,0,0);
             }
 
             blowingCountdown -= Time.deltaTime;
@@ -52,7 +51,6 @@ public class BigBadWolfController : MonoBehaviour
 
         if (blowingCountdown <= 0)
         {
-            Debug.Log("Blowing countdown hit zero!");
             blowingCooldown -= Time.deltaTime;
             canBlow = false;
             isBlowing = false;
@@ -60,7 +58,6 @@ public class BigBadWolfController : MonoBehaviour
 
         if (blowingCooldown <= 0)
         {
-            Debug.Log("Blowing cooldown reset.");
             blowingCountdown = storedCountdown;
             blowingCooldown = storedCooldown;
             canBlow = true;
