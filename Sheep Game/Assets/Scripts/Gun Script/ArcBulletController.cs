@@ -12,8 +12,12 @@ public class ArcBulletController : MonoBehaviour
 
         if (other.gameObject.tag == "Enemy")
         {
-            other.GetComponent<ParentSheepController>().TakeDamage(damage);
-            Destroy(gameObject);
+            if (transform.position.y < 10)
+            {
+                other.GetComponent<ParentSheepController>().TakeDamage(damage);
+                //Add Code to instantiate animation and then only destroy the bullet
+                Destroy(gameObject);
+            }
         }
 
         if (other.gameObject.tag == "Floor")

@@ -13,7 +13,7 @@ public class LongBulletController : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             other.GetComponent<ParentSheepController>().TakeDamage(damage);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
 
         if (other.gameObject.tag == "Floor")

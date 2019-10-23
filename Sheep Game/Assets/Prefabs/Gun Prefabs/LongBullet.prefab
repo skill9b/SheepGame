@@ -141,12 +141,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc5e6361c62b584478e3e767b0149f00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 0}
-  Gun: {fileID: 0}
-  MainCamera: {fileID: 0}
-  Speed: 4
-  Offset: 180
-  FireRate: 1
-  Mag: 5
-  CooldowntimeFull: 5
-  CooldowntimeNotFull: 2
+  damage: 1
