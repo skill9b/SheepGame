@@ -75,6 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Base: {fileID: 103594734325402333, guid: 25994170128b93b4386305952b887887, type: 3}
   baseController: {fileID: 0}
+  animator: {fileID: 1926422251672084765}
   health: 3
   speed: 3
   distanceFromEnemy: 1
