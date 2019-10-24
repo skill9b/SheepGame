@@ -13,6 +13,7 @@ public class ParentSheepController : MonoBehaviour
     private Vector2 target;
     public float attackSpeed;
     float nextAttackTime;
+    public float attackDamage;
 
     public enum State
     {
@@ -48,8 +49,8 @@ public class ParentSheepController : MonoBehaviour
                     //Add timer so that sheep attack every 1.5s
                     if (Time.time > attackSpeed + nextAttackTime)
                     {
-                        baseController.currentHealth--;
-                        // Debug.Log(baseController.currentHealth);
+                        baseController.currentHealth -= attackDamage;
+                        Debug.Log(baseController.currentHealth);
                         nextAttackTime = Time.time;
                     }
                     break;

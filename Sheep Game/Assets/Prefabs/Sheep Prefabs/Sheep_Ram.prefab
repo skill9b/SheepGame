@@ -72,14 +72,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a620d059590da3428fca6504847956c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Base: {fileID: 103594734325402333, guid: 25994170128b93b4386305952b887887, type: 3}
   baseController: {fileID: 0}
   animator: {fileID: -1206059512696264035}
   health: 5
   speed: 2
   distanceFromEnemy: 1
   woolPoints: 10
-  attackSpeed: 1
+  attackSpeed: 3
+  attackDamage: 2
   currentState: 0
 --- !u!95 &-1206059512696264035
 Animator:
