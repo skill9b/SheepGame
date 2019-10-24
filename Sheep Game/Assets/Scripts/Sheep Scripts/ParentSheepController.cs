@@ -72,6 +72,11 @@ public class ParentSheepController : MonoBehaviour
         {
             currentState = State.Attacking;
         }
+        else
+        {
+            currentState = State.Moving;
+        }
+
 
         if (other.gameObject.tag == "ShootingRange")
         {

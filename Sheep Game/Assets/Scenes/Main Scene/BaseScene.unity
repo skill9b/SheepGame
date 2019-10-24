@@ -1454,35 +1454,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 514811234}
   m_PrefabAsset: {fileID: 0}
---- !u!60 &514811239
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514811236}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.39, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.16}
-    newSize: {x: 0.32, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.044669688, y: 4.673967}
-      - {x: -0.71742684, y: -5.788821}
-      - {x: 4.321674, y: -5.982802}
-      - {x: 4.3592677, y: 4.7429976}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3361,6 +3332,11 @@ PrefabInstance:
       propertyPath: Gun
       value: 
       objectReference: {fileID: 1968533314}
+    - target: {fileID: -358089596199565125, guid: 46c29c5a757080d46b84f93dcc78614d,
+        type: 3}
+      propertyPath: SpeedController
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 1289057070121217491, guid: 46c29c5a757080d46b84f93dcc78614d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3640,6 +3616,21 @@ PrefabInstance:
         type: 3}
       propertyPath: SpeedController
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5671998598695756817, guid: 3f00cc51f1430bc409b95e3c10405d5d,
+        type: 3}
+      propertyPath: CooldowntimeFull
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5671998598695756817, guid: 3f00cc51f1430bc409b95e3c10405d5d,
+        type: 3}
+      propertyPath: CooldowntimeNotFull
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5671998598695756817, guid: 3f00cc51f1430bc409b95e3c10405d5d,
+        type: 3}
+      propertyPath: FireRate
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1289057070121217491, guid: 3f00cc51f1430bc409b95e3c10405d5d,
         type: 3}
