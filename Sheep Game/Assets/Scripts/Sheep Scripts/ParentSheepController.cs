@@ -72,6 +72,7 @@ public class ParentSheepController : MonoBehaviour
         if (other.gameObject.tag == "Base")
         {
             currentState = State.Attacking;
+            //Start a timer from here rather from start of game as when it attacks the time is checked and may not go into the if for attacking due to sheep taking much less time to reach fence
         }
         else
         {
