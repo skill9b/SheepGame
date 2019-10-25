@@ -46,12 +46,12 @@ public class ParentSheepController : MonoBehaviour
             case State.Attacking:
                 {
                     animator.SetBool("Attacking", true);
-                    //Add timer so that sheep attack every 1.5s
-                    if (Time.time > attackSpeed + nextAttackTime)
+                    
+                    if (Time.time > nextAttackTime) 
                     {
                         baseController.currentHealth -= attackDamage;
                         Debug.Log(baseController.currentHealth);
-                        nextAttackTime = Time.time;
+                        nextAttackTime = Time.time + attackSpeed;
                     }
                     break;
                 }
@@ -72,7 +72,7 @@ public class ParentSheepController : MonoBehaviour
         if (other.gameObject.tag == "Base")
         {
             currentState = State.Attacking;
-            //Start a timer from here rather from start of game as when it attacks the time is checked and may not go into the if for attacking due to sheep taking much less time to reach fence
+            
         }
         else
         {
