@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class LongController : MonoBehaviour
@@ -7,6 +8,8 @@ public class LongController : MonoBehaviour
     public GameObject Bullet;
     public GameObject Gun;
     public Camera MainCamera;
+    public Image CoolDownUI;
+
 
     [SerializeField] float SpeedController = 100;
     [SerializeField] float Offset = 0;
@@ -19,6 +22,19 @@ public class LongController : MonoBehaviour
     private Vector3 Target;
     private float LastShot = 0;
     private float Speed;
+
+
+    private void Start()
+    {
+        for (int i = 0; i < Mag; i++)
+        {
+            Transform cooldowntransform = GameObject.Find("Canvas").transform;
+
+            cooldowntransform.position = cooldowntransform.position + new Vector3((i * 100), 0, 0);
+
+            Instantiate(CoolDownUI, cooldowntransform, false);
+        }
+    }
 
     // Update is called once per frame
     void Update()

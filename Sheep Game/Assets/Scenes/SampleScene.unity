@@ -272,6 +272,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 876119793}
     m_Modifications:
+    - target: {fileID: 1289057070121217490, guid: 3f00cc51f1430bc409b95e3c10405d5d,
+        type: 3}
+      propertyPath: m_Name
+      value: LongGun
+      objectReference: {fileID: 0}
     - target: {fileID: -5671998598695756817, guid: 3f00cc51f1430bc409b95e3c10405d5d,
         type: 3}
       propertyPath: Bullet
@@ -293,11 +298,12 @@ PrefabInstance:
       propertyPath: SpeedController
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 1289057070121217490, guid: 3f00cc51f1430bc409b95e3c10405d5d,
+    - target: {fileID: -5671998598695756817, guid: 3f00cc51f1430bc409b95e3c10405d5d,
         type: 3}
-      propertyPath: m_Name
-      value: LongGun
-      objectReference: {fileID: 0}
+      propertyPath: CoolDownUI
+      value: 
+      objectReference: {fileID: 2749166514606193962, guid: e4bfb0b7c57ec7c40add0cba4aa924ba,
+        type: 3}
     - target: {fileID: 1289057070121217491, guid: 3f00cc51f1430bc409b95e3c10405d5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -731,6 +737,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  ColX: 0.2
+  ColY: 0.2
 --- !u!61 &995218116
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -826,6 +834,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 876119793}
     m_Modifications:
+    - target: {fileID: 1289057070121217490, guid: 46c29c5a757080d46b84f93dcc78614d,
+        type: 3}
+      propertyPath: m_Name
+      value: ArcGun
+      objectReference: {fileID: 0}
     - target: {fileID: -358089596199565125, guid: 46c29c5a757080d46b84f93dcc78614d,
         type: 3}
       propertyPath: Bullet
@@ -842,11 +855,6 @@ PrefabInstance:
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 1289057070121217490, guid: 46c29c5a757080d46b84f93dcc78614d,
-        type: 3}
-      propertyPath: m_Name
-      value: ArcGun
-      objectReference: {fileID: 0}
     - target: {fileID: 1289057070121217491, guid: 46c29c5a757080d46b84f93dcc78614d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -985,6 +993,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 876119793}
     m_Modifications:
+    - target: {fileID: 1289057070121217490, guid: fb09e7c4befaacd4a81e7d9c4667f230,
+        type: 3}
+      propertyPath: m_Name
+      value: ShortGun
+      objectReference: {fileID: 0}
     - target: {fileID: 517199264281493597, guid: fb09e7c4befaacd4a81e7d9c4667f230,
         type: 3}
       propertyPath: Bullet
@@ -1001,11 +1014,6 @@ PrefabInstance:
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 1289057070121217490, guid: fb09e7c4befaacd4a81e7d9c4667f230,
-        type: 3}
-      propertyPath: m_Name
-      value: ShortGun
-      objectReference: {fileID: 0}
     - target: {fileID: 1289057070121217491, guid: fb09e7c4befaacd4a81e7d9c4667f230,
         type: 3}
       propertyPath: m_LocalPosition.x
