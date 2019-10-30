@@ -14,6 +14,7 @@ public class ParentSheepController : MonoBehaviour
     public float attackSpeed;
     float nextAttackTime;
     public float attackDamage;
+    public Rigidbody2D body;
 
     public enum State
     {
@@ -45,6 +46,12 @@ public class ParentSheepController : MonoBehaviour
 
             case State.Attacking:
                 {
+                    //body.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionX;
+                    //body.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionY;
+                    //body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezeRotation;
+
+                    body.constraints = RigidbodyConstraints2D.FreezeAll | RigidbodyConstraints2D.FreezeAll;
+
                     animator.SetBool("Attacking", true);
                     
                     if (Time.time > nextAttackTime) 
@@ -74,6 +81,10 @@ public class ParentSheepController : MonoBehaviour
             currentState = State.Attacking;
             
         }
+       // else if (GameObject.FindWithTag("Wolf").GetComponent<BigBadWolfController>(). ;)
+       // {
+       //
+       // }
         else
         {
             currentState = State.Moving;
