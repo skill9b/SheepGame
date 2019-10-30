@@ -15,7 +15,7 @@ public class ParentSheepController : MonoBehaviour
     float nextAttackTime;
     public float attackDamage;
     public Rigidbody2D body;
-
+    bool IsIdle;
     public enum State
     {
         Moving,
@@ -27,6 +27,7 @@ public class ParentSheepController : MonoBehaviour
 
     void Start()
     {
+        IsIdle = GameObject.FindWithTag("Wolf").GetComponent<BigBadWolfController>().isBlowing;
         baseController = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>(); //Get script of base
         currentState = State.Moving;
         target = new Vector2(transform.position.x - 1000, transform.position.y);
@@ -84,7 +85,7 @@ public class ParentSheepController : MonoBehaviour
             currentState = State.Attacking;
             
         }
-        else if (GameObject.FindWithTag("Wolf").GetComponent<BigBadWolfController>().isBlowing)
+        else if (IsIdle)
         {
             currentState = State.Idle;
         }
