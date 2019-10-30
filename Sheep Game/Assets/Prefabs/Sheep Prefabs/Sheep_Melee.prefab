@@ -76,12 +76,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseController: {fileID: 0}
   animator: {fileID: 1926422251672084765}
-  health: 3
-  speed: 3
+  health: 10
+  speed: 1
   distanceFromEnemy: 1
   woolPoints: 10
-  attackSpeed: 10
-  attackDamage: 2
+  attackSpeed: 2
+  attackDamage: 1
   body: {fileID: 7112583546173061006}
   currentState: 0
 --- !u!95 &1926422251672084765

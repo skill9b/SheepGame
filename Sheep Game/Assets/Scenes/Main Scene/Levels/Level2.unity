@@ -820,6 +820,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.005
       objectReference: {fileID: 0}
+    - target: {fileID: 114215078782690374, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
+        type: 3}
+      propertyPath: m_Text
+      value: Health 50%
+      objectReference: {fileID: 0}
+    - target: {fileID: 114215078782690374, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114215078782690374, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 114501253246479570, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
         type: 3}
       propertyPath: MaskColor.a
@@ -893,21 +908,6 @@ PrefabInstance:
     - target: {fileID: 114772059722544584, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114215078782690374, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
-        type: 3}
-      propertyPath: m_Text
-      value: Health 50%
-      objectReference: {fileID: 0}
-    - target: {fileID: 114215078782690374, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114215078782690374, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
-        type: 3}
-      propertyPath: m_FontData.m_BestFit
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114226129894021904, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
@@ -1187,7 +1187,7 @@ MonoBehaviour:
     rate: 5
     timeToNextWave: 0
   - name: 1.2
-    sheep: {fileID: 7915623186855024290, guid: 814ea76472043ee418d63f4aa45621da, type: 3}
+    sheep: {fileID: 7915623186855024290, guid: 7dd61d792c90cfe428871449de99dda1, type: 3}
     count: 1
     rate: 5
     timeToNextWave: 4
@@ -1197,7 +1197,7 @@ MonoBehaviour:
     rate: 5
     timeToNextWave: 0
   - name: 2.2
-    sheep: {fileID: 7915623186855024290, guid: 814ea76472043ee418d63f4aa45621da, type: 3}
+    sheep: {fileID: 7915623186855024290, guid: 7dd61d792c90cfe428871449de99dda1, type: 3}
     count: 2
     rate: 5
     timeToNextWave: 4
@@ -1207,7 +1207,7 @@ MonoBehaviour:
     rate: 5
     timeToNextWave: 0
   - name: 3.2
-    sheep: {fileID: 7915623186855024290, guid: 814ea76472043ee418d63f4aa45621da, type: 3}
+    sheep: {fileID: 7915623186855024290, guid: 7dd61d792c90cfe428871449de99dda1, type: 3}
     count: 2
     rate: 5
     timeToNextWave: 5
@@ -1217,7 +1217,7 @@ MonoBehaviour:
     rate: 5
     timeToNextWave: 0
   - name: 4.2
-    sheep: {fileID: 7915623186855024290, guid: 814ea76472043ee418d63f4aa45621da, type: 3}
+    sheep: {fileID: 7915623186855024290, guid: 7dd61d792c90cfe428871449de99dda1, type: 3}
     count: 3
     rate: 5
     timeToNextWave: 5
@@ -1227,7 +1227,7 @@ MonoBehaviour:
     rate: 5
     timeToNextWave: 0
   - name: 5.2
-    sheep: {fileID: 7915623186855024290, guid: 814ea76472043ee418d63f4aa45621da, type: 3}
+    sheep: {fileID: 7915623186855024290, guid: 7dd61d792c90cfe428871449de99dda1, type: 3}
     count: 4
     rate: 5
     timeToNextWave: 0
@@ -1707,6 +1707,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353286, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c5c65aca4a946f147adfd65993d28504, type: 2}
     - target: {fileID: 8416542628898353287, guid: a3e037081d3e9074a814f3f5dd33a947,
         type: 3}
       propertyPath: cooldownObject
@@ -1717,11 +1722,6 @@ PrefabInstance:
       propertyPath: cooldownBar
       value: 
       objectReference: {fileID: 1456142230}
-    - target: {fileID: 8416542628898353286, guid: a3e037081d3e9074a814f3f5dd33a947,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: c5c65aca4a946f147adfd65993d28504, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3e037081d3e9074a814f3f5dd33a947, type: 3}
 --- !u!1 &638820414
@@ -3460,6 +3460,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.009
       objectReference: {fileID: 0}
+    - target: {fileID: 114215078782690374, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
+        type: 3}
+      propertyPath: m_Text
+      value: Health 50%
+      objectReference: {fileID: 0}
+    - target: {fileID: 114215078782690374, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114215078782690374, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 114501253246479570, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
         type: 3}
       propertyPath: MaskColor.a
@@ -3533,21 +3548,6 @@ PrefabInstance:
     - target: {fileID: 114772059722544584, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114215078782690374, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
-        type: 3}
-      propertyPath: m_Text
-      value: Health 50%
-      objectReference: {fileID: 0}
-    - target: {fileID: 114215078782690374, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114215078782690374, guid: 24d5ab3d18c91fc41a2213a537e21ee7,
-        type: 3}
-      propertyPath: m_FontData.m_BestFit
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114226129894021904, guid: 24d5ab3d18c91fc41a2213a537e21ee7,

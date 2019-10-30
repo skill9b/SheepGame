@@ -1347,7 +1347,7 @@ PrefabInstance:
     - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
       propertyPath: waves.Array.data[13].count
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
@@ -1391,7 +1391,7 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.data[3].sheep
       value: 
-      objectReference: {fileID: 7915623186855024290, guid: 814ea76472043ee418d63f4aa45621da,
+      objectReference: {fileID: 7915623186855024290, guid: 7dd61d792c90cfe428871449de99dda1,
         type: 3}
     - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
@@ -1414,7 +1414,7 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.data[6].sheep
       value: 
-      objectReference: {fileID: 7915623186855024290, guid: 814ea76472043ee418d63f4aa45621da,
+      objectReference: {fileID: 7915623186855024290, guid: 7dd61d792c90cfe428871449de99dda1,
         type: 3}
     - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
@@ -1437,7 +1437,7 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.data[9].sheep
       value: 
-      objectReference: {fileID: 7915623186855024290, guid: 814ea76472043ee418d63f4aa45621da,
+      objectReference: {fileID: 7915623186855024290, guid: 7dd61d792c90cfe428871449de99dda1,
         type: 3}
     - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
@@ -1460,7 +1460,7 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.data[12].sheep
       value: 
-      objectReference: {fileID: 7915623186855024290, guid: 814ea76472043ee418d63f4aa45621da,
+      objectReference: {fileID: 7915623186855024290, guid: 7dd61d792c90cfe428871449de99dda1,
         type: 3}
     - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
