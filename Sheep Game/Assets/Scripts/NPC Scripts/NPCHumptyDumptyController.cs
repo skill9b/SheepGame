@@ -62,6 +62,9 @@ public class NPCHumptyDumptyController : MonoBehaviour
                 transform.position = originalPosition;
                 cooldown = maxCooldown;
                 isCoolingDown = false;
+
+                cooldownBar.BarValue = 100;
+                cooldownObject.SetActive(false);
             }
         }
         
