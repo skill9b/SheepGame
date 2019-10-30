@@ -43,7 +43,10 @@ public class ParentSheepController : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime); //Set always to move left
                     break;
                 }
-
+            case State.Idle:
+                {
+                    break;
+                }
             case State.Attacking:
                 {
                     //body.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionX;
@@ -81,10 +84,10 @@ public class ParentSheepController : MonoBehaviour
             currentState = State.Attacking;
             
         }
-       // else if (GameObject.FindWithTag("Wolf").GetComponent<BigBadWolfController>(). ;)
-       // {
-       //
-       // }
+        else if (GameObject.FindWithTag("Wolf").GetComponent<BigBadWolfController>().isBlowing)
+        {
+            currentState = State.Idle;
+        }
         else
         {
             currentState = State.Moving;
