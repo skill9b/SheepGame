@@ -14,7 +14,8 @@ public class ParentSheepController : MonoBehaviour
     public float attackSpeed;
     float nextAttackTime;
     public float attackDamage;
-
+    public Rigidbody2D body;
+    bool IsIdle;
     public enum State
     {
         Moving,
@@ -26,6 +27,7 @@ public class ParentSheepController : MonoBehaviour
 
     void Start()
     {
+        IsIdle = GameObject.FindWithTag("Wolf").GetComponent<BigBadWolfController>().isBlowing;
         baseController = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>(); //Get script of base
         currentState = State.Moving;
         target = new Vector2(transform.position.x - 1000, transform.position.y);
@@ -42,9 +44,18 @@ public class ParentSheepController : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime); //Set always to move left
                     break;
                 }
-
+            case State.Idle:
+                {
+                    break;
+                }
             case State.Attacking:
                 {
+                    //body.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionX;
+                    //body.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionY;
+                    //body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezeRotation;
+
+                    body.constraints = RigidbodyConstraints2D.FreezeAll | RigidbodyConstraints2D.FreezeAll;
+
                     animator.SetBool("Attacking", true);
                     
                     if (Time.time > nextAttackTime) 
@@ -73,6 +84,10 @@ public class ParentSheepController : MonoBehaviour
         {
             currentState = State.Attacking;
             
+        }
+        else if (IsIdle)
+        {
+            currentState = State.Idle;
         }
         else
         {

@@ -21,6 +21,12 @@ public class NPCHumptyDumptyController : MonoBehaviour
     float rotationZ;
     Vector2 direction;
 
+    public float cooldown;
+    float maxCooldown;
+    bool isCoolingDown;
+    public GameObject cooldownObject;
+    public ProgressBarCircle cooldownBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +36,10 @@ public class NPCHumptyDumptyController : MonoBehaviour
 
         nextShootTime = 0f;
         nextYeetTime = 0f;
+
+        maxCooldown = cooldown;
+        cooldownBar.BarValue = 100;
+        cooldownObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -39,6 +49,26 @@ public class NPCHumptyDumptyController : MonoBehaviour
         {
             YeetTheEgghead();
         }
+
+        if (isCoolingDown)
+        {
+            cooldown -= Time.deltaTime;
+            cooldownObject.SetActive(true);
+            cooldownBar.BarValue = cooldownBar.BarValue - (100 / (maxCooldown / Time.deltaTime));
+            if (cooldown <= 0)
+            {
+                Debug.Log("Cooldown finished.");
+                gameObject.GetComponent<Renderer>().enabled = true;
+                transform.position = originalPosition;
+                cooldown = maxCooldown;
+                isCoolingDown = false;
+
+                cooldownBar.BarValue = 100;
+                cooldownObject.SetActive(false);
+            }
+        }
+        
+
     }
 
 
@@ -66,6 +96,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
         }
     }
 
+    // Suicide function
     void YeetTheEgghead()
     {
         Vector3 target = new Vector3(Random.Range(topLeft.position.x, bottomRight.position.x), Random.Range(bottomRight.position.y, topLeft.position.y), transform.position.z);
@@ -88,18 +119,26 @@ public class NPCHumptyDumptyController : MonoBehaviour
         }
     }
 
+    void RespawnHumptyDumpty()
+    {
+        isCoolingDown = true;
+        Debug.Log("Cooling down now!");
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Enemy")
         {
-            Destroy(gameObject);
             other.GetComponent<ParentSheepController>().TakeDamage(100);
+            RespawnHumptyDumpty();
+            gameObject.GetComponent<Renderer>().enabled = false;
         }
 
         if (other.tag == "Floor")
         {
-            Instantiate(gameObject, originalPosition, Quaternion.Euler(0,0,0));
-            Destroy(gameObject);
+            
+            RespawnHumptyDumpty();
+            gameObject.GetComponent<Renderer>().enabled = false;
         }
 
         if (other.tag == "Chimney")

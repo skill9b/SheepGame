@@ -20,12 +20,10 @@ public class SpawningController : MonoBehaviour
     public class Wave
     {
         public string name;
-        public Transform sheepMelee;
-        public Transform sheepFat;
-        public Transform sheepRam;
-        public Transform sheepFast;
+        public Transform sheep;
         public int count;
         public float rate;
+        public float timeToNextWave;
     }
 
     public Wave[] waves;
@@ -34,7 +32,7 @@ public class SpawningController : MonoBehaviour
     public Transform SpawnPointTop;
     public Transform SpawnPointBottom;
 
-    public float timeBetweenWaves = 5.0f;   // 5 seconds
+    float timeBetweenWaves;
     private float waveCountdown;
     private float searchCountdown = 1.0f;
 
@@ -48,7 +46,6 @@ public class SpawningController : MonoBehaviour
     // ******** FUNCTIONS ******** //
     void Start()
     {
-        waveCountdown = timeBetweenWaves;
         currentWaveMaxSheep = waves[0].count;
     }
 
@@ -57,17 +54,14 @@ public class SpawningController : MonoBehaviour
         // Check if player has killed all the enemies
         if (state == SpawnState.WAITING)
         {
-            // Check if any enemies are still alive
-            if (!isEnemyAlive())
+            timeBetweenWaves -= Time.deltaTime;
+            
+            if (timeBetweenWaves <= 0)
             {
-                // Begin new round
+                Debug.Log("Starting next wave!");
                 startNextWave();
-                return;
             }
-            else
-            {
-                return;
-            }
+            return;
         }
 
         if (waveCountdown <= 0)
@@ -80,7 +74,7 @@ public class SpawningController : MonoBehaviour
         }
         else
         {
-            waveCountdown -= Time.deltaTime;    // countsdown second by second
+            waveCountdown -= Time.deltaTime;    // counts down second by second
         }
 
         // Display remaining waves and sheep in current wave
@@ -95,40 +89,15 @@ public class SpawningController : MonoBehaviour
 
         currentWaveMaxSheep = _wave.count;
 
+        timeBetweenWaves = _wave.timeToNextWave;
+        Debug.Log("SpawningWave: " + _wave.name + " & time = " + timeBetweenWaves);
+
         // Spawn logic
         for (int i = 0; i < _wave.count; i++)
         {
+            SpawnEnemy(_wave.sheep);
 
-            Transform enemyToSpawn;
-            float rate = Random.Range(0.0f, 1.0f);
-
-            if (rate < 0.25)
-            {
-                enemyToSpawn = _wave.sheepMelee;
-            }
-            else if (rate < 0.5)
-            {
-                enemyToSpawn = _wave.sheepFat;
-
-            }
-            else if (rate < 0.75)
-            {
-                enemyToSpawn = _wave.sheepRam;
-
-            }
-            else
-            {
-                enemyToSpawn = _wave.sheepFast;
-            }
-
-            SpawnEnemy(enemyToSpawn);
-
-            //SpawnEnemy(_wave.sheepMelee);
-            //SpawnEnemy(_wave.sheepFat);
-            //SpawnEnemy(_wave.sheepRam);
-            //SpawnEnemy(_wave.sheepFast);
-
-            yield return new WaitForSeconds(1.0f / _wave.rate); // wait before spawning next enemy
+            yield return new WaitForSeconds(1.0f / _wave.rate); // Wait before spawning next enemy
         }
 
         state = SpawnState.WAITING;
