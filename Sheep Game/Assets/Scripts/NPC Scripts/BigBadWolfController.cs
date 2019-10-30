@@ -43,7 +43,7 @@ public class BigBadWolfController : MonoBehaviour
             sheepInstances = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject sheep in sheepInstances)
             {
-                sheep.transform.position += new Vector3(0.2f,0,0);
+                sheep.transform.position += new Vector3(0.5f,0,0);
             }
 
             blowingCountdown -= Time.deltaTime;
