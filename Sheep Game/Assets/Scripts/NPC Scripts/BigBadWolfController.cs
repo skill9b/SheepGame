@@ -9,11 +9,14 @@ public class BigBadWolfController : MonoBehaviour
     Vector3 initPosition;
 
     bool canBlow = true;
-    bool isBlowing = false;
+    public bool isBlowing = false;
     float blowingCountdown;
     public float blowingCooldown;
     float storedCountdown;
     float storedCooldown;
+
+    public GameObject cooldownObject;
+    public ProgressBarCircle cooldownBar;
 
     GameObject[] sheepInstances;
 
@@ -26,6 +29,9 @@ public class BigBadWolfController : MonoBehaviour
         blowingCountdown = 0.5f;
         storedCountdown = blowingCountdown;
         storedCooldown = blowingCooldown;
+
+        cooldownObject.SetActive(false);
+        cooldownBar.BarValue = 100;
     }
 
     // Update is called once per frame
@@ -51,6 +57,9 @@ public class BigBadWolfController : MonoBehaviour
 
         if (blowingCountdown <= 0)
         {
+            cooldownObject.SetActive(true);
+            cooldownBar.BarValue = cooldownBar.BarValue - (100 / (storedCooldown / Time.deltaTime));
+
             blowingCooldown -= Time.deltaTime;
             canBlow = false;
             isBlowing = false;
@@ -62,6 +71,9 @@ public class BigBadWolfController : MonoBehaviour
             blowingCooldown = storedCooldown;
             canBlow = true;
             isBlowing = false;
+
+            cooldownObject.SetActive(false);
+            cooldownBar.BarValue = 100;
         }
 
     }

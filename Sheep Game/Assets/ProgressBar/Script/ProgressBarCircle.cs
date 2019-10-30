@@ -75,7 +75,7 @@ public class ProgressBarCircle : MonoBehaviour {
        
         bar.fillAmount = -(val / 100) + 1f;
 
-        txtTitle.text = Title + " " + val + "%";
+        txtTitle.text = "";
 
         if (Alert >= val)
         {
