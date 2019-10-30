@@ -16,7 +16,6 @@ public class LongBulletController : MonoBehaviour
             if (PassEnemies <= 0)
             {
                 Destroy(gameObject);
-                Debug.Log("T: " + PassEnemies);
             }
 
             PassEnemies--;

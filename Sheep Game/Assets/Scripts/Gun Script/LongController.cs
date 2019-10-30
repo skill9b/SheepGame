@@ -20,7 +20,7 @@ public class LongController : MonoBehaviour
 
     private Vector3 Target;
     private float LastShot = 0;
-    private float Speed;
+    private float Speed = 40;
 
     // Update is called once per frame
     void Update()
@@ -35,15 +35,15 @@ public class LongController : MonoBehaviour
             Vector2 direction = difference / distance;
             direction.Normalize();
 
-
-            if (Input.mousePosition.x == 0)
+            //Unity has issues with high speed collisions, meaning that the speed cannot vary otherwise stuff will glitch out
+            /*if (Input.mousePosition.x == 0)
             {
                 Speed = 0;
             }
             else
             {
                 Speed = Input.mousePosition.x / SpeedController;
-            }
+            }*/
 
             Fire(direction, Speed);
         }
