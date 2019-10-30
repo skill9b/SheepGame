@@ -667,7 +667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22403254, guid: 60da1df1f7edb3747bea8f735b2768d1, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 22403254, guid: 60da1df1f7edb3747bea8f735b2768d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -975,7 +975,7 @@ PrefabInstance:
     - target: {fileID: 2624856769644785158, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2624856769644785156, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
@@ -1015,7 +1015,7 @@ PrefabInstance:
     - target: {fileID: 2624856769644785156, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2624856769644785156, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
@@ -1035,7 +1035,7 @@ PrefabInstance:
     - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
       propertyPath: waves.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
@@ -1096,6 +1096,50 @@ PrefabInstance:
       propertyPath: upgradesMenu
       value: 
       objectReference: {fileID: 2024962652}
+    - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
+        type: 3}
+      propertyPath: timeBetweenWaves
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
+        type: 3}
+      propertyPath: waves.Array.data[1].name
+      value: wave2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
+        type: 3}
+      propertyPath: waves.Array.data[1].sheepMelee
+      value: 
+      objectReference: {fileID: 7915623186855024290, guid: bec6de8fee9d7c04aa1a4c6b738a3b2b,
+        type: 3}
+    - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
+        type: 3}
+      propertyPath: waves.Array.data[1].sheepFat
+      value: 
+      objectReference: {fileID: 7915623186855024290, guid: f8779ed22dd2df74fa6bdb32cd7a24b2,
+        type: 3}
+    - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
+        type: 3}
+      propertyPath: waves.Array.data[1].sheepRam
+      value: 
+      objectReference: {fileID: 7915623186855024290, guid: ba00e307369243642b28e574148bb736,
+        type: 3}
+    - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
+        type: 3}
+      propertyPath: waves.Array.data[1].sheepFast
+      value: 
+      objectReference: {fileID: 7915623186855024290, guid: 814ea76472043ee418d63f4aa45621da,
+        type: 3}
+    - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
+        type: 3}
+      propertyPath: waves.Array.data[1].count
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
+        type: 3}
+      propertyPath: waves.Array.data[0].name
+      value: wave1.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874d4c40821281e43aa9022a4703ada5, type: 3}
 --- !u!1001 &505954901
@@ -2826,12 +2870,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546119877}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &1546119880
 PolygonCollider2D:
