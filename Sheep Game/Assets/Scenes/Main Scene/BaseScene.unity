@@ -1114,13 +1114,13 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.data[0].sheepMelee
       value: 
-      objectReference: {fileID: 7915623186855024290, guid: 814ea76472043ee418d63f4aa45621da,
+      objectReference: {fileID: 7915623186855024290, guid: bec6de8fee9d7c04aa1a4c6b738a3b2b,
         type: 3}
     - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
       propertyPath: waves.Array.data[0].sheepFat
       value: 
-      objectReference: {fileID: 7915623186855024290, guid: 814ea76472043ee418d63f4aa45621da,
+      objectReference: {fileID: 7915623186855024290, guid: f8779ed22dd2df74fa6bdb32cd7a24b2,
         type: 3}
     - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
@@ -1132,7 +1132,7 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.data[0].sheepRam
       value: 
-      objectReference: {fileID: 7915623186855024290, guid: 814ea76472043ee418d63f4aa45621da,
+      objectReference: {fileID: 7915623186855024290, guid: ba00e307369243642b28e574148bb736,
         type: 3}
     - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
