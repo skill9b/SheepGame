@@ -142,5 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
+  MousePosition: {x: 0, y: 0}
   ColX: 0.2
   ColY: 0.2
+  acX: -10
+  acY: 10

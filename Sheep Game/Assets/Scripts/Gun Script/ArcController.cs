@@ -6,6 +6,7 @@ public class ArcController : MonoBehaviour
 {
     public GameObject Bullet;
     public GameObject Gun;
+    public GameObject Player;
     public Camera MainCamera;
 
     [SerializeField] float SpeedController = 100;
@@ -17,6 +18,7 @@ public class ArcController : MonoBehaviour
     private int BulletCount = 0;
 
     private Vector3 Target;
+    public Vector2 MousePosition;
     private float LastShot = 0;
     private float Speed;
 
@@ -33,17 +35,10 @@ public class ArcController : MonoBehaviour
             Vector2 direction = difference / distance;
             direction.Normalize();
 
-
-            if (Input.mousePosition.x == 0)
-            {
-                Speed = 0;
-            }
-            else
-            {
-                Speed = Input.mousePosition.x / SpeedController;
-            }
-
+            Speed = 10;
+            MousePosition = Input.mousePosition;
             Fire(direction, Speed);
+            
         }
     }
 
@@ -81,6 +76,7 @@ public class ArcController : MonoBehaviour
                 }
 
                 LastShot = Time.time;
+
                 // Debug.Log("ArcGun Bullet Count:" + BulletCount);
             }
         }
