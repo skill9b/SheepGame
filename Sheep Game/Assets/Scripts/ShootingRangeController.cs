@@ -20,8 +20,8 @@ public class ShootingRangeController : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            NPCHumptyDumptyController hd = GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>();
-            hd.Fire();
+            // NPCHumptyDumptyController hd = GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>();
+            // hd.Fire();
 
             //TurretController turret = GameObject.FindGameObjectWithTag("Turret").GetComponent<TurretController>();
             //turret.Fire(other.transform.position);
