@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         position.y += speed * vertical * Time.deltaTime;
         rb2d.MovePosition(position);
 
-        woolCountDisplay.text = "Wool Count: " + woolCount.ToString();
+        // woolCountDisplay.text = "Wool Count: " + woolCount.ToString();
         
     }
 
