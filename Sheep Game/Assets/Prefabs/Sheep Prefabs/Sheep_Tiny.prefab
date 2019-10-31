@@ -76,12 +76,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseController: {fileID: 0}
   animator: {fileID: 2823700103383918022}
-  health: 1
-  speed: 3
+  health: 2
+  speed: 2.5
   distanceFromEnemy: 1
   woolPoints: 5
-  attackSpeed: 1
-  attackDamage: 0
+  attackSpeed: 1.5
+  attackDamage: 1
   body: {fileID: 5392605650959774910}
   currentState: 0
 --- !u!95 &2823700103383918022
@@ -122,7 +122,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!212 &5529163575244914258
 SpriteRenderer:

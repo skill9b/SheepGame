@@ -10,10 +10,11 @@ public class BigBadWolfController : MonoBehaviour
 
     bool canBlow = true;
     public bool isBlowing = false;
-    float blowingCountdown;
+    public float blowingCountdown;
     public float blowingCooldown;
     float storedCountdown;
     float storedCooldown;
+    
 
     public GameObject cooldownObject;
     public ProgressBarCircle cooldownBar;
@@ -26,7 +27,6 @@ public class BigBadWolfController : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         initPosition = transform.position;
 
-        blowingCountdown = 0.5f;
         storedCountdown = blowingCountdown;
         storedCooldown = blowingCooldown;
 
@@ -49,7 +49,7 @@ public class BigBadWolfController : MonoBehaviour
             sheepInstances = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject sheep in sheepInstances)
             {
-                sheep.transform.position += new Vector3(0.5f,0,0);
+                sheep.transform.position += new Vector3(0.1f,0,0);
             }
 
             blowingCountdown -= Time.deltaTime;

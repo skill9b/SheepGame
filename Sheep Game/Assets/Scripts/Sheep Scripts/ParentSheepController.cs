@@ -6,7 +6,7 @@ public class ParentSheepController : MonoBehaviour
 {
     public BaseController baseController;
     public Animator animator;
-    public int health;
+    public float health;
     public float speed;
     public int distanceFromEnemy;
     public int woolPoints;
@@ -61,7 +61,7 @@ public class ParentSheepController : MonoBehaviour
                     if (Time.time > nextAttackTime) 
                     {
                         baseController.currentHealth -= attackDamage;
-                        Debug.Log(baseController.currentHealth);
+                        // Debug.Log(baseController.currentHealth);
                         nextAttackTime = Time.time + attackSpeed;
                     }
                     break;
@@ -95,16 +95,16 @@ public class ParentSheepController : MonoBehaviour
         }
 
 
-        if (other.gameObject.tag == "ShootingRange")
-        {
-            TurretController turret = GameObject.FindGameObjectWithTag("Turret").GetComponent<TurretController>();
-            turret.Fire(other.transform.position);
-        }
+        //if (other.gameObject.tag == "ShootingRange")
+        //{
+        //    TurretController turret = GameObject.FindGameObjectWithTag("Turret").GetComponent<TurretController>();
+        //    turret.Fire(other.transform.position);
+        //}
     }
 
-    public void TakeDamage(int _score)
+    public void TakeDamage(float _dmg)
     {
-        health -= _score;
+        health -= _dmg;
     }
 
     public virtual void Die()

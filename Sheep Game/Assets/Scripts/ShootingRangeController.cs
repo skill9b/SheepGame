@@ -23,9 +23,9 @@ public class ShootingRangeController : MonoBehaviour
             // NPCHumptyDumptyController hd = GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>();
             // hd.Fire();
 
-            TurretController turret = GameObject.FindGameObjectWithTag("Turret").GetComponent<TurretController>();
-            turret.Fire(other.transform.position);
-            Debug.Log(other.transform.position);
+            //TurretController turret = GameObject.FindGameObjectWithTag("Turret").GetComponent<TurretController>();
+            //turret.Fire(other.transform.position);
+            //Debug.Log(other.transform.position);
         } 
     }
 }

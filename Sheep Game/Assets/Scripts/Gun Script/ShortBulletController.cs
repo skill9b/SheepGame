@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ShortBulletController : MonoBehaviour
 {
-    public int damage;
-    public int Seconds = 1;
+    public float damage;
+    public float Seconds;
 
     //WaitForSecond returns a IEnumerator type, which is why it's it's own function
     IEnumerator Wait(float Seconds)

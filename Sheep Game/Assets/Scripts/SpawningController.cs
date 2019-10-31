@@ -11,7 +11,8 @@ public class SpawningController : MonoBehaviour
     {
         SPAWNING,
         WAITING,
-        COUNTING
+        COUNTING,
+        END
     }
 
     private SpawnState state = SpawnState.COUNTING;
@@ -22,7 +23,7 @@ public class SpawningController : MonoBehaviour
         public string name;
         public Transform sheep;
         public int count;
-        public float rate;
+        public float rate = 1;
         public float timeToNextWave;
     }
 
@@ -66,9 +67,21 @@ public class SpawningController : MonoBehaviour
 
         if (waveCountdown <= 0)
         {
-            // Spawn wave condition
-            if (state != SpawnState.SPAWNING)
+            if ((state == SpawnState.END) && (GameObject.FindGameObjectsWithTag("Enemy").Length == 0))
+            // if ((waveCount == -1) && (GameObject.FindGameObjectsWithTag("Enemy").Length == 0))
             {
+                Debug.Log("Enemies left:" + (GameObject.FindGameObjectsWithTag("Enemy").Length));
+                // waveCount = 0;
+
+                upgradesMenu.SetActive(true);
+                // set everything else to inactive???
+                GameObject.FindGameObjectWithTag("Base").SetActive(false);
+                Debug.Log("All waves complete!");
+            }
+
+            // Spawn wave condition
+            if ((state != SpawnState.SPAWNING) && (state != SpawnState.END))
+            {   
                 StartCoroutine(SpawnWave(waves[waveCount]));
             }
         }
@@ -79,7 +92,9 @@ public class SpawningController : MonoBehaviour
 
         // Display remaining waves and sheep in current wave
         remainingWaves.text = "Remaining Waves: " + (waves.Length - waveCount).ToString();
-        remainingSheep.text = "Remaining Sheep: " + (currentWaveMaxSheep - deadSheep).ToString();
+        
+
+
     }
 
     IEnumerator SpawnWave(Wave _wave)
@@ -110,7 +125,7 @@ public class SpawningController : MonoBehaviour
         float randomY = Random.Range((int)SpawnPointTop.position.y, (int)SpawnPointBottom.position.y);
         Vector3 position = new Vector3(SpawnPointTop.position.x, randomY, SpawnPointTop.position.z);
         Instantiate(_enemy, position, SpawnPointTop.rotation);
-        Debug.Log("Spawning enemy: " + _enemy.name);
+        // Debug.Log("Spawning enemy: " + _enemy.name);
     }
 
     void startNextWave()
@@ -125,11 +140,7 @@ public class SpawningController : MonoBehaviour
         if (waveCount + 1 > waves.Length - 1)
         {
             waveCount = 0;
-
-            upgradesMenu.SetActive(true);
-            // set everything else to inactive???
-            GameObject.FindGameObjectWithTag("Base").SetActive(false);
-            Debug.Log("All waves complete!");
+            state = SpawnState.END;
         }
         else
         {
