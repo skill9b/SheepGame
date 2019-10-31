@@ -142,8 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
-  MousePosition: {x: 0, y: 0}
+  MainCamera: {fileID: 1788759544323275135, guid: b75371d0653d57a49b89d295ecc7a100,
+    type: 3}
   ColX: 0.2
   ColY: 0.2
-  acX: -10
-  acY: 10
