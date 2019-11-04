@@ -6,7 +6,6 @@ public class ArcController : MonoBehaviour
 {
     public GameObject Bullet;
     public GameObject Gun;
-    public GameObject Player;
     public Camera MainCamera;
 
     [SerializeField] float SpeedController = 100;
@@ -22,9 +21,13 @@ public class ArcController : MonoBehaviour
     private float LastShot = 0;
     private float Speed;
 
+    public bool inLaneState = false;
+
     // Update is called once per frame
     void Update()
     {
+        inLaneState = false;
+
         Target = MainCamera.ScreenToWorldPoint(new Vector3(transform.position.x, (-Input.mousePosition.y) + Offset, transform.position.z));
 
         Vector3 difference = Target - Gun.transform.position;
@@ -36,7 +39,7 @@ public class ArcController : MonoBehaviour
             direction.Normalize();
 
             Speed = 10;
-            MousePosition = Input.mousePosition;
+            MousePosition = MainCamera.ScreenToWorldPoint(Input.mousePosition);
             Fire(direction, Speed);
             
         }
@@ -62,8 +65,9 @@ public class ArcController : MonoBehaviour
             if (BulletCount != Mag)
             {
                 GameObject b = Instantiate(Bullet) as GameObject;
+                b.GetComponent<ArcBulletController>().xDistance = Mathf.Abs(transform.position.x - MousePosition.x);
                 b.transform.position = Gun.transform.position;
-                b.GetComponent<Rigidbody2D>().velocity = -direction * Speed;
+               // b.GetComponent<Rigidbody2D>().velocity = -direction * Speed;
 
                 BulletCount += 1;
 
@@ -79,6 +83,14 @@ public class ArcController : MonoBehaviour
 
                 // Debug.Log("ArcGun Bullet Count:" + BulletCount);
             }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            inLaneState = true;
         }
     }
 }
