@@ -4,42 +4,43 @@ using UnityEngine;
 
 public class NPCHumptyDumptyController : MonoBehaviour
 {
-    float speed;
+    // Egg bullet variables
+    public Camera camera;
+    public GameObject eggPrefab;
+    public bool isEnemy;
+    public bool canFire;
+    public float eggCountdown; // adjusted for Rate of fire
+    float maxEggCountdown;
+    public Vector3 sheepTarget;
+
+    // Suicide cooldown variables
     public float yeetSpeed;
-
-    public float fireRate;
-
-    public GameObject bullet;
-    public Transform shootingPoint;
-    float nextShootTime;
     float nextYeetTime;
-    Vector3 originalPosition; 
-
-    public Transform topLeft;
-    public Transform bottomRight;
-
-    float rotationZ;
-    Vector2 direction;
-
+    public float fireRate;
+    public Transform shootingPoint;
     public float cooldown;
     float maxCooldown;
     bool isCoolingDown;
     public GameObject cooldownObject;
     public ProgressBarCircle cooldownBar;
+    public Transform topLeft;
+    public Transform bottomRight;
+    Vector3 originalPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         originalPosition = transform.position;
 
-        speed = Random.Range(5, 25);
-
-        nextShootTime = 0f;
         nextYeetTime = 0f;
 
         maxCooldown = cooldown;
         cooldownBar.BarValue = 100;
         cooldownObject.SetActive(false);
+
+        isEnemy = false;
+        canFire = true;
+        maxEggCountdown = eggCountdown;
     }
 
     // Update is called once per frame
@@ -67,33 +68,33 @@ public class NPCHumptyDumptyController : MonoBehaviour
                 cooldownObject.SetActive(false);
             }
         }
-        
+
+        if (isEnemy)
+        {
+            if (canFire == true)
+            {
+                Fire(sheepTarget);
+                canFire = false;
+            }
+
+            if (canFire == false)
+            {
+                eggCountdown -= Time.deltaTime;
+                if (eggCountdown <= 0)
+                {
+                    eggCountdown = maxEggCountdown;
+                    canFire = true;
+                }
+            }
+        }
 
     }
 
-
-    public void Fire()
+    public void Fire(Vector3 _target)
     {
-        Vector3 target = new Vector3(Random.Range(topLeft.position.x, bottomRight.position.x), Random.Range(bottomRight.position.y, topLeft.position.y), transform.position.z);
-
-        Vector3 difference = target - shootingPoint.transform.position;
-
-        float distance = difference.magnitude;
-        direction = difference / distance;
-        direction.Normalize();
-
-        rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        shootingPoint.transform.rotation = Quaternion.Euler(0, 0, rotationZ);
-
-        if (Time.time > fireRate + nextShootTime)
-        {
-            GameObject b = Instantiate(bullet) as GameObject;
-            b.transform.position = shootingPoint.transform.position;
-            b.transform.rotation = Quaternion.Euler(0, 0, rotationZ);
-            b.GetComponent<Rigidbody2D>().velocity = direction * speed;
-
-            nextShootTime = Time.time;
-        }
+        // Set the target distance for egg
+        eggPrefab.GetComponent<EggBulletController>().xDistance = Mathf.Abs(transform.position.x - _target.x);
+        Instantiate(eggPrefab, transform.position, transform.rotation);
     }
 
     // Suicide function
@@ -127,6 +128,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         if (other.tag == "Enemy")
         {
             other.GetComponent<ParentSheepController>().TakeDamage(100);
@@ -136,14 +138,8 @@ public class NPCHumptyDumptyController : MonoBehaviour
 
         if (other.tag == "Floor")
         {
-            
             RespawnHumptyDumpty();
             gameObject.GetComponent<Renderer>().enabled = false;
-        }
-
-        if (other.tag == "Chimney")
-        {
-            // dont go thorugh
         }
     }
 }

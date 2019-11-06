@@ -27,7 +27,7 @@ public class ParentSheepController : MonoBehaviour
 
     void Start()
     {
-        IsIdle = GameObject.FindWithTag("Wolf").GetComponent<BigBadWolfController>().isBlowing;
+        //IsIdle = GameObject.FindWithTag("Wolf").GetComponent<BigBadWolfController>().isBlowing;
         baseController = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>(); //Get script of base
         currentState = State.Moving;
         target = new Vector2(transform.position.x - 1000, transform.position.y);

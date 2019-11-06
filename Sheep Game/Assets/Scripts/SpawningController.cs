@@ -122,7 +122,7 @@ public class SpawningController : MonoBehaviour
 
     void SpawnEnemy(Transform _enemy)
     {
-        float randomY = Random.Range((int)SpawnPointTop.position.y, (int)SpawnPointBottom.position.y);
+        float randomY = Random.Range(SpawnPointTop.position.y, SpawnPointBottom.position.y);
         Vector3 position = new Vector3(SpawnPointTop.position.x, randomY, SpawnPointTop.position.z);
         Instantiate(_enemy, position, SpawnPointTop.rotation);
         // Debug.Log("Spawning enemy: " + _enemy.name);
