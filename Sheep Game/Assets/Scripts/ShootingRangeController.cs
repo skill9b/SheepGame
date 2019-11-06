@@ -20,12 +20,18 @@ public class ShootingRangeController : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            // NPCHumptyDumptyController hd = GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>();
-            // hd.Fire();
+            NPCHumptyDumptyController hd = GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>();
+            if (other.transform.position.x > -3.5f)
+            {
+                hd.sheepTarget = other.transform.position - (new Vector3(3, 0, 0));
+            }
+            else
+            {
+                hd.sheepTarget = other.transform.position;
+            }
+            hd.isEnemy = true;
+        }
 
-            //TurretController turret = GameObject.FindGameObjectWithTag("Turret").GetComponent<TurretController>();
-            //turret.Fire(other.transform.position);
-            //Debug.Log(other.transform.position);
-        } 
+
     }
 }
