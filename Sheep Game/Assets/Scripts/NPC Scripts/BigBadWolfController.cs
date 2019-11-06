@@ -14,7 +14,8 @@ public class BigBadWolfController : MonoBehaviour
     public float blowingCooldown;
     float storedCountdown;
     float storedCooldown;
-    
+
+    public Animator animator;
 
     public GameObject cooldownObject;
     public ProgressBarCircle cooldownBar;
@@ -39,12 +40,19 @@ public class BigBadWolfController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q) && (canBlow == true) && (isBlowing == false))
         {
+            animator.SetBool("Blowing", true);
             canBlow = false;
             isBlowing = true;
         }
 
+        if (isBlowing)
+        {
+            animator.SetBool("Blowing", false);
+        }
+
         if (canBlow == false && isBlowing == true)
         {
+
             // Move all sheep instances back a few steps
             sheepInstances = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject sheep in sheepInstances)
