@@ -4,11 +4,14 @@ public class BaseController : MonoBehaviour
 {
     public float maxHealth;
     public float currentHealth;
-
+    GameObject[] sheepInstances;
+    bool inCombat;
     public float healthRegenAmount;
     public bool healthRegenActive;
     public float timeTillRegen;
     float nextRegenTime;
+    int sheepAttackingCounter;
+
 
     enum State
     {
@@ -24,6 +27,8 @@ public class BaseController : MonoBehaviour
         currentHealth = 50;
         // currentHealth = maxHealth;
         healthRegenActive = true;
+        inCombat = false;
+        sheepAttackingCounter = 0;
     }
 
     // Update is called once per frame
@@ -31,12 +36,17 @@ public class BaseController : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("HealthBar").GetComponent<SimpleHealthBar>().UpdateBar(currentHealth, maxHealth);
 
-        if (healthRegenActive)
+        
+
+        if (inCombat == false)
         {
-            if (Time.time > nextRegenTime)
+            if (healthRegenActive)
             {
-                currentHealth += healthRegenAmount;
-                nextRegenTime = Time.time + timeTillRegen;
+                if (Time.time > nextRegenTime)
+                {
+                    currentHealth += healthRegenAmount;
+                    nextRegenTime = Time.time + timeTillRegen;
+                }
             }
         }
 
@@ -56,18 +66,21 @@ public class BaseController : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             other.GetComponent<ParentSheepController>().currentState = (ParentSheepController.State)State.Attacking;
-            
+            inCombat = true;
+            sheepAttackingCounter++;
         }
-
-        
+ 
     }
 
-
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (other.gameObject.tag == "Enemy") 
+        if (collision.gameObject.tag == "Enemy")
         {
-            other.GetComponent<ParentSheepController>().currentState = (ParentSheepController.State)State.Attacking;
+            sheepAttackingCounter--;
+            if (sheepAttackingCounter <= 0)
+            {
+                inCombat = false;
+            }
         }
     }
 }

@@ -21,13 +21,9 @@ public class ArcController : MonoBehaviour
     private float LastShot = 0;
     private float Speed;
 
-    public bool inLaneState = false;
-
     // Update is called once per frame
     void Update()
     {
-        inLaneState = false;
-
         Target = MainCamera.ScreenToWorldPoint(new Vector3(transform.position.x, (-Input.mousePosition.y) + Offset, transform.position.z));
 
         Vector3 difference = Target - Gun.transform.position;
@@ -83,14 +79,6 @@ public class ArcController : MonoBehaviour
 
                 // Debug.Log("ArcGun Bullet Count:" + BulletCount);
             }
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            inLaneState = true;
         }
     }
 }
