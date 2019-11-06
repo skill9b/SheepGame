@@ -304,6 +304,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2749166514606193962, guid: e4bfb0b7c57ec7c40add0cba4aa924ba,
         type: 3}
+    - target: {fileID: -5671998598695756817, guid: 3f00cc51f1430bc409b95e3c10405d5d,
+        type: 3}
+      propertyPath: FireRate
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1289057070121217491, guid: 3f00cc51f1430bc409b95e3c10405d5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -667,7 +672,6 @@ MonoBehaviour:
   CooldowntimeFull: 5
   CooldowntimeNotFull: 2
   MousePosition: {x: 0, y: 0}
-  inLaneState: 0
   damage: 0
   ColX: 0.2
   ColY: 0.2
