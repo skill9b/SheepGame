@@ -1760,7 +1760,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: c5c65aca4a946f147adfd65993d28504, type: 2}
+      objectReference: {fileID: 9100000, guid: 85a21a4b017ad494281bd47abd221e35, type: 2}
     - target: {fileID: 8416542628898353287, guid: a3e037081d3e9074a814f3f5dd33a947,
         type: 3}
       propertyPath: cooldownObject
@@ -1780,6 +1780,31 @@ PrefabInstance:
         type: 3}
       propertyPath: blowingCooldown
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353287, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1535820175}
+    - target: {fileID: 8416542628898353280, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3e037081d3e9074a814f3f5dd33a947, type: 3}
@@ -2714,6 +2739,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8751795009152711418, guid: 889ed9f7262746040acda31da1afec64,
     type: 3}
   m_PrefabInstance: {fileID: 116915679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1535820175 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8416542628898353286, guid: a3e037081d3e9074a814f3f5dd33a947,
+    type: 3}
+  m_PrefabInstance: {fileID: 637092404}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1546119877
 GameObject:
