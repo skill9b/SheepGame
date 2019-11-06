@@ -22,31 +22,6 @@ public class TurretController : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D collision) //When sheep enter trigger box that acts as range of turret
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Debug.Log("Enemy Entered Range");
-        }
-        else
-        {
-            Debug.Log("Not enemy entered range");
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other) //When sheep stay in range of turret
-    {
-        //Shoot if a enemy has entered range
-        if ((other.tag == "Enemy"))
-        {
-            
-
-
-        }
-
-
-    }
-
     public void Fire(Vector3 _target)
     {
         if (Time.time > fireRate + nextShootTime)
