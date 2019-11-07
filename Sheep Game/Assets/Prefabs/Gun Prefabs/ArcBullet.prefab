@@ -59,6 +59,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -141,10 +142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a58afd7b0274344a38b3a8359268b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 0}
-  Gun: {fileID: 0}
-  Player: {fileID: 0}
-  MainCamera: {fileID: 0}
+  Bullet: {fileID: 5116687139915379231}
+  Gun: {fileID: 1289057070121217490, guid: 46c29c5a757080d46b84f93dcc78614d, type: 3}
+  MainCamera: {fileID: 7588562013270764575, guid: b75371d0653d57a49b89d295ecc7a100,
+    type: 3}
   SpeedController: 100
   Offset: 0
   FireRate: 1
@@ -155,3 +156,4 @@ MonoBehaviour:
   damage: 1
   ColX: 0.2
   ColY: 0.2
+  xDistance: 0

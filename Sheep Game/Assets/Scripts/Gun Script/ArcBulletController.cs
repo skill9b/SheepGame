@@ -16,7 +16,8 @@ public class ArcBulletController : ArcController
     float velocityX;
     float velocityY;
 
-    Vector2 STUPIDMOUSEPOSITION;
+    Vector3 STUPIDMOUSEPOSITION;
+    Vector3 MOUSEPOSITION;
 
     private void Start()
     {
@@ -48,16 +49,18 @@ public class ArcBulletController : ArcController
     {
         if (Input.GetMouseButtonDown(0))
         {
-            STUPIDMOUSEPOSITION = MainCamera.ScreenToWorldPoint(Input.mousePosition);
+            STUPIDMOUSEPOSITION = Input.mousePosition;
+            STUPIDMOUSEPOSITION.z = 10;
+            MOUSEPOSITION = MainCamera.ScreenToWorldPoint(Input.mousePosition);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("B: " + transform.position.y);
-        Debug.Log("M: " + STUPIDMOUSEPOSITION.y);
+        float xcheck = Mathf.Abs(MOUSEPOSITION.x - transform.position.x);
+        float ycheck = Mathf.Abs(MOUSEPOSITION.y - transform.position.y);
 
-        if (transform.position.y == STUPIDMOUSEPOSITION.y)
+        if ((xcheck < 0.4) && (ycheck < 0.4)) 
         {
             if (other.gameObject.tag == "Enemy")
             {
