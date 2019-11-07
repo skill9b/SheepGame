@@ -24,6 +24,7 @@ public class ShortBulletController : MonoBehaviour
 
         if (other.gameObject.tag == "Enemy")
         {
+            Debug.Log(other.GetComponent<ParentSheepController>().currentState);
             other.GetComponent<ParentSheepController>().TakeDamage(damage);
             //Destroy(gameObject);
         }

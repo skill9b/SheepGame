@@ -9,7 +9,6 @@ public class LongController : MonoBehaviour
     public GameObject Gun;
     public Camera MainCamera;
 
-    [SerializeField] float SpeedController = 100;
     [SerializeField] float Offset = 0;
     [SerializeField] float FireRate = 1;
     [SerializeField] int Mag = 5;

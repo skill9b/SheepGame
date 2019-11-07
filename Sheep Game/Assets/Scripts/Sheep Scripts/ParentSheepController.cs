@@ -28,6 +28,7 @@ public class ParentSheepController : MonoBehaviour
     void Start()
     {
         //IsIdle = GameObject.FindWithTag("Wolf").GetComponent<BigBadWolfController>().isBlowing;
+        IsIdle = false;
         baseController = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>(); //Get script of base
         currentState = State.Moving;
         target = new Vector2(transform.position.x - 1000, transform.position.y);
@@ -41,11 +42,15 @@ public class ParentSheepController : MonoBehaviour
             case State.Moving:
                 {
                     animator.SetBool("Attacking", false);
+                    body.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                    //body.constraints = RigidbodyConstraints2D.FreezeRotation 
                     transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime); //Set always to move left
+                    Debug.Log("Moving" + transform.position);
                     break;
                 }
             case State.Idle:
                 {
+                    Debug.Log("Current State is idle");
                     break;
                 }
             case State.Attacking:
@@ -54,7 +59,7 @@ public class ParentSheepController : MonoBehaviour
                     //body.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionY;
                     //body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezeRotation;
 
-                    body.constraints = RigidbodyConstraints2D.FreezeAll | RigidbodyConstraints2D.FreezeAll;
+                    //body.constraints = RigidbodyConstraints2D.FreezeAll;
 
                     animator.SetBool("Attacking", true);
                     
@@ -64,8 +69,15 @@ public class ParentSheepController : MonoBehaviour
                         // Debug.Log(baseController.currentHealth);
                         nextAttackTime = Time.time + attackSpeed;
                     }
+                    Debug.Log("Current State is atk");
                     break;
                 }
+            default:
+                {
+                    currentState = State.Idle;
+                    break;
+                }
+                Debug.Log("Current State" + currentState);
         }
 
         // Death
@@ -80,20 +92,21 @@ public class ParentSheepController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Base")
-        {
-            currentState = State.Attacking;
-            
-        }
-        else if (IsIdle)
+        Debug.Log(other.gameObject.tag);
+       //if (other.gameObject.tag == "Base")
+       //{
+       //    currentState = State.Attacking;
+       //    
+       //}
+       //else
+       //{
+       //    currentState = State.Moving;
+       //}
+
+        if (IsIdle)
         {
             currentState = State.Idle;
         }
-        else
-        {
-            currentState = State.Moving;
-        }
-
 
         //if (other.gameObject.tag == "ShootingRange")
         //{
@@ -102,8 +115,30 @@ public class ParentSheepController : MonoBehaviour
         //}
     }
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Base")
+        {
+            transform.position -= new Vector3(speed * 0.1f, 0, 0);
+            currentState = State.Attacking;
+
+        }
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Base")
+        {
+            currentState = State.Moving;
+        }
+    }
+
+
+
     public void TakeDamage(float _dmg)
     {
+        body.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionX;
+        body.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionY;
+        body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezeRotation;
         health -= _dmg;
     }
 
