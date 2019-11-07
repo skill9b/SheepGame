@@ -77,7 +77,7 @@ public class ParentSheepController : MonoBehaviour
                     currentState = State.Idle;
                     break;
                 }
-                Debug.Log("Current State" + currentState);
+                
         }
 
         // Death
