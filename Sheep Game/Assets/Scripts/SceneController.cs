@@ -24,9 +24,9 @@ public class SceneController : MonoBehaviour
             SceneManager.LoadScene(2);
         }
 
-        if (isShowingTutorial == true)
+        if (SceneManager.GetActiveScene().buildIndex == 7)  // If currently on tutorial scene
         {
-            if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 StartGame();
             }
@@ -36,11 +36,7 @@ public class SceneController : MonoBehaviour
 
     public void ShowTutorial()
     {
-        if (GameObject.FindGameObjectWithTag("Tutorial") != null)
-        {
-            GameObject.FindGameObjectWithTag("Tutorial").SetActive(true);
-            isShowingTutorial = true;
-        }
+        SceneManager.LoadScene(7);
     }
 
     public void StartGame()
