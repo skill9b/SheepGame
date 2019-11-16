@@ -25,9 +25,8 @@ public class LongController : MonoBehaviour
 
     void Start()
     {
-        cooldownObject.SetActive(true);
-        cooldownBar.BarValue = 0;
-        Debug.Log("Cooldown Bar Value: " + cooldownBar.BarValue);
+        //cooldownObject.SetActive(true); 
+        //cooldownBar.BarValue = 0;
     }
 
     // Update is called once per frame
@@ -55,6 +54,8 @@ public class LongController : MonoBehaviour
 
             Fire(direction, Speed);
         }
+        cooldownBar.BarValue = (BulletCount / Mag) * 100;
+
     }
 
     //WaitForSecond returns a IEnumerator type, which is why it's it's own function
@@ -62,9 +63,6 @@ public class LongController : MonoBehaviour
     {
         yield return new WaitForSeconds(Seconds);   //Scaled time (No Idea what that means)
         BulletCount -= 1;   //The cooldown reduces bulletcount by 1
-        cooldownBar.BarValue -= (100 / Mag);
-        Debug.Log("BulletCount: "  + BulletCount);
-        Debug.Log("Cooldown Bar Value: " + cooldownBar.BarValue);
     }
 
     void Fire(Vector2 direction, float Speed)
@@ -85,23 +83,16 @@ public class LongController : MonoBehaviour
                 b.GetComponent<Rigidbody2D>().velocity += Vector2.right * Speed;
 
                 BulletCount += 1;
-                cooldownBar.BarValue += (100 / Mag);
-                Debug.Log("BulletCount: " + BulletCount);
-                Debug.Log("Cooldown Bar Value: " + cooldownBar.BarValue);
 
                 if (Time.time > CooldowntimeNotFull + LastShot) //Reduce the "Heat" cool down by a bit everytime the player doesn't shoot"
                 {
                     if (BulletCount != 0)
                     {
                         BulletCount -= 1;
-                        cooldownBar.BarValue -= (100 / Mag);
-                        Debug.Log("BulletCount: " + BulletCount);
-                        Debug.Log("Cooldown Bar Value: " + cooldownBar.BarValue);
                     }
                 }
 
                 LastShot = Time.time;
-                // Debug.Log("LongGun Bullet Count:" + BulletCount);
             }
         }
     }
