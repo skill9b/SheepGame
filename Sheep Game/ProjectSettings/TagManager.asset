@@ -21,6 +21,7 @@ TagManager:
   - HUD
   - RemainingWaves
   - RemainingSheep
+  - Tutorial
   layers:
   - Default
   - TransparentFX

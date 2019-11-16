@@ -10,17 +10,43 @@ public class SceneController : MonoBehaviour
     public int bulletsMissed;
 
     public float healthLost;
+    int currentSceneIndex;
+    bool isShowingTutorial = false;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
             SceneManager.LoadScene(2);
         }
+
+        if (isShowingTutorial == true)
+        {
+            if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                StartGame();
+            }
+        }
+
+    }
+
+    public void ShowTutorial()
+    {
+        if (GameObject.FindGameObjectWithTag("Tutorial") != null)
+        {
+            GameObject.FindGameObjectWithTag("Tutorial").SetActive(true);
+            isShowingTutorial = true;
+        }
     }
 
     public void StartGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void ReplayLevel()
+    {
+        SceneManager.LoadScene(2);
     }
 
     public void QuitGame()
