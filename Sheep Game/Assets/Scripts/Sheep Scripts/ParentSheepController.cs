@@ -69,6 +69,7 @@ public class ParentSheepController : MonoBehaviour
                     if (Time.time > nextAttackTime) 
                     {
                         baseController.currentHealth -= attackDamage;
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalDamageTaken += attackDamage;
                         // Debug.Log(baseController.currentHealth);
                         nextAttackTime = Time.time + attackSpeed;
                     }
