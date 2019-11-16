@@ -6,7 +6,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
 {
     public GameObject eggPrefab;
     public bool isEnemy;
-    public bool canFire;
+    bool canFire;
     public float eggCountdown; // adjusted for Rate of fire
     float maxEggCountdown;
     public Vector3 sheepTarget;
