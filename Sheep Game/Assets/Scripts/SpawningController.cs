@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class SpawningController : MonoBehaviour
 {
-
     // ******** VARIABLES ******** //
     public enum SpawnState
     {
@@ -73,13 +72,18 @@ public class SpawningController : MonoBehaviour
             if ((state == SpawnState.END) && (GameObject.FindGameObjectsWithTag("Enemy").Length == 0))
             // if ((waveCount == -1) && (GameObject.FindGameObjectsWithTag("Enemy").Length == 0))
             {
-                Debug.Log("Enemies left:" + (GameObject.FindGameObjectsWithTag("Enemy").Length));
-                // waveCount = 0;
+                //  Debug.Log("Enemies left:" + (GameObject.FindGameObjectsWithTag("Enemy").Length));
+                //  // waveCount = 0;
+                //  
+                //  upgradesMenu.SetActive(true);
+                //  // set everything else to inactive???
+                //  GameObject.FindGameObjectWithTag("Base").SetActive(false);
+                //  Debug.Log("All waves complete!");
 
-                upgradesMenu.SetActive(true);
-                // set everything else to inactive???
-                GameObject.FindGameObjectWithTag("Base").SetActive(false);
-                Debug.Log("All waves complete!");
+                //
+
+                GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().currentlevel = GameController.Level.Inbetween;
+
             }
 
             // Spawn wave condition

@@ -7,50 +7,135 @@ public class GameController : MonoBehaviour
 {
     public enum Level
     {
-       One,
-       Two,
-       Three,
-       Four,
-       Five,
-       Six
+        Inbetween,
+        One,
+        Two,
+        Three,
+        Four,
+        Five,
+        Six
     }
 
-   public GameObject Level1;
-   public GameObject Level2;
-   public GameObject Level3;
-   public GameObject Level4;
-   public GameObject Level5;
-   public GameObject Level6;
-   public GameObject UpgradeUI;
+    public GameObject Level1;
+    public GameObject Level2;
+    public GameObject Level3;
+    public GameObject Level4;
+    public GameObject Level5;
+    public GameObject Level6;
+    public GameObject UpgradeUI;
 
-   public Level level;
-    public int check;
+    public GameObject[] Levels;
+
+    public Level currentlevel;
+    public Level nextLevel;
+    public int checkWin;
 
     void Start()
     {
-        Level1.SetActive(true);
-        Level2.SetActive(false);
-        Level3.SetActive(false);
-        Level4.SetActive(false);
-        Level5.SetActive(false);
-        Level6.SetActive(false);
-
-        level = Level.One;
-        check = 0;
+        DeactivateAllLevels();
+        currentlevel = Level.Inbetween;
+        nextLevel = currentlevel + 1;
+        checkWin = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((level == Level.One) && (check == 0))
+
+        if (currentlevel == Level.Inbetween)
         {
-            //Level1.GetComponent<SpawningController>().state != SpawningController.SpawnState.END
-            Level1.SetActive(true);
+            DeactivateAllLevels();
+            UpgradeUI.SetActive(true);
+            //Disable all
+            //Enable Upgrade
+            //When finish is clicked start next level
 
 
-            check = 1;
+            if (currentlevel == Level.Six)
+            {
+                //Go to win screen
+            }
+            
+            //Do check for button here
+              ///currentlevel = nextLevel;
+              ///nextLevel++;
+              ///         
+        }
+        if (currentlevel == Level.One) //&& (check == 0))
+        {
+            ChangeLevel(1);
+        }
+        else if(currentlevel == Level.Two)
+        {
+            ChangeLevel(2);
+        }
+        else if (currentlevel == Level.Three)
+        {
+            ChangeLevel(3);
+        }
+        else if (currentlevel == Level.Four)
+        {
+            ChangeLevel(4);
+        }
+        else if (currentlevel == Level.Five)
+        {
+            ChangeLevel(5);
+        }
+        else if (currentlevel == Level.Six)
+        {
+            ChangeLevel(6);
+        }
+
+
+        if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().currentHealth == 0)
+        {
+            //Go to lose screen
         }
     }
 
+    void DeactivateAllLevels()
+    {
+        Level1.SetActive(false);
+        Level2.SetActive(false);
+        Level3.SetActive(false);
+        Level4.SetActive(false);
+        Level5.SetActive(false);
+        Level6.SetActive(false);
+    }
 
+    void ChangeLevel(int _levelToActivate)
+    {
+        Level1.SetActive(false);
+        Level2.SetActive(false);
+        Level3.SetActive(false);
+        Level4.SetActive(false);
+        Level5.SetActive(false);
+        Level6.SetActive(false);
+        
+        if (_levelToActivate == 1)
+        {
+            Level1.SetActive(true);
+        }
+        else if (_levelToActivate == 2)
+        {
+            Level2.SetActive(true);
+        }
+        else if (_levelToActivate == 3)
+        {
+            Level3.SetActive(true);
+        }
+        else if (_levelToActivate == 4)
+        {
+            Level4.SetActive(true);
+        }
+        else if (_levelToActivate == 5)
+        {
+            Level5.SetActive(true);
+        }
+        else if (_levelToActivate == 6)
+        {
+            Level6.SetActive(true);
+        }
+
+    }
 }
