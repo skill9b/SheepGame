@@ -5,38 +5,52 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public enum Level
+    {
+       One,
+       Two,
+       Three,
+       Four,
+       Five,
+       Six
+    }
+
+   public GameObject Level1;
+   public GameObject Level2;
+   public GameObject Level3;
+   public GameObject Level4;
+   public GameObject Level5;
+   public GameObject Level6;
+   public GameObject UpgradeUI;
+
+   public Level level;
+    public int check;
+
     void Start()
     {
-        // Show main menu
+        Level1.SetActive(true);
+        Level2.SetActive(false);
+        Level3.SetActive(false);
+        Level4.SetActive(false);
+        Level5.SetActive(false);
+        Level6.SetActive(false);
 
-        // Gameloop()
-
+        level = Level.One;
+        check = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-    }
-
-    void GameLoop()
-    { 
-        while (true)    // while game not over
+        if ((level == Level.One) && (check == 0))
         {
-            // Start round (load scene)
+            //Level1.GetComponent<SpawningController>().state != SpawningController.SpawnState.END
+            Level1.SetActive(true);
 
-            // Once wave complete, show upgrade menu
+
+            check = 1;
         }
     }
 
-    void ShowWinScreen()
-    {
-
-    }
-
-    void ShowLoseScreen()
-    {
-
-        // replay button
-    }
 
 }

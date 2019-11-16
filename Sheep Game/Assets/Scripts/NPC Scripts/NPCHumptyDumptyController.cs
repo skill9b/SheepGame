@@ -21,8 +21,8 @@ public class NPCHumptyDumptyController : MonoBehaviour
     bool isCoolingDown;
     public GameObject cooldownObject;
     public ProgressBarCircle cooldownBar;
-    public Transform topLeft;
-    public Transform bottomRight;
+    Vector3 target;
+    public Transform suicideTarget;
     Vector3 originalPosition;
 
     // Start is called before the first frame update
@@ -39,6 +39,8 @@ public class NPCHumptyDumptyController : MonoBehaviour
         isEnemy = false;
         canFire = true;
         maxEggCountdown = eggCountdown;
+
+        target = suicideTarget.position; 
     }
 
     // Update is called once per frame
@@ -47,24 +49,6 @@ public class NPCHumptyDumptyController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             YeetTheEgghead();
-        }
-
-        if (isCoolingDown)
-        {
-            cooldown -= Time.deltaTime;
-            cooldownObject.SetActive(true);
-            cooldownBar.BarValue = cooldownBar.BarValue - (100 / (maxCooldown / Time.deltaTime));
-            if (cooldown <= 0)
-            {
-                Debug.Log("Cooldown finished.");
-                gameObject.GetComponent<Renderer>().enabled = true;
-                transform.position = originalPosition;
-                cooldown = maxCooldown;
-                isCoolingDown = false;
-
-                cooldownBar.BarValue = 100;
-                cooldownObject.SetActive(false);
-            }
         }
 
         if (isEnemy)
@@ -98,7 +82,6 @@ public class NPCHumptyDumptyController : MonoBehaviour
     // Suicide function
     void YeetTheEgghead()
     {
-        Vector3 target = new Vector3(Random.Range(topLeft.position.x, bottomRight.position.x), Random.Range(bottomRight.position.y, topLeft.position.y), transform.position.z);
 
         Vector3 difference = target - transform.position;
 
@@ -118,26 +101,18 @@ public class NPCHumptyDumptyController : MonoBehaviour
         }
     }
 
-    void RespawnHumptyDumpty()
-    {
-        isCoolingDown = true;
-        Debug.Log("Cooling down now!");
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-        if (other.tag == "Enemy")
+        if (other.tag == "HumptyDumptyFloor" || other.tag == "Enemy")
         {
-            other.GetComponent<ParentSheepController>().TakeDamage(100);
-            RespawnHumptyDumpty();
             gameObject.GetComponent<Renderer>().enabled = false;
-        }
 
-        if (other.tag == "Floor")
-        {
-            RespawnHumptyDumpty();
-            gameObject.GetComponent<Renderer>().enabled = false;
+            GameObject[] allSheep = GameObject.FindGameObjectsWithTag("Enemy");
+
+            foreach (GameObject sheep in allSheep)
+            {
+               sheep.GetComponent<ParentSheepController>().TakeDamage(3);
+            }
         }
     }
 }
