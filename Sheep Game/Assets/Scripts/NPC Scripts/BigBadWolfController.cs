@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BigBadWolfController : MonoBehaviour
 {
-
+    AudioSource WolfBlow;
     Rigidbody2D rb2d;
     Vector3 initPosition;
 
@@ -27,6 +27,7 @@ public class BigBadWolfController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        WolfBlow = GetComponent<AudioSource>();
         rb2d = GetComponent<Rigidbody2D>();
         initPosition = transform.position;
 
@@ -42,6 +43,7 @@ public class BigBadWolfController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q) && (canBlow == true) && (isBlowing == false))
         {
+            WolfBlow.Play(0);
             animator.SetBool("Blowing", true);
             canBlow = false;
             isBlowing = true;

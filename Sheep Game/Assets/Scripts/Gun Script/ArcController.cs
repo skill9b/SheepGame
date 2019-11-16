@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class ArcController : MonoBehaviour
 {
+    AudioSource DogShot;
     public GameObject Bullet;
     public GameObject Gun;
     public Camera mainCamera;
@@ -20,6 +22,11 @@ public class ArcController : MonoBehaviour
     public Vector2 MousePosition;
     private float LastShot = 0;
     private float Speed;
+
+    private void Start()
+    {
+        DogShot = GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -50,6 +57,8 @@ public class ArcController : MonoBehaviour
 
     void Fire(Vector2 direction, float Speed)
     {
+        DogShot.Play(0);
+
         if (Time.time > FireRate + LastShot)
         {
             if (BulletCount == Mag) //if the mag has been used up make player wait long
