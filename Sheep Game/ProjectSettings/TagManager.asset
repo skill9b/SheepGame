@@ -18,6 +18,7 @@ TagManager:
   - SpawnPointBottom
   - UpgradesMenu
   - ArcGun
+  - HUD
   layers:
   - Default
   - TransparentFX
