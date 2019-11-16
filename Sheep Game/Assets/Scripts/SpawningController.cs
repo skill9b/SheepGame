@@ -15,7 +15,7 @@ public class SpawningController : MonoBehaviour
         END
     }
 
-    private SpawnState state = SpawnState.COUNTING;
+    public SpawnState state = SpawnState.COUNTING;
 
     [System.Serializable]
     public class Wave
