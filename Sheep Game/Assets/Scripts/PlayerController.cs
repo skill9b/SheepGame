@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
 
     public Text woolCountDisplay;
-    public int woolCount;
+    public int woolCount; //Wool gained each level
+    public int woolTotal; //Total wool that you add woolGained, wool that you spend 
+    public int score; //Final score shown at end of game
 
 
     public int totalFiredBullets;
