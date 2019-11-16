@@ -19,6 +19,8 @@ TagManager:
   - UpgradesMenu
   - ArcGun
   - HUD
+  - RemainingWaves
+  - RemainingSheep
   layers:
   - Default
   - TransparentFX

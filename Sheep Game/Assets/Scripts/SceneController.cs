@@ -5,15 +5,28 @@ using UnityEngine;
 
 public class SceneController : MonoBehaviour
 {
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SceneManager.LoadScene(2);
+        }
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene(1);
-        // DontDestroyOnLoad(this.gameObject);
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
     }
 
 }

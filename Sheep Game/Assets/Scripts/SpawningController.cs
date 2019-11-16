@@ -37,17 +37,20 @@ public class SpawningController : MonoBehaviour
     private float waveCountdown;
     private float searchCountdown = 1.0f;
 
-    public Text remainingWaves;
-    public Text remainingSheep;
     public int deadSheep;
     int currentWaveMaxSheep;
 
-    public GameObject upgradesMenu;
+    // UI elements
+    Text remainingWaves;
+    GameObject upgradesMenu;
 
     // ******** FUNCTIONS ******** //
     void Start()
     {
         currentWaveMaxSheep = waves[0].count;
+
+        remainingWaves = GameObject.FindGameObjectWithTag("RemainingWaves").GetComponent<Text>();
+        upgradesMenu = GameObject.FindGameObjectWithTag("UpgradesMenu");
     }
 
     void Update()
@@ -92,8 +95,6 @@ public class SpawningController : MonoBehaviour
 
         // Display remaining waves and sheep in current wave
         remainingWaves.text = "Remaining Waves: " + (waves.Length - waveCount).ToString();
-        
-
 
     }
 
