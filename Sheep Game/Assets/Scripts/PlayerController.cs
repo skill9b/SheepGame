@@ -12,6 +12,11 @@ public class PlayerController : MonoBehaviour
     public int woolCount;
 
 
+    public int totalFiredBullets;
+    public int missedBullets;
+
+    public float totalDamageTaken;
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();

@@ -53,6 +53,7 @@ public class LongController : MonoBehaviour
             }*/
 
             Fire(direction, Speed);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets++;
         }
         //cooldownBar.BarValue = (BulletCount / Mag) * 100;
 

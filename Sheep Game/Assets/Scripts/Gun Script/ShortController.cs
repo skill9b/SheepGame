@@ -44,6 +44,7 @@ public class ShortController : MonoBehaviour
             }
 
             Fire(direction, Speed);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets++;
         }
     }
 

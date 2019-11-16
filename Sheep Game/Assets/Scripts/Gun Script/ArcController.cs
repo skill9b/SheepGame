@@ -37,7 +37,7 @@ public class ArcController : MonoBehaviour
             Speed = 10;
             MousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             Fire(direction, Speed);
-            
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets++;
         }
     }
 
