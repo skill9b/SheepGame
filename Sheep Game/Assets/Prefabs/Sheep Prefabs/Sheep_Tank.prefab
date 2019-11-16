@@ -79,7 +79,7 @@ MonoBehaviour:
   health: 6
   speed: 1.15
   distanceFromEnemy: 1
-  woolPoints: 10
+  woolPoints: 15
   attackSpeed: 2
   attackDamage: 3
   body: {fileID: 2799999300340659239}
