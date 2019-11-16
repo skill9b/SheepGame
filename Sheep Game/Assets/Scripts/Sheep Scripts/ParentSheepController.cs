@@ -37,6 +37,11 @@ public class ParentSheepController : MonoBehaviour
 
     void Update()
     {
+        if (IsIdle)
+        {
+            currentState = State.Idle;
+        }
+
         switch (currentState)
         {
             case State.Moving:
@@ -45,12 +50,10 @@ public class ParentSheepController : MonoBehaviour
                     body.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                     //body.constraints = RigidbodyConstraints2D.FreezeRotation 
                     transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime); //Set always to move left
-                    Debug.Log("Moving" + transform.position);
                     break;
                 }
             case State.Idle:
                 {
-                    Debug.Log("Current State is idle");
                     break;
                 }
             case State.Attacking:
@@ -69,7 +72,6 @@ public class ParentSheepController : MonoBehaviour
                         // Debug.Log(baseController.currentHealth);
                         nextAttackTime = Time.time + attackSpeed;
                     }
-                    Debug.Log("Current State is atk");
                     break;
                 }
             default:
@@ -103,10 +105,7 @@ public class ParentSheepController : MonoBehaviour
        //    currentState = State.Moving;
        //}
 
-        if (IsIdle)
-        {
-            currentState = State.Idle;
-        }
+ 
 
         //if (other.gameObject.tag == "ShootingRange")
         //{

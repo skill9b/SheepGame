@@ -590,7 +590,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!60 &360659807
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -598,7 +598,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360659805}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1072,7 +1072,7 @@ PrefabInstance:
     - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
       propertyPath: waves.Array.data[0].count
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
@@ -1192,7 +1192,7 @@ PrefabInstance:
     - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
       propertyPath: waves.Array.data[0].timeToNextWave
-      value: 4
+      value: 1e+9
       objectReference: {fileID: 0}
     - target: {fileID: 2624856769644785159, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
@@ -1250,12 +1250,12 @@ PrefabInstance:
     - target: {fileID: 103594734325402329, guid: 25994170128b93b4386305952b887887,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.83
+      value: -7.58
       objectReference: {fileID: 0}
     - target: {fileID: 103594734325402329, guid: 25994170128b93b4386305952b887887,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.37
+      value: 3.7
       objectReference: {fileID: 0}
     - target: {fileID: 103594734325402329, guid: 25994170128b93b4386305952b887887,
         type: 3}
@@ -1305,7 +1305,7 @@ PrefabInstance:
     - target: {fileID: 103594734325402335, guid: 25994170128b93b4386305952b887887,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 103594734325402335, guid: 25994170128b93b4386305952b887887,
         type: 3}
@@ -1315,42 +1315,42 @@ PrefabInstance:
     - target: {fileID: 103594734325402335, guid: 25994170128b93b4386305952b887887,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
-      value: 3.9131813
-      objectReference: {fileID: 0}
-    - target: {fileID: 103594734325402335, guid: 25994170128b93b4386305952b887887,
-        type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
-      value: -3.6644359
-      objectReference: {fileID: 0}
-    - target: {fileID: 103594734325402335, guid: 25994170128b93b4386305952b887887,
-        type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
-      value: -9.215921
-      objectReference: {fileID: 0}
-    - target: {fileID: 103594734325402335, guid: 25994170128b93b4386305952b887887,
-        type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
-      value: 1.4967752
-      objectReference: {fileID: 0}
-    - target: {fileID: 103594734325402335, guid: 25994170128b93b4386305952b887887,
-        type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
       value: 3.8080316
       objectReference: {fileID: 0}
     - target: {fileID: 103594734325402335, guid: 25994170128b93b4386305952b887887,
         type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
+      value: -3.5586777
+      objectReference: {fileID: 0}
+    - target: {fileID: 103594734325402335, guid: 25994170128b93b4386305952b887887,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
+      value: -3.5560768
+      objectReference: {fileID: 0}
+    - target: {fileID: 103594734325402335, guid: 25994170128b93b4386305952b887887,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: 4.3935957
+      objectReference: {fileID: 0}
+    - target: {fileID: 103594734325402335, guid: 25994170128b93b4386305952b887887,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
+      value: 0.3390484
+      objectReference: {fileID: 0}
+    - target: {fileID: 103594734325402335, guid: 25994170128b93b4386305952b887887,
+        type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
-      value: -3.7695856
+      value: -9.075114
       objectReference: {fileID: 0}
     - target: {fileID: 103594734325402335, guid: 25994170128b93b4386305952b887887,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
-      value: -9.286021
+      value: -9.046756
       objectReference: {fileID: 0}
     - target: {fileID: 103594734325402335, guid: 25994170128b93b4386305952b887887,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
-      value: 0.22548294
+      value: 1.61969
       objectReference: {fileID: 0}
     - target: {fileID: 103594734325402335, guid: 25994170128b93b4386305952b887887,
         type: 3}
@@ -1421,7 +1421,7 @@ PrefabInstance:
         type: 3}
       propertyPath: MainCamera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 842366646}
     - target: {fileID: 1289057070121217491, guid: fb09e7c4befaacd4a81e7d9c4667f230,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1677,6 +1677,46 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1381287428}
+    - target: {fileID: 8416542628898353281, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353281, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353281, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353281, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353281, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353281, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353281, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353281, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8416542628898353280, guid: a3e037081d3e9074a814f3f5dd33a947,
         type: 3}
       propertyPath: m_GravityScale
@@ -1703,7 +1743,8 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8416542628898353280, guid: a3e037081d3e9074a814f3f5dd33a947, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a3e037081d3e9074a814f3f5dd33a947, type: 3}
 --- !u!1 &638820414
 GameObject:
@@ -2759,10 +2800,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.603538, y: 0.4604511}
-      - {x: -3.2113092, y: -2.6992602}
-      - {x: -3.13, y: -2.699263}
-      - {x: -1.56, y: 0.4601938}
+    - - {x: -1.7644663, y: 0.40413913}
+      - {x: -3.6729877, y: -2.65831}
+      - {x: -3.5680056, y: -2.6592703}
+      - {x: -1.6729287, y: 0.38947827}
 --- !u!61 &1546119881
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3638,6 +3679,11 @@ PrefabInstance:
       propertyPath: SpeedController
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -358089596199565125, guid: 46c29c5a757080d46b84f93dcc78614d,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 842366646}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46c29c5a757080d46b84f93dcc78614d, type: 3}
 --- !u!4 &1968533313 stripped
