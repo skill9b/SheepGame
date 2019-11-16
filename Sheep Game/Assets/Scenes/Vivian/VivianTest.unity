@@ -4190,6 +4190,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArcGun
       objectReference: {fileID: 0}
+    - target: {fileID: 1289057070121217490, guid: 46c29c5a757080d46b84f93dcc78614d,
+        type: 3}
+      propertyPath: m_TagString
+      value: ArcGun
+      objectReference: {fileID: 0}
     - target: {fileID: 1289057070121217491, guid: 46c29c5a757080d46b84f93dcc78614d,
         type: 3}
       propertyPath: m_LocalPosition.x

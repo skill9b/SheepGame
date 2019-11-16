@@ -54,7 +54,7 @@ public class LongController : MonoBehaviour
 
             Fire(direction, Speed);
         }
-        cooldownBar.BarValue = (BulletCount / Mag) * 100;
+        //cooldownBar.BarValue = (BulletCount / Mag) * 100;
 
     }
 

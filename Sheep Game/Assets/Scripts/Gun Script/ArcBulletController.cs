@@ -22,7 +22,7 @@ public class ArcBulletController : ArcController
     private void Start()
     {
 
-        MainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ArcController>().MainCamera;
+        MainCamera = GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().MainCamera;
         AOE = GetComponent<BoxCollider2D>();
         AOE.size = new Vector2(ColX, ColY);
 

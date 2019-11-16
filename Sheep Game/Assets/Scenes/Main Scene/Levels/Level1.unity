@@ -4414,7 +4414,7 @@ PrefabInstance:
     - target: {fileID: 6294399771435813942, guid: eda2c08c923e9674e9133ffba2e14efe,
         type: 3}
       propertyPath: fireRate
-      value: 1.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6294399771435813942, guid: eda2c08c923e9674e9133ffba2e14efe,
         type: 3}
@@ -4450,7 +4450,7 @@ PrefabInstance:
         type: 3}
       propertyPath: eggPrefab
       value: 
-      objectReference: {fileID: 5116687139915379231, guid: c0111ed5e23c1c8449bc1d56856426cf,
+      objectReference: {fileID: 5116687139915379231, guid: 75c382ce88393804c895db0de5d5a156,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eda2c08c923e9674e9133ffba2e14efe, type: 3}
