@@ -6,6 +6,8 @@ using UnityEngine;
 public class SceneController : MonoBehaviour
 {
 
+    int currentSceneIndex;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -17,6 +19,11 @@ public class SceneController : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void ReplayLevel()
+    {
+        SceneManager.LoadScene(2);
     }
 
     public void QuitGame()
