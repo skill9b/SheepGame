@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ArcBulletController : ArcController
 {
-    public Camera MainCamera;
     public int damage;
 
     public float ColX = 0.2f, ColY = 0.2f;
@@ -22,7 +21,7 @@ public class ArcBulletController : ArcController
     private void Start()
     {
 
-        MainCamera = GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().MainCamera;
+        mainCamera = GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().mainCamera;
         AOE = GetComponent<BoxCollider2D>();
         AOE.size = new Vector2(ColX, ColY);
 
@@ -54,7 +53,7 @@ public class ArcBulletController : ArcController
         {
             STUPIDMOUSEPOSITION = Input.mousePosition;
             STUPIDMOUSEPOSITION.z = 10;
-            MOUSEPOSITION = MainCamera.ScreenToWorldPoint(Input.mousePosition);
+            MOUSEPOSITION = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         }
     }
 

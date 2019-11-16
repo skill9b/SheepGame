@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class NPCHumptyDumptyController : MonoBehaviour
 {
-    // Egg bullet variables
-    public Camera camera;
     public GameObject eggPrefab;
     public bool isEnemy;
     public bool canFire;

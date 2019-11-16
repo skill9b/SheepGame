@@ -5,28 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Ben/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/Main Scene/BensMenu.unity
-    guid: f51b999230ce5a744b9bf3e514b24727
-  - enabled: 0
-    path: Assets/Scenes/Ben/switchingscenes/s1.unity
-    guid: adadff89a383ca04ca252ac6cae5f8d3
-  - enabled: 0
-    path: Assets/Scenes/Ben/switchingscenes/s2.unity
-    guid: 7ca3c070bd5a9024086a7ce01f38108e
-  - enabled: 0
-    path: Assets/Scenes/Ben/BaseScene.unity
-    guid: 2be66fafd6e21904b8efe4696ed8d26f
-  - enabled: 0
-    path: Assets/Scenes/Main Scene/CreditScene.unity
-    guid: 1ae6a0f0fcc67914898473a005bfaeb8
-  - enabled: 0
-    path: Assets/Scenes/Ben/switchingscenes/Lose.unity
-    guid: 74ffae097a52d7d45bce136d2255b476
   - enabled: 1
-    path: Assets/Scenes/Main Scene/Levels/Level1.unity
+    path: Assets/Scenes/Final Scenes/Levels/Level1.unity
     guid: c2ca20058df663143b7cdd3f92569710
   m_configObjects: {}

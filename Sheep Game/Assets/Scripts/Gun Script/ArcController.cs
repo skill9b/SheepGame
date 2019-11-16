@@ -6,9 +6,9 @@ public class ArcController : MonoBehaviour
 {
     public GameObject Bullet;
     public GameObject Gun;
-    public Camera MainCamera;
+    public Camera mainCamera;
 
-    [SerializeField] float SpeedController = 100;
+    // [SerializeField] float SpeedController = 100;
     [SerializeField] float Offset = 0;
     [SerializeField] float FireRate = 1;
     [SerializeField] int Mag = 5;
@@ -24,7 +24,7 @@ public class ArcController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Target = MainCamera.ScreenToWorldPoint(new Vector3(transform.position.x, (-Input.mousePosition.y) + Offset, transform.position.z));
+        Target = mainCamera.ScreenToWorldPoint(new Vector3(transform.position.x, (-Input.mousePosition.y) + Offset, transform.position.z));
 
         Vector3 difference = Target - Gun.transform.position;
 
@@ -35,7 +35,7 @@ public class ArcController : MonoBehaviour
             direction.Normalize();
 
             Speed = 10;
-            MousePosition = MainCamera.ScreenToWorldPoint(Input.mousePosition);
+            MousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             Fire(direction, Speed);
             
         }

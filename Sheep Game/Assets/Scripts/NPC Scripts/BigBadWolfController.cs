@@ -8,6 +8,8 @@ public class BigBadWolfController : MonoBehaviour
     Rigidbody2D rb2d;
     Vector3 initPosition;
 
+    public Animator animator;
+
     bool canBlow = true;
     public bool isBlowing = false;
     public float blowingCountdown;
@@ -15,7 +17,7 @@ public class BigBadWolfController : MonoBehaviour
     float storedCountdown;
     float storedCooldown;
 
-    public Animator animator;
+    // public Animator animator;
 
     public GameObject cooldownObject;
     public ProgressBarCircle cooldownBar;
