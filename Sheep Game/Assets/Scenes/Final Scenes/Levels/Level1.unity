@@ -1548,7 +1548,7 @@ PrefabInstance:
     - target: {fileID: 2624856769644785158, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
       propertyPath: m_Name
-      value: SpawnManager
+      value: Level One SpawnManager
       objectReference: {fileID: 0}
     - target: {fileID: 2624856769644785156, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
@@ -2234,32 +2234,6 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1381287428}
-    - target: {fileID: 8416542628898353280, guid: a3e037081d3e9074a814f3f5dd33a947,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 3818608424621081072, guid: 5e8147a34eaf5664fabf6fde555aec3d,
-        type: 3}
-    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8416542628898353281, guid: a3e037081d3e9074a814f3f5dd33a947,
         type: 3}
       propertyPath: m_Enabled
@@ -2299,6 +2273,32 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353280, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3818608424621081072, guid: 5e8147a34eaf5664fabf6fde555aec3d,
+        type: 3}
+    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8416542628898353280, guid: a3e037081d3e9074a814f3f5dd33a947, type: 3}
@@ -3027,6 +3027,11 @@ MonoBehaviour:
   speed: 4
   woolCountDisplay: {fileID: 1398741868}
   woolCount: 0
+  woolTotal: 0
+  score: 0
+  totalFiredBullets: 0
+  missedBullets: 0
+  totalDamageTaken: 0
 --- !u!61 &876119796
 BoxCollider2D:
   m_ObjectHideFlags: 0
