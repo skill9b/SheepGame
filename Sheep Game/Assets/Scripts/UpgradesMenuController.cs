@@ -361,9 +361,9 @@ public class UpgradesMenuController : MonoBehaviour
         return GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().Damage;
     }
 
-    float GetShearikenAccuracy()
+    int GetShearikenAccuracy()
     {
-        return GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().Damage;
+        return GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().PassEnemies;
     }
 
     float GetOldMacdonaldAngle()
@@ -408,7 +408,7 @@ public class UpgradesMenuController : MonoBehaviour
 
     /////////////////////// Select/Set Description & textsprite functions (ON CLICK)
 
-    void SetK9DamageDescription()
+    public void SetK9DamageDescription()
     {
         //float damage = GetK9CurrentDamage();
 
@@ -428,7 +428,7 @@ public class UpgradesMenuController : MonoBehaviour
         descriptionBox.sprite = K9DamageDescription;
     }
 
-    void SetK9CooldownDescription()
+    public void SetK9CooldownDescription()
     {
         //float cooldown = GetK9CurrentCooldown();
 
@@ -448,7 +448,7 @@ public class UpgradesMenuController : MonoBehaviour
         descriptionBox.sprite = K9CooldownDescription;
     }
 
-    void SetShearikenDamageDescription()
+    public void SetShearikenDamageDescription()
     {
         float damage = GetShearikenDamage();
 
@@ -468,7 +468,7 @@ public class UpgradesMenuController : MonoBehaviour
         descriptionBox.sprite = ShearikenDamageDescription;
     }
 
-    void SetShearikenAcurracyDescription()
+    public void SetShearikenAcurracyDescription()
     {
         int accuracy = GetShearikenAccuracy();
 
@@ -488,7 +488,7 @@ public class UpgradesMenuController : MonoBehaviour
         descriptionBox.sprite = ShearikenAccuracyDescription;
     }
 
-    void SetOldMacdonaldAoeDescription()
+    public void SetOldMacdonaldAoeDescription()
     {
         float angle = GetOldMacdonaldAngle();
 
@@ -508,7 +508,7 @@ public class UpgradesMenuController : MonoBehaviour
         descriptionBox.sprite = OldMacdonaldAoeDescription;
     }
 
-    void SetOldMacdonaldCooldownDescription()
+    public void SetOldMacdonaldCooldownDescription()
     {
         float cooldown = GetOldMacdonaldCooldown();
 
@@ -528,7 +528,7 @@ public class UpgradesMenuController : MonoBehaviour
         descriptionBox.sprite = OldMacdonaldCooldownDescription;
     }
 
-    void SetBaseHealthDescription()
+    public void SetBaseHealthDescription()
     {
         //float cooldown = GetBaseHealth();
 
@@ -548,7 +548,7 @@ public class UpgradesMenuController : MonoBehaviour
         descriptionBox.sprite = BaseHealthDescription;
     }
 
-    void SetBaseRegenDescription()
+    public void SetBaseRegenDescription()
     {
         bool isRegenActive = GetBaseRegen();
 
@@ -562,7 +562,7 @@ public class UpgradesMenuController : MonoBehaviour
         }
     }
 
-    void SetWolfBlowingPowerDescription()
+    public void SetWolfBlowingPowerDescription()
     {
         float blowingPower = GetWolfBlowingPower();
 
@@ -581,7 +581,7 @@ public class UpgradesMenuController : MonoBehaviour
 
         descriptionBox.sprite = WolfBlowingPowerDescription;
     }
-    void SetWolfCooldownDescription()
+    public void SetWolfCooldownDescription()
     {
         float cooldown = GetWolfCooldown();
 
@@ -601,7 +601,7 @@ public class UpgradesMenuController : MonoBehaviour
         descriptionBox.sprite = WolfCooldownDescription;
     }
 
-    void SetHumptyFireRateDescription()
+    public void SetHumptyFireRateDescription()
     {
         float fireRate = GetHumptyFireRate();
 
@@ -621,7 +621,7 @@ public class UpgradesMenuController : MonoBehaviour
         descriptionBox.sprite = HumptyFireRateDescription;
     }
 
-    void SetHumptySuicideDescription()
+    public void SetHumptySuicideDescription()
     {
         bool isSuicide = GetHumptySuicide();
 
