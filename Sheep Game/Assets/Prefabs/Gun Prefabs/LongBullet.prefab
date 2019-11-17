@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5890285504238798999}
   - component: {fileID: -4428682344661615920}
   - component: {fileID: -1225120120979363274}
-  - component: {fileID: -2546246932764916413}
+  - component: {fileID: -1507179744620400057}
   m_Layer: 0
   m_Name: LongBullet
   m_TagString: Bullet
@@ -129,7 +129,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &-2546246932764916413
+--- !u!114 &-1507179744620400057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,6 +150,6 @@ MonoBehaviour:
   CooldowntimeFull: 5
   CooldowntimeNotFull: 2
   Damage: 1
+  PassEnemies: 2
   cooldownObject: {fileID: 0}
   cooldownBar: {fileID: 0}
-  PassEnemies: 1

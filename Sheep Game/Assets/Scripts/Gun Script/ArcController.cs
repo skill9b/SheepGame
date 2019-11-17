@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ArcController : MonoBehaviour
 {
-    AudioSource DogShot;
+    public AudioSource DogShot;
+    private bool DogHasImpact;
+ 
     public GameObject Bullet;
     public GameObject Gun;
     public Camera mainCamera;
@@ -47,6 +49,15 @@ public class ArcController : MonoBehaviour
             MousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             Fire(direction, Speed);
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets++;
+        }
+
+        DogHasImpact = Bullet.GetComponent<ArcBulletController>().DogHasImpact;
+        if (DogHasImpact)
+        {
+            if (DogShot.isPlaying)
+            {
+                DogShot.Stop();
+            }
         }
     }
 
