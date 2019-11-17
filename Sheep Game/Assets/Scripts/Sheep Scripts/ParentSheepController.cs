@@ -6,6 +6,8 @@ public class ParentSheepController : MonoBehaviour
 {
     public BaseController baseController;
     public Animator animator;
+    AudioSource SheepImpact;
+    private int AudioCounter = 0;
     public float health;
     public float speed;
     public int distanceFromEnemy;
@@ -27,6 +29,7 @@ public class ParentSheepController : MonoBehaviour
 
     void Start()
     {
+        SheepImpact = GetComponent<AudioSource>();
         //IsIdle = GameObject.FindWithTag("Wolf").GetComponent<BigBadWolfController>().isBlowing;
         IsIdle = false;
         baseController = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>(); //Get script of base
@@ -89,7 +92,16 @@ public class ParentSheepController : MonoBehaviour
             // Instantiate(deathEffect, transform.position, Quaternion.identity);
             // drop wool
             // Play death sound
-            Die();
+            if (AudioCounter == 0)
+            {
+                SheepImpact.Play(0);
+            }
+            AudioCounter++;
+
+            if (!SheepImpact.isPlaying)
+            {
+                Die();
+            }
         }
     }
 
