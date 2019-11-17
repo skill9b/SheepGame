@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 169306072832895370}
   - component: {fileID: 169306072832895373}
   - component: {fileID: 169306072832895371}
+  - component: {fileID: 6380919796594174023}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -148,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  animator: {fileID: 6380919796594174023}
   woolCountDisplay: {fileID: 0}
   woolCount: 0
   woolTotal: 0
@@ -173,6 +175,25 @@ MonoBehaviour:
   Long: {fileID: 0}
   ShortGun: {fileID: 1421686584663959502}
   Short: {fileID: 0}
+--- !u!95 &6380919796594174023
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169306072832895377}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d09972118a7aed6499470660db337384, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &169306071677870556
 PrefabInstance:
   m_ObjectHideFlags: 0

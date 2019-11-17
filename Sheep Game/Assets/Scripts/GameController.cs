@@ -36,8 +36,17 @@ public class GameController : MonoBehaviour
     public bool goToNextLevel;
 
 
+
+
+
+    public int WoolCount;
+    public int bulletsFired;
+    public int bulletsMissed;
+
+    public float healthLost;
+
     /////////////////////////////// FUNCTIONS ///////////////
-  
+
     void Start()
     {
 
@@ -59,7 +68,7 @@ public class GameController : MonoBehaviour
         }
         else if (currentlevel == Level.Inbetween)
         {
-
+            CalculateWool();
             DeactivateAllLevels();
             DisableGunShooting();
             UpgradeUI.SetActive(true);
@@ -228,5 +237,24 @@ public class GameController : MonoBehaviour
     public void PressFinish()
     {
         goToNextLevel = true;
+    }
+
+
+    void CalculateWool()
+    {
+        WoolCount = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolCount;
+        bulletsFired = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets;
+        bulletsMissed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().missedBullets;
+        healthLost = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalDamageTaken;
+
+        WoolCount = WoolCount * (1 + (1 - bulletsMissed / bulletsFired));// * (2 - (float(healthLost * 0.05f)));
+        WoolCount = WoolCount * (2 - (int)(healthLost * 0.05));
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().score += WoolCount;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal += WoolCount;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolCount = 0;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets = 0;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().missedBullets = 0;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalDamageTaken = 0;
     }
 }
