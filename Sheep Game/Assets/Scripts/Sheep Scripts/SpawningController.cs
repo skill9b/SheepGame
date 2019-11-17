@@ -81,8 +81,17 @@ public class SpawningController : MonoBehaviour
                 //  Debug.Log("All waves complete!");
 
                 //
+                if (GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().currentlevel != GameController.Level.Six)
+                {
+                    GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().currentlevel = GameController.Level.Inbetween;
+                }
+                else
+                {
+                    //Win Game
+                    ////GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().WinScreen();
+                }
 
-                GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().currentlevel = GameController.Level.Inbetween;
+
 
             }
 

@@ -76,6 +76,11 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(8);
     }
 
+    public void WinScreen()
+    {
+        //SceneManager.LoadScene(9);
+    }
+
 }
 
 

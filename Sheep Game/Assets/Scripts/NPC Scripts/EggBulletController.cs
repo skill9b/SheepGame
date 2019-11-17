@@ -20,9 +20,6 @@ public class EggBulletController : MonoBehaviour
         float t = 1;
         float s = 3;
 
-        Debug.Log("Current x: " + transform.position.x);
-        Debug.Log("Target x: " + target.x);
-        Debug.Log("Distance x: " + xDistance);
 
         xDistance = (xDistance / 1.60f) - 1.2f;
 
@@ -74,6 +71,7 @@ public class EggBulletController : MonoBehaviour
         {
             CreateAoE();
             Destroy(gameObject);
+
         }
 
         if (other.gameObject.tag == "Floor")

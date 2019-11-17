@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
 
         if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().currentHealth <= 0)
         {
-            GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().LoseScreen();
+            //GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().LoseScreen();
         }
 
        

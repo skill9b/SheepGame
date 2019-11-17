@@ -47,21 +47,23 @@ public class NPCHumptyDumptyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enableSuicide)
-        {
+        //if (enableSuicide)
+       // {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 //Play flying
+                //Debug.Log("Yeet");
                 animator.SetBool("Flying", true);
                 YeetTheEgghead();
             }
-        }
+        //}
 
         if (isEnemy)
         {
             if (canFire == true)
             {
                 //Play Shoot
+                animator.SetTrigger("Shooting");
                 Fire(sheepTarget);
                 canFire = false;
                 //End Shoot
@@ -101,7 +103,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
         Vector2 direction = difference / distance;
         direction.Normalize();
 
-        float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        float rotationZ = -(Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg);
         transform.rotation = Quaternion.Euler(0, 0, rotationZ);
 
         if (Time.time > fireRate + nextYeetTime)
