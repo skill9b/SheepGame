@@ -9,14 +9,14 @@ public class LongController : MonoBehaviour
     public GameObject Gun;
     public Camera MainCamera;
 
-    [SerializeField] float Offset = 0;
-    [SerializeField] float FireRate = 1;
-    [SerializeField] int Mag = 5;
-    [SerializeField] float CooldowntimeFull = 5f;
-    [SerializeField] int CooldowntimeNotFull = 2;
+    public float Offset = 0;
+    public float FireRate = 1;
+    public int Mag = 5;
+    public float CooldowntimeFull = 5f;
+    public int CooldowntimeNotFull = 2;
     private int BulletCount = 0;
 
-    public int Damage = 1;
+    public float Damage = 1;
     public int PassEnemies = 2;
 
     private Vector3 Target;

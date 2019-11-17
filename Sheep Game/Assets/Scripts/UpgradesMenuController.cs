@@ -65,6 +65,23 @@ public class UpgradesMenuController : MonoBehaviour
     public Sprite HumptyFireRateDescription;
     public Sprite HumptySuicideDescription;
 
+    // Set enum for Current Upgrade
+    public enum CurrentUpgrade
+    {
+        K9_DAMAGE,
+        K9_COOLDOWN,
+        SHEARIKEN_DAMAGE,
+        SHEARIKEN_ACCURACY,
+        OLDMACDONALD_AOE,
+        OLDMACDONALD_COOLDOWN,
+        BASE_MAXHEALTH,
+        BASE_REGEN,
+        WOLF_BLOWINGPOWER,
+        WOLF_COOLDOWN,
+        HUMPTY_FIRERATE,
+        HUMPTY_SUICIDE
+    }
+    CurrentUpgrade currentUpgrade;
 
     ////////////////////////////////////////// FUNCTIONS /////////////////
 
@@ -74,11 +91,11 @@ public class UpgradesMenuController : MonoBehaviour
         playerCurrentWool = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolCount;
         playerWoolDisplay.text = playerCurrentWool.ToString();
 
-        // currentWoolCost = GetK9CurrentDamage();
-        currentWoolCostDisplay.text = currentWoolCost.ToString();
+        SetK9DamageDescription(); // sets description and current woolcost to be K9 as default
 
-        currentDescription = K9DamageDescription;
         descriptionBox.sprite = currentDescription;
+        currentWoolCostDisplay.text = currentWoolCost.ToString();
+        currentUpgrade = CurrentUpgrade.K9_DAMAGE;
     }
 
     void Update()
@@ -94,10 +111,6 @@ public class UpgradesMenuController : MonoBehaviour
         playerCurrentWool = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolCount;
         playerWoolDisplay.text = playerCurrentWool.ToString();
 
-        // Set Weapons K9 Damage as default option when upgrades menu first appears
-        // currentWoolCostDisplay.text = K9DamageCosts[0];
-        descriptionBox.sprite = K9DamageDescription;
-
         DisplayAllCurrentProgressBars();
     }
 
@@ -112,6 +125,50 @@ public class UpgradesMenuController : MonoBehaviour
         WeaponsPanel.SetActive(false);
         SupportPanel.SetActive(true);
     }
+
+    public void PurchaseUpgrade()
+    {
+        switch (currentUpgrade)
+        {
+            case CurrentUpgrade.K9_DAMAGE:
+                PurchaseK9Damage();
+                break;
+            case CurrentUpgrade.K9_COOLDOWN:
+                PurchaseK9Cooldown();
+                break;
+            case CurrentUpgrade.SHEARIKEN_ACCURACY:
+                PurchaseShearikenAccuracy();
+                break;
+            case CurrentUpgrade.SHEARIKEN_DAMAGE:
+                PurchaseShearikenDamage();
+                break;
+            case CurrentUpgrade.OLDMACDONALD_AOE:
+                PurchaseOldMacdonaldAoE();
+                break;
+            case CurrentUpgrade.OLDMACDONALD_COOLDOWN:
+                PurchaseOldMacdonaldCooldown();
+                break;
+            case CurrentUpgrade.WOLF_BLOWINGPOWER:
+                PurchaseWolfBlowingPower();
+                break;
+            case CurrentUpgrade.WOLF_COOLDOWN:
+                PurchaseWolfCooldown();
+                break;
+            case CurrentUpgrade.HUMPTY_FIRERATE:
+                PurchaseHumptyDumptyFireRate();
+                break;
+            case CurrentUpgrade.HUMPTY_SUICIDE:
+                PurchaseHumptyDumptySuicide();
+                break;
+            case CurrentUpgrade.BASE_MAXHEALTH:
+                PurchaseBaseHealth();
+                break;
+            case CurrentUpgrade.BASE_REGEN:
+                PurchaseBaseRegen();
+                break;
+        }
+    }
+
 
     /////////////////////// Sets and displays all current progress bars (ON UPDATE)
     void DisplayAllCurrentProgressBars()  
@@ -258,15 +315,15 @@ public class UpgradesMenuController : MonoBehaviour
 
         // Old Macdonald [SHOTGUN]
         // Old MacDonald Cooldown
-        if (GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShortController>().CooldowntimeNotFull == 3.0f)
+        if (GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShortController>().CooldowntimeFull == 3.0f)
         {
             OldMacdonaldCooldownBar.sprite = twoIncrementEmpty;
         }
-        else if (GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShortController>().CooldowntimeNotFull == 2.5f)
+        else if (GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShortController>().CooldowntimeFull == 2.5f)
         {
             OldMacdonaldCooldownBar.sprite = twoIncrementHalf;
         }
-        else if (GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShortController>().CooldowntimeNotFull == 2.0f)
+        else if (GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShortController>().CooldowntimeFull == 2.0f)
         {
             OldMacdonaldCooldownBar.sprite = twoIncrementFull;
         }
@@ -296,7 +353,7 @@ public class UpgradesMenuController : MonoBehaviour
 
     float GetK9CurrentCooldown()
     {
-        return GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().CooldowntimeNotFull;
+        return GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().CooldowntimeFull;
     }
 
     float GetShearikenDamage()
@@ -304,7 +361,7 @@ public class UpgradesMenuController : MonoBehaviour
         return GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().Damage;
     }
 
-    int GetShearikenAccuracy()
+    float GetShearikenAccuracy()
     {
         return GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().Damage;
     }
@@ -316,7 +373,7 @@ public class UpgradesMenuController : MonoBehaviour
 
     float GetOldMacdonaldCooldown()
     {
-        return GameObject.FindGameObjectWithTag("ShotGun").GetComponent<ShortController>().CooldowntimeNotFull;
+        return GameObject.FindGameObjectWithTag("ShotGun").GetComponent<ShortController>().CooldowntimeFull;
     }
 
     bool GetBaseRegen()
@@ -583,8 +640,7 @@ public class UpgradesMenuController : MonoBehaviour
 
     /////////////////////// Set new stat functions 
   
-
-    public void PurchaseHumptyDumptyFireRate()   // Purchase 
+    void PurchaseHumptyDumptyFireRate()   // Purchase 
     {
         if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
         {
@@ -594,7 +650,7 @@ public class UpgradesMenuController : MonoBehaviour
         }
     }
 
-    public void SetHumptyDumptySuicide()
+    void PurchaseHumptyDumptySuicide()
     {
         if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
         {
@@ -604,7 +660,7 @@ public class UpgradesMenuController : MonoBehaviour
         }
     }
 
-    public void SetWolfBlowingPower()
+    void PurchaseWolfBlowingPower()
     {
         if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
         {
@@ -626,7 +682,7 @@ public class UpgradesMenuController : MonoBehaviour
         }
     }
 
-    public void PurchaseWolfCooldown()
+    void PurchaseWolfCooldown()
     {
         if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
         {
@@ -648,7 +704,7 @@ public class UpgradesMenuController : MonoBehaviour
         }
     }
 
-    public void PurchaseBaseRegen()
+    void PurchaseBaseRegen()
     {
         if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
         {
@@ -660,7 +716,7 @@ public class UpgradesMenuController : MonoBehaviour
         }
     }
 
-    public void PurchaseHealthIncrease()
+    void PurchaseBaseHealth()
     {
         if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
         {
@@ -685,17 +741,141 @@ public class UpgradesMenuController : MonoBehaviour
         }
     }
 
-    ////////////// Weapon Costs
-    //int[] K9DamageCosts = new int[] { 100, 200 };
-    //int[] K9CooldownCosts = new int[] { 100, 200 };
-    //int[] ShearikenDamageCosts = new int[] { 100, 200 };
-    //int[] ShearikenAccuracyCosts = new int[] { 150, 200 };
-    //int[] OldMacdonaldAoeCosts = new int[] { 100, 200 };
-    //int[] OldMacdonaldCooldownCosts = new int[] { 100, 200 };
-
-
-    public void PurchaseHumptyDumptySuicide()
+    void PurchaseK9Damage()
     {
-        GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>();
+        //if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        //{
+        //    BaseController baseObject = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>();
+
+        //    switch (baseObject.maxHealth)
+        //    {
+        //        case 10:
+        //            baseObject.maxHealth = 10;
+        //            break;
+        //        case 15:
+        //            baseObject.maxHealth = 20;
+        //            break;
+        //        case 20:
+        //            baseObject.maxHealth = 25;
+        //            break;
+        //        case 25:
+        //            break;
+        //    }
+
+        //    playerCurrentWool -= currentWoolCost;
+        //}
+    }
+
+    void PurchaseK9Cooldown()
+    {
+        //if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        //{
+        //    BaseController baseObject = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>();
+
+        //    switch (baseObject.cooldown)
+        //    {
+        //        case 10:
+        //            baseObject.maxHealth = 10;
+        //            break;
+        //        case 15:
+        //            baseObject.maxHealth = 20;
+        //            break;
+        //        case 20:
+        //            baseObject.maxHealth = 25;
+        //            break;
+        //        case 25:
+        //            break;
+        //    }
+
+        //    playerCurrentWool -= currentWoolCost;
+        //}
+    }
+
+    void PurchaseShearikenDamage()
+    {
+        if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        {
+            LongController sheariken = GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>();
+
+            switch (sheariken.Damage)
+            {
+                case 1.0f:
+                    sheariken.Damage = 1.5f;
+                    break;
+                case 1.5f:
+                    sheariken.Damage = 2.0f;
+                    break;
+                case 2.0f:
+                    break;
+            }
+
+            playerCurrentWool -= currentWoolCost;
+        }
+    }
+
+    void PurchaseShearikenAccuracy()
+    {
+        if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        {
+            LongController sheariken = GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>();
+
+            switch (sheariken.PassEnemies)
+            {
+                case 1:
+                    sheariken.PassEnemies = 2;
+                    break;
+                case 2:
+                    sheariken.PassEnemies = 3;
+                    break;
+                case 3:
+                    break;
+            }
+
+            playerCurrentWool -= currentWoolCost;
+        }
+    }
+
+    void PurchaseOldMacdonaldAoE()
+    {
+        if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        {
+            ShortController oldMacdonald = GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShortController>();
+
+            switch (oldMacdonald.YScale)
+            {
+                case 2.5f:
+                    oldMacdonald.YScale = 3.5f;
+                    break;
+                case 3.5f:
+                    oldMacdonald.YScale = 4.5f;
+                    break;
+                case 4.5f:
+                    break;
+            }
+
+            playerCurrentWool -= currentWoolCost;
+        }
+    }
+
+    void PurchaseOldMacdonaldCooldown()
+    {
+        if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        {
+            ShortController oldMacdonald = GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShortController>();
+
+            switch (oldMacdonald.CooldowntimeFull)
+            {
+                case 3.0f:
+                    oldMacdonald.CooldowntimeFull = 2.5f;
+                    break;
+                case 2.5f:
+                    oldMacdonald.CooldowntimeFull = 2.0f;
+                    break;
+                case 2.0f:
+                    break;
+            }
+
+            playerCurrentWool -= currentWoolCost;
+        }
     }
 }
