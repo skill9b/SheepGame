@@ -5488,6 +5488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313a09f41b7b2974790bf6cc36e44b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 2
   waves:
   - name: 1.1
     sheep: {fileID: 7915623186855024290, guid: bec6de8fee9d7c04aa1a4c6b738a3b2b, type: 3}

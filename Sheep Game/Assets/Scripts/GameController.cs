@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+
+    ///////////////////////////////// VARIABLES ///////////////
     public enum Level
     {
         Inbetween,
@@ -30,10 +32,13 @@ public class GameController : MonoBehaviour
     public Level nextLevel;
     public int checkWin;
 
+
+    /////////////////////////////// FUNCTIONS ///////////////
+  
     void Start()
     {
         DeactivateAllLevels();
-        currentlevel = Level.Inbetween;
+        currentlevel = Level.One;
         nextLevel = currentlevel + 1;
         checkWin = 0;
     }
@@ -61,6 +66,7 @@ public class GameController : MonoBehaviour
               ///nextLevel++;
               ///         
         }
+
         if (currentlevel == Level.One) //&& (check == 0))
         {
             ChangeLevel(1);
@@ -85,7 +91,6 @@ public class GameController : MonoBehaviour
         {
             ChangeLevel(6);
         }
-
 
         if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().currentHealth == 0)
         {

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4428682344661615920}
   - component: {fileID: -1225120120979363274}
   - component: {fileID: 658866996395272662}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EggBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &-1225120120979363274
 BoxCollider2D:
@@ -125,7 +125,7 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
@@ -141,3 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579afd924bb36aa45a8429b22b7a177f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {x: 5.294571, y: -1.2681292, z: 0}
+  xDistance: 13.856142
+  damage: 1
+  AoeObject: {fileID: 101303286558475408, guid: ae3c79b2fbc4205478e2dc2ff6875b27,
+    type: 3}

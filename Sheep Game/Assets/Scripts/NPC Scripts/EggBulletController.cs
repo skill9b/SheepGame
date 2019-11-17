@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class EggBulletController : MonoBehaviour
 {
+    public Vector3 target;
     public float xDistance;
     public int damage;
+    bool bShowAoE = false;
+
+    public GameObject AoeObject;
 
     float velocityX;
     float velocityY;
@@ -13,9 +17,12 @@ public class EggBulletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         float t = 1;
         float s = 3;
+
+        Debug.Log("Current x: " + transform.position.x);
+        Debug.Log("Target x: " + target.x);
+        Debug.Log("Distance x: " + xDistance);
 
         xDistance = (xDistance / 1.60f) - 1.2f;
 
@@ -37,11 +44,35 @@ public class EggBulletController : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(velocityX, velocityY);
     }
 
+    void Update()
+    {
+
+        // if target reached, destroy game object and switch on AoE object attached
+        if (transform.position.x >= target.x)
+        {
+            Debug.Log("Target reached.");
+            bShowAoE = true;
+        }
+
+        if (bShowAoE)
+        {
+            CreateAoE();
+        }
+    }
+
+    void CreateAoE()
+    {
+        AoeObject.GetComponent<EggAoeController>().damage = damage;
+        Instantiate(AoeObject, transform.position, transform.rotation);
+        Debug.Log("Created AoE");
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.GetComponent<ParentSheepController>().TakeDamage(damage);
+            CreateAoE();
             Destroy(gameObject);
         }
 

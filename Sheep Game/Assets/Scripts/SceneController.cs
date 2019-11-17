@@ -10,12 +10,6 @@ public class SceneController : MonoBehaviour
     public int bulletsMissed;
 
     public float healthLost;
-    int currentSceneIndex;
-    bool isShowingTutorial = false;
-
-
-
-
 
     void Update()
     {

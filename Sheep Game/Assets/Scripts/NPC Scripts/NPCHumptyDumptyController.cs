@@ -40,7 +40,10 @@ public class NPCHumptyDumptyController : MonoBehaviour
         canFire = true;
         maxEggCountdown = eggCountdown;
 
-        target = suicideTarget.position; 
+        target = suicideTarget.position;
+
+        // Ignore collisions between sheep and eggbullet layer
+        Physics2D.IgnoreLayerCollision(8, 9);
     }
 
     // Update is called once per frame
@@ -76,6 +79,10 @@ public class NPCHumptyDumptyController : MonoBehaviour
     {
         // Set the target distance for egg
         eggPrefab.GetComponent<EggBulletController>().xDistance = Mathf.Abs(transform.position.x - _target.x);
+        eggPrefab.GetComponent<EggBulletController>().target = _target;
+
+        //Transform eggBullet = Instantiate(eggPrefab) as Transform;
+        //Physics.IgnoreCollision(eggBullet.GetComponent<Collider>(), GetComponent<Collider>());
         Instantiate(eggPrefab, transform.position, transform.rotation);
     }
 

@@ -95,7 +95,7 @@ public class ParentSheepController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.tag);
+        //Debug.Log(other.gameObject.tag);
        //if (other.gameObject.tag == "Base")
        //{
        //    currentState = State.Attacking;
@@ -121,7 +121,6 @@ public class ParentSheepController : MonoBehaviour
         {
             transform.position -= new Vector3(speed * 0.1f, 0, 0);
             currentState = State.Attacking;
-
         }
     }
     public void OnTriggerExit2D(Collider2D collision)
