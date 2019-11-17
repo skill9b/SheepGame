@@ -8638,8 +8638,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b758a92e53c1c3040b91c4cd107d0015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerWool: {fileID: 149013115}
-  currentWoolCost: {fileID: 675487643}
+  playerWoolDisplay: {fileID: 0}
+  currentWoolCostDisplay: {fileID: 0}
   descriptionBox: {fileID: 361153403}
   WeaponsPanel: {fileID: 1044133507}
   SupportPanel: {fileID: 1382512567}
@@ -8656,7 +8656,7 @@ MonoBehaviour:
   K9DamageBar: {fileID: 706051148}
   K9CooldownBar: {fileID: 150238138}
   ShearikenDamageBar: {fileID: 1280753445}
-  ShearikenAcurracyBar: {fileID: 835712335}
+  ShearikenAccuracyBar: {fileID: 0}
   OldMacdonaldAoeBar: {fileID: 777451791}
   OldMacdonaldCooldownBar: {fileID: 1117862057}
   BaseHealthBar: {fileID: 1087936357}
@@ -8671,8 +8671,7 @@ MonoBehaviour:
     type: 3}
   ShearikenDamageDescription: {fileID: 21300000, guid: 2b0e9d63de45bae439ca792d15459e2a,
     type: 3}
-  ShearikenAcurracyDescription: {fileID: 21300000, guid: 1454d1ab75cb8e8408ec9ad18c590580,
-    type: 3}
+  ShearikenAccuracyDescription: {fileID: 0}
   OldMacdonaldAoeDescription: {fileID: 21300000, guid: 7ac78c2c1fee9964a855b3ca88dccc36,
     type: 3}
   OldMacdonaldCooldownDescription: {fileID: 21300000, guid: af87afc97767fd24795b11d8e3a31a33,

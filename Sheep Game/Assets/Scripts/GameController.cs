@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
     public Level currentlevel;
     public Level nextLevel;
     public int checkWin;
+    public bool goToNextLevel;
 
 
     /////////////////////////////// FUNCTIONS ///////////////
@@ -36,7 +37,8 @@ public class GameController : MonoBehaviour
     void Start()
     {
         DeactivateAllLevels();
-        //currentlevel = Level.One;
+        goToNextLevel = false;
+        ChangeLevel(1);
         //nextLevel = currentlevel + 1;
         //checkWin = 0;
     }
@@ -51,10 +53,16 @@ public class GameController : MonoBehaviour
         }
         else if (currentlevel == Level.Inbetween)
         {
+
             DeactivateAllLevels();
             UpgradeUI.SetActive(true);
             // if press button then go to next level
-            // currentLevel++;  
+            if (goToNextLevel)
+            {
+                ChangeNextLevel( ((int)currentlevel) + 1 );
+                goToNextLevel = false;
+            }
+            
 
         }
 
@@ -63,62 +71,56 @@ public class GameController : MonoBehaviour
             GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().LoseScreen();
         }
 
-        /*
-        if (currentlevel == Level.Inbetween)
-        {
-            DeactivateAllLevels();
-            UpgradeUI.SetActive(true);
-            //Disable all
-            //Enable Upgrade
-            //When finish is clicked start next level
+       
+    }
 
-
-            if (currentlevel == Level.Six)
-            {
-                //Go to win screen
-            }
-            
-            //Do check for button here
-              ///currentlevel = nextLevel;
-              ///nextLevel++;
-              ///         
-        }
-
-        if (currentlevel == Level.One) 
+    void ChangeNextLevel(int _nextLevel)
+    {
+        switch (_nextLevel)
         {
-            DeactivateAllLevels();
-            ActivateLevel(1);
+            case 0:
+                {
+                    nextLevel = Level.Inbetween;
+                    break;
+                }
+            case 1:
+                {
+                    nextLevel = Level.One;
+                    break;
+                }
+            case 2:
+                {
+                    nextLevel = Level.Two;
+                    break;
+                }
+            case 3:
+                {
+                    nextLevel = Level.Three;
+                    break;
+                }
+            case 4:
+                {
+                    nextLevel = Level.Four;
+                    break;
+                }
+            case 5:
+                {
+                    nextLevel = Level.Five;
+                    break;
+                }
+            case 6:
+                {
+                    nextLevel = Level.Six;
+                    break;
+                }
+            case 7:
+                {
+                    //Go to win screen
+                    //GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().LoseScreen();
+                    break;
+                }
         }
-        else if(currentlevel == Level.Two)
-        {
-            DeactivateAllLevels();
-            ActivateLevel(2);
-        }
-        else if (currentlevel == Level.Three)
-        {
-            DeactivateAllLevels();
-            ActivateLevel(3);
-        }
-        else if (currentlevel == Level.Four)
-        {
-            DeactivateAllLevels();
-            ActivateLevel(4);
-        }
-        else if (currentlevel == Level.Five)
-        {
-            DeactivateAllLevels();
-            ActivateLevel(5);
-        }
-        else if (currentlevel == Level.Six)
-        {
-            DeactivateAllLevels();
-            ActivateLevel(6);
-        }
-
-        if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().currentHealth == 0)
-        {
-            //Go to lose screen
-        }*/
+        
     }
 
     void DeactivateAllLevels()
@@ -192,5 +194,10 @@ public class GameController : MonoBehaviour
         {
             Level6.SetActive(true);
         }
+    }
+
+    public void PressFinish()
+    {
+        goToNextLevel = true;
     }
 }
