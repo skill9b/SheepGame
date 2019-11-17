@@ -5,7 +5,7 @@ using UnityEngine;
 public class LongBulletController : MonoBehaviour
 {
     public int damage;
-    public int PassEnemies = 3;
+    public int PassEnemies;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
