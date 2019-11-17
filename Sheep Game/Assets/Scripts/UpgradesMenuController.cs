@@ -300,15 +300,15 @@ public class UpgradesMenuController : MonoBehaviour
         }
 
         // Sheariken Accuracy
-        if (GameObject.FindGameObjectWithTag("LongBullet").GetComponent<LongController>().PassEnemies == 1)
+        if (GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().PassEnemies == 1)
         {
             ShearikenAccuracyBar.sprite = twoIncrementEmpty;
         }
-        else if (GameObject.FindGameObjectWithTag("LongBullet").GetComponent<LongController>().PassEnemies == 2)
+        else if (GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().PassEnemies == 2)
         {
             ShearikenAccuracyBar.sprite = twoIncrementHalf;
         }
-        else if (GameObject.FindGameObjectWithTag("LongBullet").GetComponent<LongController>().PassEnemies == 3)
+        else if (GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().PassEnemies == 3)
         {
             ShearikenAccuracyBar.sprite = twoIncrementFull;
         }
@@ -426,6 +426,8 @@ public class UpgradesMenuController : MonoBehaviour
         //}
 
         descriptionBox.sprite = K9DamageDescription;
+
+        currentUpgrade = CurrentUpgrade.K9_DAMAGE;
     }
 
     public void SetK9CooldownDescription()
@@ -446,6 +448,8 @@ public class UpgradesMenuController : MonoBehaviour
         //}
 
         descriptionBox.sprite = K9CooldownDescription;
+
+        currentUpgrade = CurrentUpgrade.K9_COOLDOWN;
     }
 
     public void SetShearikenDamageDescription()
@@ -466,6 +470,8 @@ public class UpgradesMenuController : MonoBehaviour
         }
 
         descriptionBox.sprite = ShearikenDamageDescription;
+
+        currentUpgrade = CurrentUpgrade.SHEARIKEN_DAMAGE;
     }
 
     public void SetShearikenAcurracyDescription()
@@ -486,6 +492,8 @@ public class UpgradesMenuController : MonoBehaviour
         }
 
         descriptionBox.sprite = ShearikenAccuracyDescription;
+
+        currentUpgrade = CurrentUpgrade.SHEARIKEN_ACCURACY;
     }
 
     public void SetOldMacdonaldAoeDescription()
@@ -506,6 +514,8 @@ public class UpgradesMenuController : MonoBehaviour
         }
 
         descriptionBox.sprite = OldMacdonaldAoeDescription;
+
+        currentUpgrade = CurrentUpgrade.OLDMACDONALD_AOE;
     }
 
     public void SetOldMacdonaldCooldownDescription()
@@ -526,6 +536,8 @@ public class UpgradesMenuController : MonoBehaviour
         }
 
         descriptionBox.sprite = OldMacdonaldCooldownDescription;
+
+        currentUpgrade = CurrentUpgrade.OLDMACDONALD_COOLDOWN;
     }
 
     public void SetBaseHealthDescription()
@@ -546,6 +558,8 @@ public class UpgradesMenuController : MonoBehaviour
         //}
 
         descriptionBox.sprite = BaseHealthDescription;
+
+        currentUpgrade = CurrentUpgrade.BASE_MAXHEALTH;
     }
 
     public void SetBaseRegenDescription()
@@ -560,6 +574,8 @@ public class UpgradesMenuController : MonoBehaviour
         {
             currentWoolCost = -1;
         }
+
+        currentUpgrade = CurrentUpgrade.BASE_REGEN;
     }
 
     public void SetWolfBlowingPowerDescription()
@@ -580,6 +596,8 @@ public class UpgradesMenuController : MonoBehaviour
         }
 
         descriptionBox.sprite = WolfBlowingPowerDescription;
+
+        currentUpgrade = CurrentUpgrade.WOLF_BLOWINGPOWER;
     }
     public void SetWolfCooldownDescription()
     {
@@ -599,6 +617,8 @@ public class UpgradesMenuController : MonoBehaviour
         }
 
         descriptionBox.sprite = WolfCooldownDescription;
+
+        currentUpgrade = CurrentUpgrade.WOLF_COOLDOWN;
     }
 
     public void SetHumptyFireRateDescription()
@@ -619,6 +639,8 @@ public class UpgradesMenuController : MonoBehaviour
         }
 
         descriptionBox.sprite = HumptyFireRateDescription;
+
+        currentUpgrade = CurrentUpgrade.HUMPTY_FIRERATE;
     }
 
     public void SetHumptySuicideDescription()
@@ -635,6 +657,8 @@ public class UpgradesMenuController : MonoBehaviour
         }
 
         descriptionBox.sprite = HumptySuicideDescription;
+
+        currentUpgrade = CurrentUpgrade.HUMPTY_SUICIDE;
     }
 
 
