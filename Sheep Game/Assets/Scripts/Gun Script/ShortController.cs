@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShortController : MonoBehaviour
 {
+    public bool bCanFire = true;
+
     public GameObject Bullet;
     public GameObject Gun;
     public Camera MainCamera;
@@ -32,25 +34,29 @@ public class ShortController : MonoBehaviour
 
         Vector3 difference = Target - Gun.transform.position;
 
-        if (Input.GetMouseButtonDown(0))
+        if (bCanFire)
         {
-            float distance = difference.magnitude;
-            Vector2 direction = difference / distance;
-            direction.Normalize();
-
-
-            if (Input.mousePosition.x == 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                Speed = 0;
-            }
-            else
-            {
-                Speed = Input.mousePosition.x / SpeedController;
-            }
+                float distance = difference.magnitude;
+                Vector2 direction = difference / distance;
+                direction.Normalize();
 
-            Fire(direction, Speed);
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets++;
+
+                if (Input.mousePosition.x == 0)
+                {
+                    Speed = 0;
+                }
+                else
+                {
+                    Speed = Input.mousePosition.x / SpeedController;
+                }
+
+                Fire(direction, Speed);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets++;
+            }
         }
+        
     }
 
     //WaitForSecond returns a IEnumerator type, which is why it's it's own function

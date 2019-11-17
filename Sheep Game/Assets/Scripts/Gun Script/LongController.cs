@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class LongController : MonoBehaviour
 {
+    public bool bCanFire = true;
+
     public GameObject Bullet;
     public GameObject Gun;
     public Camera MainCamera;
@@ -23,16 +25,16 @@ public class LongController : MonoBehaviour
     private float LastShot = 0;
     private float Speed = 40;
 
-    public GameObject cooldownObject;
-    public ProgressBarCircle cooldownBar;
+    // public GameObject cooldownObject;
+    // public ProgressBarCircle cooldownBar;
     private bool HasFired;
 
     public bool GunStats;
 
     void Start()
     {
-        cooldownObject.SetActive(true);
-        cooldownBar.BarValue = 100;
+       // cooldownObject.SetActive(true);
+       // cooldownBar.BarValue = 100;
     }
 
     // Update is called once per frame
@@ -42,25 +44,29 @@ public class LongController : MonoBehaviour
 
         Vector3 difference = Target - Gun.transform.position;
 
-        if (Input.GetMouseButtonDown(0))
+        if (bCanFire)
         {
-            float distance = difference.magnitude;
-            Vector2 direction = difference / distance;
-            direction.Normalize();
-
-            //Unity has issues with high speed collisions, meaning that the speed cannot vary otherwise stuff will glitch out
-            /*if (Input.mousePosition.x == 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                Speed = 0;
+                float distance = difference.magnitude;
+                Vector2 direction = difference / distance;
+                direction.Normalize();
+
+                //Unity has issues with high speed collisions, meaning that the speed cannot vary otherwise stuff will glitch out
+                /*if (Input.mousePosition.x == 0)
+                {
+                    Speed = 0;
+                }
+                else
+                {
+                    Speed = Input.mousePosition.x / SpeedController;
+                }*/
+
+                Fire(direction, Speed);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets++;
             }
-            else
-            {
-                Speed = Input.mousePosition.x / SpeedController;
-            }*/
-
-            Fire(direction, Speed);
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets++;
         }
+        
 
     }
 
@@ -88,7 +94,7 @@ public class LongController : MonoBehaviour
                 b.GetComponent<Rigidbody2D>().velocity = //-direction * Speed;
                 b.GetComponent<Rigidbody2D>().velocity += Vector2.right * Speed;
 
-                cooldownBar.BarValue -= (100 / Mag);
+                // cooldownBar.BarValue -= (100 / Mag);
                 BulletCount += 1;
 
                 if (Time.time > CooldowntimeNotFull + LastShot) //Reduce the "Heat" cool down by a bit everytime the player doesn't shoot"

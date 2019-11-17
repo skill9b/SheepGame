@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ArcController : MonoBehaviour
 {
+    public bool bCanFire = true;
+
     public AudioSource DogShot;
-    private bool DogHasImpact;
+    private bool bImpact;
  
     public GameObject Bullet;
     public GameObject Gun;
@@ -41,20 +43,24 @@ public class ArcController : MonoBehaviour
 
         Vector3 difference = Target - Gun.transform.position;
 
-        if (Input.GetMouseButtonDown(0))
+        if (bCanFire)
         {
-            float distance = difference.magnitude;
-            Vector2 direction = difference / distance;
-            direction.Normalize();
+            if (Input.GetMouseButtonDown(0))
+            {
+                float distance = difference.magnitude;
+                Vector2 direction = difference / distance;
+                direction.Normalize();
 
-            Speed = 10;
-            MousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            Fire(direction, Speed);
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets++;
+                Speed = 10;
+                MousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                Fire(direction, Speed);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets++;
+            }
         }
 
-        DogHasImpact = Bullet.GetComponent<ArcBulletController>().DogHasImpact;
-        if (DogHasImpact)
+
+        bImpact = Bullet.GetComponent<ArcBulletController>().bImpact;
+        if (bImpact)
         {
             if (DogShot.isPlaying)
             {
