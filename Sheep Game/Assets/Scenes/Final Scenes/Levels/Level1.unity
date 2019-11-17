@@ -2066,6 +2066,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2624856769644785158, guid: 874d4c40821281e43aa9022a4703ada5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2624856769644785156, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8625,8 +8630,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerWool: {fileID: 0}
+  currentWoolCost: {fileID: 0}
+  descriptionBox: {fileID: 0}
   WeaponsPanel: {fileID: 0}
   SupportPanel: {fileID: 0}
+  oneIncrementEmpty: {fileID: 0}
+  oneIncrementFull: {fileID: 0}
+  twoIncrementEmpty: {fileID: 0}
+  twoIncrementHalf: {fileID: 0}
+  twoIncrementFull: {fileID: 0}
+  threeIncrementEmpty: {fileID: 0}
+  threeIncrementOne: {fileID: 0}
+  threeIncrementTwo: {fileID: 0}
+  threeIncrementFull: {fileID: 0}
+  K9DamageBar: {fileID: 0}
+  K9CooldownBar: {fileID: 0}
+  ShearikenDamageBar: {fileID: 0}
+  ShearikenAcurracyBar: {fileID: 0}
+  OldMacdonaldAoeBar: {fileID: 0}
+  OldMacdonaldCooldownBar: {fileID: 0}
+  BaseHealthBar: {fileID: 0}
+  BaseRepairBar: {fileID: 0}
+  WolfBlowingPowerBar: {fileID: 0}
+  WolfCooldownBar: {fileID: 0}
+  HumptyFireRateBar: {fileID: 0}
+  HumptySuicideBar: {fileID: 0}
+  K9DamageDescription: {fileID: 0}
+  K9CooldownDescription: {fileID: 0}
+  ShearikenDamageDescription: {fileID: 0}
+  ShearikenAcurracyDescription: {fileID: 0}
+  OldMacdonaldAoeDescription: {fileID: 0}
+  OldMacdonaldCooldownDescription: {fileID: 0}
+  BaseHealthDescription: {fileID: 0}
+  BaseRepairDescription: {fileID: 0}
+  WolfBlowingPowerDescription: {fileID: 0}
+  WolfCooldownDescription: {fileID: 0}
+  HumptyFireRateDescription: {fileID: 0}
+  HumptySuicideDescription: {fileID: 0}
 --- !u!1 &2019705803
 GameObject:
   m_ObjectHideFlags: 0

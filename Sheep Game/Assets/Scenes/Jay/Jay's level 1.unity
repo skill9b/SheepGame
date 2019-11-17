@@ -120,6 +120,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &37946684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 37946685}
+  m_Layer: 0
+  m_Name: Suicide Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &37946685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37946684}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1, y: -1.75, z: -10.760066}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &116915679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1677,6 +1707,32 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1381287428}
+    - target: {fileID: 8416542628898353280, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3818608424621081072, guid: 5e8147a34eaf5664fabf6fde555aec3d,
+        type: 3}
+    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8416542628898353281, guid: a3e037081d3e9074a814f3f5dd33a947,
         type: 3}
       propertyPath: m_Enabled
@@ -1716,32 +1772,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416542628898353280, guid: a3e037081d3e9074a814f3f5dd33a947,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 3818608424621081072, guid: 5e8147a34eaf5664fabf6fde555aec3d,
-        type: 3}
-    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416542628898353285, guid: a3e037081d3e9074a814f3f5dd33a947,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8416542628898353280, guid: a3e037081d3e9074a814f3f5dd33a947, type: 3}
@@ -2085,6 +2115,8 @@ MonoBehaviour:
   speed: 4
   woolCountDisplay: {fileID: 1398741868}
   woolCount: 0
+  woolTotal: 0
+  score: 0
   totalFiredBullets: 0
   missedBullets: 0
   totalDamageTaken: 0
@@ -3563,7 +3595,7 @@ GameObject:
   - component: {fileID: 1953497053}
   m_Layer: 5
   m_Name: Remaining Waves
-  m_TagString: Untagged
+  m_TagString: RemainingWaves
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3932,7 +3964,7 @@ GameObject:
   - component: {fileID: 2026501781}
   m_Layer: 5
   m_Name: Remaining Sheep
-  m_TagString: Untagged
+  m_TagString: RemainingSheep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4296,6 +4328,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5116687139915379231, guid: 75c382ce88393804c895db0de5d5a156,
         type: 3}
+    - target: {fileID: 6294399771435813942, guid: eda2c08c923e9674e9133ffba2e14efe,
+        type: 3}
+      propertyPath: suicideTarget
+      value: 
+      objectReference: {fileID: 37946685}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eda2c08c923e9674e9133ffba2e14efe, type: 3}
 --- !u!1 &2072445358
