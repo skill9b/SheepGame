@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     private Rigidbody2D rb2d;
-
+    public Animator animator;
     public Text woolCountDisplay;
     public int woolCount; //Wool gained each level
     public int woolTotal; //Total wool that you add woolGained, wool that you spend 
@@ -30,10 +30,22 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
     
+        if ((vertical == 0) && (horizontal == 0))
+        {
+            animator.SetBool("Moving", false) ;
+        }
+        else
+        {
+            animator.SetBool("Moving", true);
+        }
+
         // Player Movement
         Vector2 position = rb2d.position;
         position.x += speed * horizontal * Time.deltaTime;
         position.y += speed * vertical * Time.deltaTime;
+
+        
+
         rb2d.MovePosition(position);
 
         // woolCountDisplay.text = "Wool Count: " + woolCount.ToString();
