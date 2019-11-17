@@ -175,44 +175,14 @@ public class UpgradesMenuController : MonoBehaviour
         }
         else if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().maxHealth == 15)
         {
-            BaseHealthBar.sprite = threeIncrementOne;
+            BaseRepairBar.sprite = threeIncrementOne;
         }
         else if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().maxHealth == 20)
         {
-            BaseHealthBar.sprite = threeIncrementTwo;
+            BaseRepairBar.sprite = threeIncrementTwo;
         }
         else if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().maxHealth == 25)
         {
-            BaseHealthBar.sprite = threeIncrementFull;
-        }
-
-        // K9 Damage Increase 
-        //if (GameObject.FindGameObjectWithTag("K9Bullet").GetComponent<ArcBulletController>().damage == 10)
-        //{
-        //    K9DamageBar.sprite = twoIncrementEmpty;
-        //}
-        //else if (GameObject.FindGameObjectWithTag("K9Bullet").GetComponent<ArcBulletController>().maxHealth == 15)
-        //{
-        //    K9DamageBar.sprite = twoIncrementHalf;
-        //}
-        //else if (GameObject.FindGameObjectWithTag("K9Bullet").GetComponent<ArcBulletController>().maxHealth == 20)
-        //{
-        //    K9DamageBar.sprite = twoIncrementFull;
-        //}
-
-        // K9 Cooldown Increase 
-        //if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcBulletController>().damage == 10)
-        //{
-        //    K9CooldownBar.sprite = twoIncrementEmpty;
-        //}
-        //else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<BaseController>().maxHealth == 15)
-        //{
-        //    K9CooldownBar.sprite = twoIncrementHalf;
-        //}
-        //else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<BaseController>().maxHealth == 20)
-        //{
-        //    K9CooldownBar.sprite = twoIncrementFull;
-        //}
 
     }
 

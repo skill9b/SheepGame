@@ -23,8 +23,6 @@ TagManager:
   - RemainingSheep
   - Tutorial
   - HumptyDumptyFloor
-  - LongGun
-  - Shotgun
   layers:
   - Default
   - TransparentFX
