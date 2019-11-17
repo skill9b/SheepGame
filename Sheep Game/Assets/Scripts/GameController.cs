@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
   
     void Start()
     {
-        //DeactivateAllLevels();
+        DeactivateAllLevels();
         currentlevel = Level.One;
         nextLevel = currentlevel + 1;
         checkWin = 0;
@@ -70,7 +70,6 @@ public class GameController : MonoBehaviour
         if (currentlevel == Level.One) //&& (check == 0))
         {
             ChangeLevel(1);
-            Debug.Log("Start Level One");
         }
         else if(currentlevel == Level.Two)
         {

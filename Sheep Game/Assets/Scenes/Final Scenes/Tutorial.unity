@@ -922,7 +922,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press 2 to switch to Shear-ikens
+  m_Text: Press 2 to throw Shear-ikens
 --- !u!222 &1691730758
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1001,7 +1001,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press 1 to switch to the K9 Kannon
+  m_Text: Press 1 to fire the K9 Kannon
 --- !u!222 &1735576335
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1159,7 +1159,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press 3 to switch to Old MacDonald
+  m_Text: Press 3 to use Old MacDonald
 --- !u!222 &2056197230
 CanvasRenderer:
   m_ObjectHideFlags: 0
