@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShortBulletController : MonoBehaviour
+public class ShortBulletController : ShortController
 {
-    public float damage;
     public float Seconds;
+
+    private void Start()
+    {
+        transform.localScale += new Vector3(0, YScale, 0);
+    }
 
     //WaitForSecond returns a IEnumerator type, which is why it's it's own function
     IEnumerator Wait(float Seconds)
@@ -25,7 +29,7 @@ public class ShortBulletController : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             Debug.Log(other.GetComponent<ParentSheepController>().currentState);
-            other.GetComponent<ParentSheepController>().TakeDamage(damage);
+            other.GetComponent<ParentSheepController>().TakeDamage(Damage);
             //Destroy(gameObject);
         }
 

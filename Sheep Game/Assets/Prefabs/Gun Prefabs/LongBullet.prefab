@@ -141,5 +141,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc5e6361c62b584478e3e767b0149f00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  Bullet: {fileID: 0}
+  Gun: {fileID: 0}
+  MainCamera: {fileID: 0}
+  Offset: 0
+  FireRate: 1
+  Mag: 5
+  CooldowntimeFull: 5
+  CooldowntimeNotFull: 2
+  Damage: 1
+  cooldownObject: {fileID: 0}
+  cooldownBar: {fileID: 0}
   PassEnemies: 1

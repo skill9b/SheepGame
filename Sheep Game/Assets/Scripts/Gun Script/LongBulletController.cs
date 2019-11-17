@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LongBulletController : MonoBehaviour
+public class LongBulletController : LongController
 {
-    public int damage;
-    public int PassEnemies = 3;
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.GetComponent<ParentSheepController>().TakeDamage(damage);
+            other.GetComponent<ParentSheepController>().TakeDamage(Damage);
 
             if (PassEnemies <= 0)
             {

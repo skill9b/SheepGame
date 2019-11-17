@@ -6,14 +6,12 @@ public class ArcBulletController : ArcController
 {
     AudioSource DogImpact;
 
-    public int damage;
-
-    public float ColX = 0.2f, ColY = 0.2f;
     private BoxCollider2D AOE;
 
     private Vector2 acceleration;
 
     public float xDistance;
+    public float ColX = 0.2f, ColY = 2.5f;
 
     float velocityX;
     float velocityY;
@@ -65,12 +63,12 @@ public class ArcBulletController : ArcController
         float xcheck = Mathf.Abs(MOUSEPOSITION.x - transform.position.x);
         float ycheck = Mathf.Abs(MOUSEPOSITION.y - transform.position.y);
 
-        if ((xcheck < 0.4) && (ycheck < 0.4)) 
+        if ((xcheck < 0.3) && (ycheck < 0.3)) 
         {
             if (other.gameObject.tag == "Enemy")
             {
                 DogImpact.Play(0);
-                other.GetComponent<ParentSheepController>().TakeDamage(damage);
+                other.GetComponent<ParentSheepController>().TakeDamage(Damage);
                 //Add Code to instantiate animation and then only destroy the bullet
                 if (!DogImpact.isPlaying)
                 {

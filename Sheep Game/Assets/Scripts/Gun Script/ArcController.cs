@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class ArcController : MonoBehaviour
 {
     AudioSource DogShot;
@@ -11,12 +10,15 @@ public class ArcController : MonoBehaviour
     public Camera mainCamera;
 
     // [SerializeField] float SpeedController = 100;
-    [SerializeField] float Offset = 0;
-    [SerializeField] float FireRate = 1;
-    [SerializeField] int Mag = 5;
-    [SerializeField] float CooldowntimeFull = 5f;
-    [SerializeField] int CooldowntimeNotFull = 2;
+    public float Offset = 0;
+    public float FireRate = 1;
+    public int Mag = 5;
+    public float CooldowntimeFull = 5f;
+    public int CooldowntimeNotFull = 2;
     private int BulletCount = 0;
+
+    public int Damage = 1;
+   
 
     private Vector3 Target;
     public Vector2 MousePosition;

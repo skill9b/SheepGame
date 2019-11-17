@@ -16,6 +16,9 @@ public class LongController : MonoBehaviour
     [SerializeField] int CooldowntimeNotFull = 2;
     private int BulletCount = 0;
 
+    public int Damage = 1;
+    public int PassEnemies = 2;
+
     private Vector3 Target;
     private float LastShot = 0;
     private float Speed = 40;

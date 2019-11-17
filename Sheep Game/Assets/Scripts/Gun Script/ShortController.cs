@@ -8,13 +8,16 @@ public class ShortController : MonoBehaviour
     public GameObject Gun;
     public Camera MainCamera;
 
-    [SerializeField] float SpeedController = 100;
-    [SerializeField] float Offset = 0;
-    [SerializeField] float FireRate = 1;
-    [SerializeField] int Mag = 5;
-    [SerializeField] float CooldowntimeFull = 5f;
-    [SerializeField] int CooldowntimeNotFull = 2;
+    public float SpeedController = 100;
+    public float Offset = 0;
+    public float FireRate = 1;
+    public int Mag = 5;
+    public float CooldowntimeFull = 5f;
+    public int CooldowntimeNotFull = 2;
     private int BulletCount = 0;
+
+    public float Damage = 1;
+    public float YScale = 2.5f;
 
     private Vector3 Target;
     private float LastShot = 0;
