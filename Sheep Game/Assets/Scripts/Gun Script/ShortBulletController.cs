@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShortBulletController : ShortController
+public class ShortBulletController : MonoBehaviour
 {
     public float Seconds;
 
+    private float damage;
+    private float YScale;
+
     private void Start()
     {
+        damage = GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShortController>().Damage;
+        YScale = GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShortController>().YScale;
+
         transform.localScale += new Vector3(0, YScale, 0);
     }
 
@@ -29,8 +35,8 @@ public class ShortBulletController : ShortController
         if (other.gameObject.tag == "Enemy")
         {
             Debug.Log(other.GetComponent<ParentSheepController>().currentState);
-            other.GetComponent<ParentSheepController>().TakeDamage(Damage);
-            //Destroy(gameObject);
+            other.GetComponent<ParentSheepController>().TakeDamage(damage);
+            Destroy(gameObject);
         }
 
         if (other.gameObject.tag == "Floor")

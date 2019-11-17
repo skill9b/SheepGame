@@ -5,6 +5,7 @@ using UnityEngine;
 public class ArcBulletController : ArcController
 {
     AudioSource DogImpact;
+    private AudioSource DogHasImpact;
 
     private BoxCollider2D AOE;
 
@@ -16,10 +17,15 @@ public class ArcBulletController : ArcController
     float velocityX;
     float velocityY;
 
+    private float damage;
+
     Vector3 STUPIDMOUSEPOSITION;
     Vector3 MOUSEPOSITION;
     private void Start()
     {
+        damage = GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().Damage;
+        DogHasImpact = GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().DogShot;
+
         DogImpact = GetComponent<AudioSource>();
 
         mainCamera = GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().mainCamera;
@@ -67,13 +73,11 @@ public class ArcBulletController : ArcController
         {
             if (other.gameObject.tag == "Enemy")
             {
+                transform.localScale = new Vector3(0.001f, 0.001f, 0);
+                DogHasImpact.Stop();
                 DogImpact.Play(0);
-                other.GetComponent<ParentSheepController>().TakeDamage(Damage);
-                //Add Code to instantiate animation and then only destroy the bullet
-                if (!DogImpact.isPlaying)
-                {
-                    Destroy(gameObject);
-                }
+                other.GetComponent<ParentSheepController>().TakeDamage(damage);
+                //Add Code to instantiate animation and then only destroy the bullet   
             }
         }
     }
