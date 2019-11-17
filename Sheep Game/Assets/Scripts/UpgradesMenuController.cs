@@ -175,16 +175,33 @@ public class UpgradesMenuController : MonoBehaviour
         }
         else if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().maxHealth == 15)
         {
-            BaseRepairBar.sprite = threeIncrementOne;
+            BaseHealthBar.sprite = threeIncrementOne;
         }
         else if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().maxHealth == 20)
         {
-            BaseRepairBar.sprite = threeIncrementTwo;
+            BaseHealthBar.sprite = threeIncrementTwo;
         }
         else if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().maxHealth == 25)
         {
-            BaseRepairBar.sprite = threeIncrementFull;
+            BaseHealthBar.sprite = threeIncrementFull;
         }
+
+        // K9 Damage Increase 
+        if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<BaseController>().maxHealth == 10)
+        {
+            BaseHealthBar.sprite = threeIncrementEmpty;
+        }
+        else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<BaseController>().maxHealth == 15)
+        {
+            BaseRepairBar.sprite = threeIncrementOne;
+        }
+        else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<BaseController>().maxHealth == 20)
+        {
+            BaseRepairBar.sprite = threeIncrementTwo;
+        }
+
+
+
     }
 
     /////////////////////// Set Description sprite functions 
