@@ -61,7 +61,7 @@ public class EggBulletController : MonoBehaviour
     {
         AoeObject.GetComponent<EggAoeController>().damage = damage;
         Instantiate(AoeObject, transform.position, transform.rotation);
-        Debug.Log("Created AoE");
+        // Debug.Log("Created AoE");
         Destroy(gameObject);
     }
 

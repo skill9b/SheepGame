@@ -26,6 +26,10 @@ public class GameController : MonoBehaviour
     public GameObject Level6;
     public GameObject UpgradeUI;
 
+    public GameObject ArcGun;
+    public GameObject LongGun;
+    public GameObject ShotGun;
+
     public Level currentlevel;
     public Level nextLevel;
     public int checkWin;
@@ -36,6 +40,8 @@ public class GameController : MonoBehaviour
   
     void Start()
     {
+
+        UpgradeUI.SetActive(false);
         DeactivateAllLevels();
         goToNextLevel = false;
         ChangeLevel(1);
@@ -55,14 +61,16 @@ public class GameController : MonoBehaviour
         {
 
             DeactivateAllLevels();
+            DisableGunShooting();
             UpgradeUI.SetActive(true);
             // if press Finish button then go to next level
             if (goToNextLevel)
             {
+                EnableGunShooting();
+                UpgradeUI.SetActive(false);
                 ChangeNextLevel( ((int)currentlevel) + 1 );
                 goToNextLevel = false;
             }
-            
 
         }
 
@@ -71,7 +79,6 @@ public class GameController : MonoBehaviour
             //GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().LoseScreen();
         }
 
-       
     }
 
     void ChangeNextLevel(int _nextLevel)
@@ -194,6 +201,28 @@ public class GameController : MonoBehaviour
         {
             Level6.SetActive(true);
         }
+    }
+
+    void DisableGunShooting()
+    {
+        ArcGun.SetActive(true);
+        LongGun.SetActive(true);
+        ShotGun.SetActive(true);
+
+        ArcGun.GetComponent<ArcController>().bCanFire = false;
+        LongGun.GetComponent<LongController>().bCanFire = false;
+        ShotGun.GetComponent<ShortController>().bCanFire = false;
+    }
+
+    void EnableGunShooting()
+    {
+        ArcGun.SetActive(false);
+        LongGun.SetActive(true);
+        ShotGun.SetActive(false);
+
+        ArcGun.GetComponent<ArcController>().bCanFire = true;
+        LongGun.GetComponent<LongController>().bCanFire = true;
+        ShotGun.GetComponent<ShortController>().bCanFire = true;
     }
 
     public void PressFinish()

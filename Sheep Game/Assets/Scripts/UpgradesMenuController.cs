@@ -92,7 +92,6 @@ public class UpgradesMenuController : MonoBehaviour
         playerWoolDisplay.text = playerCurrentWool.ToString();
 
         SetK9DamageDescription(); // sets description and current woolcost to be K9 as default
-
         descriptionBox.sprite = currentDescription;
         currentWoolCostDisplay.text = currentWoolCost.ToString();
         currentUpgrade = CurrentUpgrade.K9_DAMAGE;
@@ -174,7 +173,7 @@ public class UpgradesMenuController : MonoBehaviour
     void DisplayAllCurrentProgressBars()  
     {
         // Humpty Dumpty Fire Rate
-        if (GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>().eggCountdown == 1.0f)
+        if (GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>().eggCountdown == 2.0f)
         {
             HumptyFireRateBar.sprite = twoIncrementEmpty;
         }
@@ -182,7 +181,7 @@ public class UpgradesMenuController : MonoBehaviour
         {
             HumptyFireRateBar.sprite = twoIncrementHalf;
         }
-        else if (GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>().eggCountdown == 2.0f)
+        else if (GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>().eggCountdown == 1.0f)
         {
             HumptyFireRateBar.sprite = twoIncrementFull;
         }
@@ -425,7 +424,7 @@ public class UpgradesMenuController : MonoBehaviour
         //        break;
         //}
 
-        descriptionBox.sprite = K9DamageDescription;
+        currentDescription = K9DamageDescription;
 
         currentUpgrade = CurrentUpgrade.K9_DAMAGE;
     }
@@ -447,7 +446,7 @@ public class UpgradesMenuController : MonoBehaviour
         //        break;
         //}
 
-        descriptionBox.sprite = K9CooldownDescription;
+        currentDescription = K9CooldownDescription;
 
         currentUpgrade = CurrentUpgrade.K9_COOLDOWN;
     }
@@ -469,7 +468,7 @@ public class UpgradesMenuController : MonoBehaviour
                 break;
         }
 
-        descriptionBox.sprite = ShearikenDamageDescription;
+        currentDescription = ShearikenDamageDescription;
 
         currentUpgrade = CurrentUpgrade.SHEARIKEN_DAMAGE;
     }
@@ -491,7 +490,7 @@ public class UpgradesMenuController : MonoBehaviour
                 break;
         }
 
-        descriptionBox.sprite = ShearikenAccuracyDescription;
+        currentDescription = ShearikenAccuracyDescription;
 
         currentUpgrade = CurrentUpgrade.SHEARIKEN_ACCURACY;
     }
@@ -513,7 +512,7 @@ public class UpgradesMenuController : MonoBehaviour
                 break;
         }
 
-        descriptionBox.sprite = OldMacdonaldAoeDescription;
+        currentDescription = OldMacdonaldAoeDescription;
 
         currentUpgrade = CurrentUpgrade.OLDMACDONALD_AOE;
     }
@@ -535,7 +534,7 @@ public class UpgradesMenuController : MonoBehaviour
                 break;
         }
 
-        descriptionBox.sprite = OldMacdonaldCooldownDescription;
+        currentDescription = OldMacdonaldCooldownDescription;
 
         currentUpgrade = CurrentUpgrade.OLDMACDONALD_COOLDOWN;
     }
@@ -557,7 +556,7 @@ public class UpgradesMenuController : MonoBehaviour
         //        break;
         //}
 
-        descriptionBox.sprite = BaseHealthDescription;
+        currentDescription = BaseHealthDescription;
 
         currentUpgrade = CurrentUpgrade.BASE_MAXHEALTH;
     }
@@ -574,6 +573,8 @@ public class UpgradesMenuController : MonoBehaviour
         {
             currentWoolCost = -1;
         }
+
+        currentDescription = BaseRepairDescription;
 
         currentUpgrade = CurrentUpgrade.BASE_REGEN;
     }
@@ -595,7 +596,7 @@ public class UpgradesMenuController : MonoBehaviour
                 break;
         }
 
-        descriptionBox.sprite = WolfBlowingPowerDescription;
+        currentDescription = WolfBlowingPowerDescription;
 
         currentUpgrade = CurrentUpgrade.WOLF_BLOWINGPOWER;
     }
@@ -616,7 +617,7 @@ public class UpgradesMenuController : MonoBehaviour
                 break;
         }
 
-        descriptionBox.sprite = WolfCooldownDescription;
+        currentDescription = WolfCooldownDescription;
 
         currentUpgrade = CurrentUpgrade.WOLF_COOLDOWN;
     }
@@ -638,7 +639,7 @@ public class UpgradesMenuController : MonoBehaviour
                 break;
         }
 
-        descriptionBox.sprite = HumptyFireRateDescription;
+        currentDescription = HumptyFireRateDescription;
 
         currentUpgrade = CurrentUpgrade.HUMPTY_FIRERATE;
     }
@@ -656,7 +657,7 @@ public class UpgradesMenuController : MonoBehaviour
             currentWoolCost = -1;
         }
 
-        descriptionBox.sprite = HumptySuicideDescription;
+        currentDescription = HumptySuicideDescription;
 
         currentUpgrade = CurrentUpgrade.HUMPTY_SUICIDE;
     }
@@ -669,7 +670,17 @@ public class UpgradesMenuController : MonoBehaviour
         if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
         {
             NPCHumptyDumptyController humptyDumpty = GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>();
-            humptyDumpty.eggCountdown -= 0.5f;
+            switch (humptyDumpty.eggCountdown)
+            {
+                case 2.0f:
+                    humptyDumpty.eggCountdown = 1.5f;
+                    break;
+                case 1.5f:
+                    humptyDumpty.eggCountdown = 1.0f;
+                    break;
+                case 1.0f:
+                    break;
+            }
             playerCurrentWool -= currentWoolCost;
         }
     }
@@ -720,7 +731,7 @@ public class UpgradesMenuController : MonoBehaviour
                 case 7.5f:
                     wolf.blowingCountdown = 5.5f;
                     break;
-                case 0.6f:
+                case 5.5f:
                     break;
             }
 
