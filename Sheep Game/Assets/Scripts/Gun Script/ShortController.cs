@@ -23,6 +23,8 @@ public class ShortController : MonoBehaviour
     private float LastShot = 0;
     private float Speed;
 
+    public bool GunStats;
+
     // Update is called once per frame
     void Update()
     {

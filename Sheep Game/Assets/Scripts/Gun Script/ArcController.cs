@@ -27,6 +27,8 @@ public class ArcController : MonoBehaviour
     private float LastShot = 0;
     private float Speed;
 
+    public bool GunStats;
+
     private void Start()
     {
         DogShot = GetComponent<AudioSource>();

@@ -25,11 +25,14 @@ public class LongController : MonoBehaviour
 
     public GameObject cooldownObject;
     public ProgressBarCircle cooldownBar;
+    private bool HasFired;
+
+    public bool GunStats;
 
     void Start()
     {
-        //cooldownObject.SetActive(true); 
-        //cooldownBar.BarValue = 0;
+        cooldownObject.SetActive(true);
+        cooldownBar.BarValue = 100;
     }
 
     // Update is called once per frame
@@ -58,7 +61,6 @@ public class LongController : MonoBehaviour
             Fire(direction, Speed);
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets++;
         }
-        //cooldownBar.BarValue = (BulletCount / Mag) * 100;
 
     }
 
@@ -86,6 +88,7 @@ public class LongController : MonoBehaviour
                 b.GetComponent<Rigidbody2D>().velocity = //-direction * Speed;
                 b.GetComponent<Rigidbody2D>().velocity += Vector2.right * Speed;
 
+                cooldownBar.BarValue -= (100 / Mag);
                 BulletCount += 1;
 
                 if (Time.time > CooldowntimeNotFull + LastShot) //Reduce the "Heat" cool down by a bit everytime the player doesn't shoot"
