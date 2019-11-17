@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class ArcController : MonoBehaviour
 {
     AudioSource DogShot;
@@ -17,6 +16,9 @@ public class ArcController : MonoBehaviour
     public float CooldowntimeFull = 5f;
     public int CooldowntimeNotFull = 2;
     private int BulletCount = 0;
+
+    public int Damage = 1;
+   
 
     private Vector3 Target;
     public Vector2 MousePosition;

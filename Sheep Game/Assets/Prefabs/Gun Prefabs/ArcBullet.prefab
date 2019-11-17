@@ -150,8 +150,8 @@ MonoBehaviour:
   Mag: 5
   CooldowntimeFull: 5
   CooldowntimeNotFull: 2
+  Damage: 1
   MousePosition: {x: 0, y: 0}
-  damage: 100
   ColX: 0.2
   ColY: 0.2
   xDistance: 0

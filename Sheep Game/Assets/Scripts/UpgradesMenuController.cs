@@ -282,7 +282,7 @@ public class UpgradesMenuController : MonoBehaviour
     
     float GetK9CurrentDamage()
     {
-        return GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcBulletController>().damage;
+        return GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcBulletController>().Damage;
     }
 
     float GetK9CurrentCooldown()
@@ -292,12 +292,12 @@ public class UpgradesMenuController : MonoBehaviour
 
     float GetShearikenDamage()
     {
-        return GameObject.FindGameObjectWithTag.("LongGun").GetComponent<LongController>().damage;
+        return GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().Damage;
     }
 
     float GetShearikenAccuracy()
     {
-        return GameObject.FindGameObjectWithTag.("LongGun").GetComponent<LongController>().damage;
+        return GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().Damage;
     }
 
 

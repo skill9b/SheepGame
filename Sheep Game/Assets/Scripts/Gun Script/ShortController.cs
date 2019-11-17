@@ -16,6 +16,9 @@ public class ShortController : MonoBehaviour
     public int CooldowntimeNotFull = 2;
     private int BulletCount = 0;
 
+    public float Damage = 1;
+    public float YScale = 2.5f;
+
     private Vector3 Target;
     private float LastShot = 0;
     private float Speed;
