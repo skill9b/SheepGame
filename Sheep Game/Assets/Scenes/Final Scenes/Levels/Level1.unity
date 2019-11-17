@@ -8543,6 +8543,7 @@ GameObject:
   - component: {fileID: 2012407646}
   - component: {fileID: 2012407648}
   - component: {fileID: 2012407647}
+  - component: {fileID: 2012407649}
   m_Layer: 5
   m_Name: UpgradesMenu
   m_TagString: UpgradesMenu
@@ -8611,6 +8612,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012407645}
   m_CullTransparentMesh: 0
+--- !u!114 &2012407649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012407645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b758a92e53c1c3040b91c4cd107d0015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerWool: {fileID: 0}
+  WeaponsPanel: {fileID: 0}
+  SupportPanel: {fileID: 0}
 --- !u!1 &2019705803
 GameObject:
   m_ObjectHideFlags: 0

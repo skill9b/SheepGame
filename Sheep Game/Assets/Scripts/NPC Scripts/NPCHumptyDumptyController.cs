@@ -17,22 +17,19 @@ public class NPCHumptyDumptyController : MonoBehaviour
     public float fireRate;
     public Transform shootingPoint;
     public float cooldown;
-    float maxCooldown;
-    bool isCoolingDown;
+    public bool enableSuicide;
     public GameObject cooldownObject;
     public ProgressBarCircle cooldownBar;
     Vector3 target;
     public Transform suicideTarget;
-    Vector3 originalPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        originalPosition = transform.position;
+        enableSuicide = false;
 
         nextYeetTime = 0f;
 
-        maxCooldown = cooldown;
         cooldownBar.BarValue = 100;
         cooldownObject.SetActive(false);
 
@@ -49,9 +46,12 @@ public class NPCHumptyDumptyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (enableSuicide)
         {
-            YeetTheEgghead();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                YeetTheEgghead();
+            }
         }
 
         if (isEnemy)
