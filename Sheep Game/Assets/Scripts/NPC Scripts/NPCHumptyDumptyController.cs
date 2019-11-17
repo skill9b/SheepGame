@@ -7,6 +7,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
     public GameObject eggPrefab;
     public bool isEnemy;
     bool canFire;
+    bool bSpin = false;
     public float eggCountdown; // adjusted for Rate of fire
     float maxEggCountdown;
     public Vector3 sheepTarget;
@@ -58,6 +59,11 @@ public class NPCHumptyDumptyController : MonoBehaviour
             }
         //}
 
+        if (bSpin)
+        {
+            transform.rotation =  transform.rotation * Quaternion.Euler(0, 0, -10);
+        }
+
         if (isEnemy)
         {
             if (canFire == true)
@@ -104,12 +110,13 @@ public class NPCHumptyDumptyController : MonoBehaviour
         direction.Normalize();
 
         float rotationZ = -(Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg);
-        transform.rotation = Quaternion.Euler(0, 0, rotationZ);
+        transform.rotation = Quaternion.Euler(0, 0, -1 * rotationZ);
 
         if (Time.time > fireRate + nextYeetTime)
         {
             transform.rotation = Quaternion.Euler(0, 0, rotationZ);
             GetComponent<Rigidbody2D>().velocity = direction * yeetSpeed;
+            bSpin = true;
 
             nextYeetTime = Time.time;
         }
