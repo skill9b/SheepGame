@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour
 
             DeactivateAllLevels();
             UpgradeUI.SetActive(true);
-            // if press button then go to next level
+            // if press Finish button then go to next level
             if (goToNextLevel)
             {
                 ChangeNextLevel( ((int)currentlevel) + 1 );
