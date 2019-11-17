@@ -70,6 +70,12 @@ public class SceneController : MonoBehaviour
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().missedBullets = 0;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalDamageTaken = 0;
     }
+
+    public void LoseScreen()
+    {
+        SceneManager.LoadScene(8);
+    }
+
 }
 
 

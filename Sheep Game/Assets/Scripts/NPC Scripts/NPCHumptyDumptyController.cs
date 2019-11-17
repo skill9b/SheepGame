@@ -10,6 +10,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
     public float eggCountdown; // adjusted for Rate of fire
     float maxEggCountdown;
     public Vector3 sheepTarget;
+    public Animator animator;
 
     // Suicide cooldown variables
     public float yeetSpeed;
@@ -50,6 +51,8 @@ public class NPCHumptyDumptyController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                //Play flying
+                animator.SetBool("Flying", true);
                 YeetTheEgghead();
             }
         }
@@ -58,8 +61,10 @@ public class NPCHumptyDumptyController : MonoBehaviour
         {
             if (canFire == true)
             {
+                //Play Shoot
                 Fire(sheepTarget);
                 canFire = false;
+                //End Shoot
             }
 
             if (canFire == false)
@@ -112,6 +117,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
     {
         if (other.tag == "HumptyDumptyFloor" || other.tag == "Enemy")
         {
+            //Play Explosion/Impact
             gameObject.GetComponent<Renderer>().enabled = false;
 
             GameObject[] allSheep = GameObject.FindGameObjectsWithTag("Enemy");

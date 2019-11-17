@@ -26,11 +26,10 @@ public class GameController : MonoBehaviour
     public GameObject Level6;
     public GameObject UpgradeUI;
 
-    public GameObject[] Levels;
-
     public Level currentlevel;
     public Level nextLevel;
     public int checkWin;
+    public bool goToNextLevel;
 
 
     /////////////////////////////// FUNCTIONS ///////////////
@@ -38,64 +37,90 @@ public class GameController : MonoBehaviour
     void Start()
     {
         DeactivateAllLevels();
-        currentlevel = Level.One;
-        nextLevel = currentlevel + 1;
-        checkWin = 0;
+        goToNextLevel = false;
+        ChangeLevel(1);
+        //nextLevel = currentlevel + 1;
+        //checkWin = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (currentlevel == Level.Inbetween)
+        if (currentlevel != Level.Inbetween)
         {
+            ActivateLevel((int)currentlevel);
+        }
+        else if (currentlevel == Level.Inbetween)
+        {
+
             DeactivateAllLevels();
             UpgradeUI.SetActive(true);
-            //Disable all
-            //Enable Upgrade
-            //When finish is clicked start next level
-
-
-            if (currentlevel == Level.Six)
+            // if press button then go to next level
+            if (goToNextLevel)
             {
-                //Go to win screen
+                ChangeNextLevel( ((int)currentlevel) + 1 );
+                goToNextLevel = false;
             }
             
-            //Do check for button here
-              ///currentlevel = nextLevel;
-              ///nextLevel++;
-              ///         
+
         }
 
-        if (currentlevel == Level.One) //&& (check == 0))
+        if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().currentHealth <= 0)
         {
-            ChangeLevel(1);
-        }
-        else if(currentlevel == Level.Two)
-        {
-            ChangeLevel(2);
-        }
-        else if (currentlevel == Level.Three)
-        {
-            ChangeLevel(3);
-        }
-        else if (currentlevel == Level.Four)
-        {
-            ChangeLevel(4);
-        }
-        else if (currentlevel == Level.Five)
-        {
-            ChangeLevel(5);
-        }
-        else if (currentlevel == Level.Six)
-        {
-            ChangeLevel(6);
+            GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().LoseScreen();
         }
 
-        if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().currentHealth == 0)
+       
+    }
+
+    void ChangeNextLevel(int _nextLevel)
+    {
+        switch (_nextLevel)
         {
-            //Go to lose screen
+            case 0:
+                {
+                    nextLevel = Level.Inbetween;
+                    break;
+                }
+            case 1:
+                {
+                    nextLevel = Level.One;
+                    break;
+                }
+            case 2:
+                {
+                    nextLevel = Level.Two;
+                    break;
+                }
+            case 3:
+                {
+                    nextLevel = Level.Three;
+                    break;
+                }
+            case 4:
+                {
+                    nextLevel = Level.Four;
+                    break;
+                }
+            case 5:
+                {
+                    nextLevel = Level.Five;
+                    break;
+                }
+            case 6:
+                {
+                    nextLevel = Level.Six;
+                    break;
+                }
+            case 7:
+                {
+                    //Go to win screen
+                    //GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().LoseScreen();
+                    break;
+                }
         }
+        
     }
 
     void DeactivateAllLevels()
@@ -141,6 +166,38 @@ public class GameController : MonoBehaviour
         {
             Level6.SetActive(true);
         }
+    }
 
+    void ActivateLevel(int _levelToActivate)
+    {
+        if (_levelToActivate == 1)
+        {
+            Level1.SetActive(true);
+        }
+        else if (_levelToActivate == 2)
+        {
+            Level2.SetActive(true);
+        }
+        else if (_levelToActivate == 3)
+        {
+            Level3.SetActive(true);
+        }
+        else if (_levelToActivate == 4)
+        {
+            Level4.SetActive(true);
+        }
+        else if (_levelToActivate == 5)
+        {
+            Level5.SetActive(true);
+        }
+        else if (_levelToActivate == 6)
+        {
+            Level6.SetActive(true);
+        }
+    }
+
+    public void PressFinish()
+    {
+        goToNextLevel = true;
     }
 }

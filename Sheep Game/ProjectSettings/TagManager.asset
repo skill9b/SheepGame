@@ -25,6 +25,8 @@ TagManager:
   - HumptyDumptyFloor
   - LongGun
   - Shotgun
+  - GameManager
+  - SceneController
   layers:
   - Default
   - TransparentFX
