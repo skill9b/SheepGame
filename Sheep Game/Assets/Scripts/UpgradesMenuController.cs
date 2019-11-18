@@ -417,10 +417,10 @@ public class UpgradesMenuController : MonoBehaviour
         switch(damage)
         {
             case 2.0f:
-                currentWoolCost = 300;
+                currentWoolCost = 200;
                 break;
             case 3.0f:
-                currentWoolCost = 500;
+                currentWoolCost = 300;
                 break;
             case 4.0f:
                 currentWoolCost = -1;
