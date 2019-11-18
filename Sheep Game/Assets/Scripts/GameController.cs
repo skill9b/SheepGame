@@ -50,6 +50,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        Application.targetFrameRate = 30;
         isUpgradeUIActive = false;
         UpgradeUI.SetActive(false);
         DeactivateAllLevels();
