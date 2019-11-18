@@ -16,9 +16,10 @@ public class LongBulletController : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.x > 0)
+        if ((transform.position.x > 0) || (GameObject.FindGameObjectWithTag("Player").GetComponent<GunSwitching>().longGunCheck))
         {
             GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().SoundCut = true;
+            
         }
     }
 
