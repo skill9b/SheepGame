@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour
     public GameObject Level6;
     public GameObject UpgradeUI;
 
+    public GameObject Base;
     public GameObject ArcGun;
     public GameObject LongGun;
     public GameObject ShotGun;
@@ -87,6 +88,10 @@ public class GameController : MonoBehaviour
 
                 // Reset Big Bad Wolf
                 Wolf.GetComponent<BigBadWolfController>().bUpgradesMenuActive = false;
+
+                // Reset Base 
+                Base.GetComponent<BaseController>().currentHealth = Base.GetComponent<BaseController>().maxHealth;
+
 
                 EnableGunShooting();
                 UpgradeUI.SetActive(false);

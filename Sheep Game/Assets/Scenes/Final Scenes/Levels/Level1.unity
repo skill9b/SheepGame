@@ -2630,12 +2630,12 @@ PrefabInstance:
     - target: {fileID: 103594734325402332, guid: 25994170128b93b4386305952b887887,
         type: 3}
       propertyPath: maxHealth
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 103594734325402332, guid: 25994170128b93b4386305952b887887,
         type: 3}
       propertyPath: currentHealth
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 103594734325402332, guid: 25994170128b93b4386305952b887887,
         type: 3}
@@ -4435,6 +4435,7 @@ MonoBehaviour:
   Level5: {fileID: 1925800442}
   Level6: {fileID: 1469365824}
   UpgradeUI: {fileID: 2012407645}
+  Base: {fileID: 360659805}
   ArcGun: {fileID: 1968533314}
   LongGun: {fileID: 2031144612}
   ShotGun: {fileID: 514811236}

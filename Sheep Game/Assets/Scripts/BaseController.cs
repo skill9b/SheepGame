@@ -2,7 +2,7 @@
 
 public class BaseController : MonoBehaviour
 {
-    public float maxHealth;
+    public int maxHealth;
     public float currentHealth;
     GameObject[] sheepInstances;
     bool inCombat;
@@ -24,7 +24,7 @@ public class BaseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // currentHealth = maxHealth;
+        currentHealth = maxHealth;
         healthRegenActive = false;
         inCombat = false;
         sheepAttackingCounter = 0;
