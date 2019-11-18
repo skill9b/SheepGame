@@ -82,8 +82,6 @@ public class ShortController : MonoBehaviour
     {
         if (Time.time > FireRate + LastShot)
         {
-            ShotgunShot.Play(0);
-
             if (BulletCount == Mag) //if the mag has been used up make player wait long
             {
                 StartCoroutine(Wait(CooldowntimeFull));
@@ -92,6 +90,8 @@ public class ShortController : MonoBehaviour
             //Regular Shooting
             if (BulletCount != Mag)
             {
+                ShotgunShot.Play(0);
+                
                 GameObject b = Instantiate(Bullet) as GameObject;
                 b.transform.position = Gun.transform.position;
                 b.transform.position += Vector3.right * 1.8f; 
