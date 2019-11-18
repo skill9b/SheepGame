@@ -482,13 +482,13 @@ public class UpgradesMenuController : MonoBehaviour
 
         switch (accuracy)
         {
-            case 1:
+            case 0:
                 currentWoolCost = 150;
                 break;
-            case 2:
+            case 1:
                 currentWoolCost = 200;
                 break;
-            case 3:
+            case 2:
                 currentWoolCost = -1;
                 break;
         }
@@ -513,6 +513,7 @@ public class UpgradesMenuController : MonoBehaviour
             case 4.5f:
                 currentWoolCost = -1;
                 break;
+
         }
 
         currentDescription = OldMacdonaldAoeDescription;
