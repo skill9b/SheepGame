@@ -6,6 +6,9 @@ using UnityEngine;
 public class LongController : MonoBehaviour
 {
     public bool bCanFire = true;
+   
+    public AudioSource ShearikinShot;
+    public bool SheepImpact = false;
 
     public GameObject Bullet;
     public GameObject Gun;
@@ -33,6 +36,7 @@ public class LongController : MonoBehaviour
 
     void Start()
     {
+        ShearikinShot = GetComponent<AudioSource>();
        // cooldownObject.SetActive(true);
        // cooldownBar.BarValue = 100;
     }
@@ -66,8 +70,15 @@ public class LongController : MonoBehaviour
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets++;
             }
         }
-        
 
+        if (SheepImpact)
+        {
+            if (ShearikinShot.isPlaying)
+            {
+                ShearikinShot.Stop();
+                SheepImpact = false;
+            }
+        }
     }
 
     //WaitForSecond returns a IEnumerator type, which is why it's it's own function
@@ -81,6 +92,8 @@ public class LongController : MonoBehaviour
     {
         if (Time.time > FireRate + LastShot)
         {
+            ShearikinShot.Play(0);
+
             if (BulletCount == Mag) //if the mag has been used up make player wait long
             {
                 StartCoroutine(Wait(CooldowntimeFull));

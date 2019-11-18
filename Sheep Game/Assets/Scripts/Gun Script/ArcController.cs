@@ -94,10 +94,10 @@ public class ArcController : MonoBehaviour
 
     void Fire(Vector2 direction, float Speed)
     {
-        DogShot.Play(0);
-
         if (Time.time > FireRate + LastShot)
         {
+            DogShot.Play(0);
+
             if (BulletCount == Mag) //if the mag has been used up make player wait long
             {
                 StartCoroutine(Wait(CooldowntimeFull));

@@ -21,11 +21,11 @@ public class LongBulletController : MonoBehaviour
 
             if (PassEnemies <= 0)
             {
+                GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().SheepImpact = true;
                 Destroy(gameObject);
             }
 
             PassEnemies--;
-
         }
 
         if (other.gameObject.tag == "Floor")

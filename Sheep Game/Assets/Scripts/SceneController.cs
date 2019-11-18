@@ -11,6 +11,17 @@ public class SceneController : MonoBehaviour
 
     public float healthLost;
 
+    public AudioSource[] sounds;
+    public AudioSource Hover;
+    public AudioSource Click;
+
+    private void Start()
+    {
+        sounds = GetComponents<AudioSource>();
+        Hover = sounds[0];
+        Click = sounds[1];
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -26,6 +37,16 @@ public class SceneController : MonoBehaviour
             }
         }
 
+    }
+
+    public void PlayHover()
+    {
+        Hover.Play();
+    }
+
+    public void PlayClick()
+    {
+        Click.Play();
     }
 
     public void ShowTutorial()

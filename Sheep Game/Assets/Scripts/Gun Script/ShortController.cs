@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShortController : MonoBehaviour
 {
+    public AudioSource ShotgunShot;
+
     public bool bCanFire = true;
 
     public GameObject Bullet;
@@ -26,6 +28,11 @@ public class ShortController : MonoBehaviour
     private float Speed;
 
     public bool GunStats;
+
+    private void Start()
+    {
+        ShotgunShot = GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -70,6 +77,8 @@ public class ShortController : MonoBehaviour
     {
         if (Time.time > FireRate + LastShot)
         {
+            ShotgunShot.Play(0);
+
             if (BulletCount == Mag) //if the mag has been used up make player wait long
             {
                 StartCoroutine(Wait(CooldowntimeFull));
