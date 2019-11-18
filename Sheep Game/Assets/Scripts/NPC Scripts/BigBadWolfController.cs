@@ -8,6 +8,8 @@ public class BigBadWolfController : MonoBehaviour
     Rigidbody2D rb2d;
     Vector3 initPosition;
 
+    public bool bUpgradesMenuActive;
+
     public Animator animator;
 
     bool canBlow = true;
@@ -27,6 +29,8 @@ public class BigBadWolfController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bUpgradesMenuActive = false;
+
         WolfBlow = GetComponent<AudioSource>();
         rb2d = GetComponent<Rigidbody2D>();
         initPosition = transform.position;
@@ -41,52 +45,49 @@ public class BigBadWolfController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && (canBlow == true) && (isBlowing == false))
+        if (!bUpgradesMenuActive)
         {
-            WolfBlow.Play(0);
-            animator.SetTrigger("Blowing");
-            canBlow = false;
-            isBlowing = true;
-        }
-
-        //if (isBlowing)
-        //{
-        //    animator.SetBool("Blowing", false);
-        //}
-
-        if (canBlow == false && isBlowing == true)
-        {
-            animator.SetBool("Idle", true);
-            // Move all sheep instances back a few steps
-            sheepInstances = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach (GameObject sheep in sheepInstances)
+            if (Input.GetKeyDown(KeyCode.Q) && (canBlow == true) && (isBlowing == false))
             {
-                sheep.transform.position += new Vector3(0.1f,0,0);
+                WolfBlow.Play(0);
+                animator.SetTrigger("Blowing");
+                canBlow = false;
+                isBlowing = true;
             }
 
-            blowingCountdown -= Time.deltaTime;
+            if (canBlow == false && isBlowing == true)
+            {
+                animator.SetBool("Idle", true);
+                // Move all sheep instances back a few steps
+                sheepInstances = GameObject.FindGameObjectsWithTag("Enemy");
+                foreach (GameObject sheep in sheepInstances)
+                {
+                    sheep.transform.position += new Vector3(0.1f, 0, 0);
+                }
+
+                blowingCountdown -= Time.deltaTime;
+            }
+
+            if (blowingCountdown <= 0)
+            {
+                cooldownObject.SetActive(true);
+                cooldownBar.BarValue = cooldownBar.BarValue - (100 / (storedCooldown / Time.deltaTime));
+
+                blowingCooldown -= Time.deltaTime;
+                canBlow = false;
+                isBlowing = false;
+            }
+
+            if (blowingCooldown <= 0)
+            {
+                blowingCountdown = storedCountdown;
+                blowingCooldown = storedCooldown;
+                canBlow = true;
+                isBlowing = false;
+
+                cooldownObject.SetActive(false);
+                cooldownBar.BarValue = 100;
+            }
         }
-
-        if (blowingCountdown <= 0)
-        {
-            cooldownObject.SetActive(true);
-            cooldownBar.BarValue = cooldownBar.BarValue - (100 / (storedCooldown / Time.deltaTime));
-
-            blowingCooldown -= Time.deltaTime;
-            canBlow = false;
-            isBlowing = false;
-        }
-
-        if (blowingCooldown <= 0)
-        {
-            blowingCountdown = storedCountdown;
-            blowingCooldown = storedCooldown;
-            canBlow = true;
-            isBlowing = false;
-
-            cooldownObject.SetActive(false);
-            cooldownBar.BarValue = 100;
-        }
-
     }
 }

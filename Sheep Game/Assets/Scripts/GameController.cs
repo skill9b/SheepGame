@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
     public GameObject LongGun;
     public GameObject ShotGun;
     public GameObject HumptyDumpty;
+    public GameObject Wolf;
     public Level currentlevel;
     public Level nextLevel;
     public int checkWin;
@@ -68,6 +69,9 @@ public class GameController : MonoBehaviour
         else if (currentlevel == Level.Inbetween)
         {
 
+            // Disable wolf blowing
+            Wolf.GetComponent<BigBadWolfController>().bUpgradesMenuActive = false;
+
             CalculateWool();
             DeactivateAllLevels();
             DisableGunShooting();
@@ -81,6 +85,7 @@ public class GameController : MonoBehaviour
                 HumptyDumpty.GetComponent<NPCHumptyDumptyController>().canFire = true;
 
                 // Reset Big Bad Wolf
+                Wolf.GetComponent<BigBadWolfController>().bUpgradesMenuActive = false;
 
                 EnableGunShooting();
                 UpgradeUI.SetActive(false);
