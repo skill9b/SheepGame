@@ -23,11 +23,14 @@ public class ArcController : MonoBehaviour
 
     public int Damage = 1;
    
-
     private Vector3 Target;
     public Vector2 MousePosition;
     private float LastShot = 0;
     private float Speed;
+
+    private Vector2 MousePosRotation;
+    private float MouseRotation = 90 / 9.5f; //Initial Rotation and End of Screen X
+    private float Rot;
 
     public bool GunStats;
 
@@ -43,6 +46,11 @@ public class ArcController : MonoBehaviour
 
         Vector3 difference = Target - Gun.transform.position;
 
+        MousePosRotation = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Rot = (MousePosRotation.x) * MouseRotation;
+
+        Gun.transform.rotation *= Quaternion.Euler(0, 0, -Rot);
+
         if (bCanFire)
         {
             if (Input.GetMouseButtonDown(0))
@@ -52,7 +60,14 @@ public class ArcController : MonoBehaviour
                 direction.Normalize();
 
                 Speed = 10;
+
                 MousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                //Clicking Backwards won't activate shooting
+                if ((MousePosition.x - Gun.transform.position.x) < 0)
+                {
+                    MousePosition.x = Gun.transform.position.x;
+                }
+
                 Fire(direction, Speed);
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets++;
             }
@@ -93,6 +108,7 @@ public class ArcController : MonoBehaviour
                 GameObject b = Instantiate(Bullet) as GameObject;
                 b.GetComponent<ArcBulletController>().xDistance = Mathf.Abs(transform.position.x - MousePosition.x);
                 b.transform.position = Gun.transform.position;
+                b.transform.rotation = Gun.transform.rotation;
                // b.GetComponent<Rigidbody2D>().velocity = -direction * Speed;
 
                 BulletCount += 1;
