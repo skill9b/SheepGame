@@ -37,6 +37,7 @@ public class ArcController : MonoBehaviour
     private void Start()
     {
         DogShot = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
