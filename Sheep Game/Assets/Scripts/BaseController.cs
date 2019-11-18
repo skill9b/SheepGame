@@ -39,12 +39,18 @@ public class BaseController : MonoBehaviour
 
         if (inCombat == false)
         {
-            if (healthRegenActive)
+            if (!(GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().isUpgradeUIActive))
             {
-                if (Time.time > nextRegenTime)
+                if (healthRegenActive)
                 {
-                    currentHealth += healthRegenAmount;
-                    nextRegenTime = Time.time + timeTillRegen;
+                    if (currentHealth < maxHealth)
+                    {
+                        if (Time.time > nextRegenTime)
+                        {
+                            currentHealth += healthRegenAmount;
+                            nextRegenTime = Time.time + timeTillRegen;
+                        }
+                    }
                 }
             }
         }
