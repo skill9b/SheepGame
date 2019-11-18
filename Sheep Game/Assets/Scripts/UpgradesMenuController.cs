@@ -229,13 +229,13 @@ public class UpgradesMenuController : MonoBehaviour
         }
 
         // Base Regen
-        if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().healthRegenActive == true)
+        if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().healthRegenActive == false)
         {
             BaseRepairBar.sprite = oneIncrementFull;
         }
         else
         {
-            BaseRepairBar.sprite = oneIncrementEmpty; 
+            //BaseRepairBar.sprite = oneIncrementEmpty; 
         }
 
         // Base Health Increase
@@ -743,12 +743,12 @@ public class UpgradesMenuController : MonoBehaviour
     }
 
     void PurchaseBaseRegen()
-    {
-        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
+    { 
+        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1) && (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().healthRegenActive == false))
         {
             BaseController baseObject = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>();
 
-            baseObject.healthRegenActive = !baseObject.healthRegenActive;
+            baseObject.healthRegenActive = true;
 
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
         }

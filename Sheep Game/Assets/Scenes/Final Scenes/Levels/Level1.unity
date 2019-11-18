@@ -2166,8 +2166,8 @@ RectTransform:
   - {fileID: 1668491464}
   - {fileID: 1398741867}
   - {fileID: 1953497052}
-  - {fileID: 2012407646}
   - {fileID: 1496547822}
+  - {fileID: 2012407646}
   m_Father: {fileID: 261021255}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2247,6 +2247,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2624856769644785158, guid: 874d4c40821281e43aa9022a4703ada5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2624856769644785156, guid: 874d4c40821281e43aa9022a4703ada5,
         type: 3}
@@ -2856,6 +2861,11 @@ PrefabInstance:
     - target: {fileID: 1289057070121217491, guid: fb09e7c4befaacd4a81e7d9c4667f230,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1289057070121217484, guid: fb09e7c4befaacd4a81e7d9c4667f230,
+        type: 3}
+      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2733205343097560241, guid: fb09e7c4befaacd4a81e7d9c4667f230,
@@ -4159,7 +4169,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -1
   m_Sprite: {fileID: -796854526170500145, guid: 7dc555a6a29d75046b18541a80260fba,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4428,8 +4438,8 @@ MonoBehaviour:
   ArcGun: {fileID: 1968533314}
   LongGun: {fileID: 2031144612}
   ShotGun: {fileID: 514811236}
-  HumptyDumpty: {fileID: 0}
-  Wolf: {fileID: 0}
+  HumptyDumpty: {fileID: 1588783387}
+  Wolf: {fileID: 1633129717}
   currentlevel: 1
   nextLevel: 2
   checkWin: 0
@@ -6961,7 +6971,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 441990445}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9024,6 +9034,11 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 842366646}
+    - target: {fileID: 1289057070121217484, guid: 46c29c5a757080d46b84f93dcc78614d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7070164229707444835, guid: 46c29c5a757080d46b84f93dcc78614d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 46c29c5a757080d46b84f93dcc78614d, type: 3}
@@ -9312,7 +9327,7 @@ RectTransform:
   - {fileID: 1250081929}
   - {fileID: 1531231949}
   m_Father: {fileID: 441990445}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9480,7 +9495,12 @@ PrefabInstance:
     - target: {fileID: -5671998598695756817, guid: 3f00cc51f1430bc409b95e3c10405d5d,
         type: 3}
       propertyPath: PassEnemies
-      value: 0
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -5671998598695756817, guid: 3f00cc51f1430bc409b95e3c10405d5d,
+        type: 3}
+      propertyPath: Damage
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1289057070121217491, guid: 3f00cc51f1430bc409b95e3c10405d5d,
         type: 3}
@@ -9540,7 +9560,7 @@ PrefabInstance:
     - target: {fileID: 1289057070121217484, guid: 3f00cc51f1430bc409b95e3c10405d5d,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f00cc51f1430bc409b95e3c10405d5d, type: 3}

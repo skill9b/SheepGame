@@ -77,10 +77,10 @@ public class ArcBulletController : ArcController
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        float xcheck = Mathf.Abs(MOUSEPOSITION.x - transform.position.x);
+        //float xcheck = Mathf.Abs(MOUSEPOSITION.x - transform.position.x);
         float ycheck = Mathf.Abs(MOUSEPOSITION.y - transform.position.y);
 
-        if ((xcheck < 0.3) && (ycheck < 0.3)) 
+        if (ycheck <= 0.3)
         {
             if (other.gameObject.tag == "Enemy")
             {
