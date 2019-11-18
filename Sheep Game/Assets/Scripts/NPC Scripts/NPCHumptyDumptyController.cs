@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NPCHumptyDumptyController : MonoBehaviour
 {
+    public AudioSource EggToss;
+
     public GameObject eggPrefab;
     public bool isEnemy;
     bool canFire;
@@ -32,6 +34,8 @@ public class NPCHumptyDumptyController : MonoBehaviour
     public GameObject AoeAnimObject;
     void Start()
     {
+        EggToss = GetComponent<AudioSource>();
+
         bUpgradesMenuActive = false;
 
         startingPosition = transform.position;
@@ -83,6 +87,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
                     animator.SetTrigger("Shooting");
                     if (isDead == false)
                     {
+                        EggToss.Play();
                         Fire(sheepTarget);
                     }
                     canFire = false;
