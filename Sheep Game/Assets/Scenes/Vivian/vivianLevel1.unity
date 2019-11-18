@@ -3019,7 +3019,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 2.0082946, y: 0}
@@ -4464,14 +4464,13 @@ MonoBehaviour:
   ArcGun: {fileID: 1968533314}
   LongGun: {fileID: 2031144612}
   ShotGun: {fileID: 514811236}
-  Egg: {fileID: 1694398992}
+  HumptyDumpty: {fileID: 0}
   currentlevel: 1
   nextLevel: 2
   checkWin: 0
   goToNextLevel: 0
-  EggSprite: {fileID: -2430884549058471417, guid: 6310e4ac970ae1a4980dc981fa8da029,
-    type: 3}
   isUpgradeUIActive: 0
+  healthMultiplyer: 0
   WoolCount: 0
   bulletsFired: 0
   bulletsMissed: 0
@@ -4609,7 +4608,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f46b5d4eaf835e4991d547739d22935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEggDead: 0
 --- !u!60 &973648802
 PolygonCollider2D:
   m_ObjectHideFlags: 0

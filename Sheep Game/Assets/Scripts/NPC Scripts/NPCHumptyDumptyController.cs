@@ -52,20 +52,10 @@ public class NPCHumptyDumptyController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject[] allSheep = GameObject.FindGameObjectsWithTag("Enemy");
-
-            foreach (GameObject sheep in allSheep)
-            {
-                sheep.GetComponent<ParentSheepController>().TakeDamage(100);
-            }
-
             //Play flying
             //Debug.Log("Yeet");
             animator.SetBool("Flying", true);
             YeetTheEgghead();
-
-
-
         }
 
 
@@ -140,22 +130,21 @@ public class NPCHumptyDumptyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "HumptyDumptyFloor" || other.tag == "Enemy")
+        if (other.gameObject.tag == "HumptyDumptyFloor")
         {
-            //Play Explosion/Impact
             gameObject.GetComponent<Renderer>().enabled = false;
 
             GameObject[] allSheep = GameObject.FindGameObjectsWithTag("Enemy");
 
             foreach (GameObject sheep in allSheep)
             {
-               sheep.GetComponent<ParentSheepController>().TakeDamage(3);
+                Debug.Log("Sheep took BIG damage!");
+                sheep.GetComponent<ParentSheepController>().TakeDamage(100);
             }
-            GameObject.FindGameObjectWithTag("ShootingRange").GetComponent<ShootingRangeController>().isEggDead = true;
-            //Destroy(gameObject);
-            gameObject.transform.position = startingPosition;
-            gameObject.SetActive(false);
-            
+
+            transform.position = startingPosition;
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            bSpin = false;
         }
 
         
