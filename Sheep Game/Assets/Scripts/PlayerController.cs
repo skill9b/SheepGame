@@ -33,8 +33,9 @@ public class PlayerController : MonoBehaviour
     {
 
         // Getting user input 
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
-    
         if ((vertical == 0) && (horizontal == 0))
         {
             animator.SetBool("Moving", false) ;
