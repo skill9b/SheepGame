@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  lifespan: 0.6
+  lifespan: 0.08
   boomAnimator: {fileID: 236332792751719121}
   blastRadius: 0.9
 --- !u!95 &236332792751719121

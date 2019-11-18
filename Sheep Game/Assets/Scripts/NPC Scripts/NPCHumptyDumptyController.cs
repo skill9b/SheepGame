@@ -21,8 +21,6 @@ public class NPCHumptyDumptyController : MonoBehaviour
     public Transform shootingPoint;
     public float cooldown;
     public bool enableSuicide;
-    public GameObject cooldownObject;
-    public ProgressBarCircle cooldownBar;
     Vector3 target;
     public Transform suicideTarget;
     public Vector3 startingPosition;
@@ -32,9 +30,6 @@ public class NPCHumptyDumptyController : MonoBehaviour
         startingPosition = gameObject.transform.position;
         enableSuicide = false;
         isDead = false;
-
-        cooldownBar.BarValue = 100;
-        cooldownObject.SetActive(false);
 
         isEnemy = false;
         canFire = true;
