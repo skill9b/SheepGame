@@ -4464,13 +4464,11 @@ MonoBehaviour:
   ArcGun: {fileID: 1968533314}
   LongGun: {fileID: 2031144612}
   ShotGun: {fileID: 514811236}
-  Egg: {fileID: 1694398992}
+  HumptyDumpty: {fileID: 0}
   currentlevel: 1
   nextLevel: 2
   checkWin: 0
   goToNextLevel: 0
-  EggSprite: {fileID: -2430884549058471417, guid: 6310e4ac970ae1a4980dc981fa8da029,
-    type: 3}
   isUpgradeUIActive: 0
   healthMultiplyer: 0
   WoolCount: 0
@@ -4610,7 +4608,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f46b5d4eaf835e4991d547739d22935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEggDead: 0
 --- !u!60 &973648802
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4636,10 +4633,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -4.1302648, y: 0.32750082}
-      - {x: -6.0589814, y: -3.5815825}
-      - {x: 9.145771, y: -3.581583}
-      - {x: 9.176335, y: 0.2720494}
+    - - {x: -4.408197, y: -0.14284825}
+      - {x: -6.5079513, y: -4.0091734}
+      - {x: 9.167151, y: -3.9236548}
+      - {x: 9.176335, y: -0.17692018}
 --- !u!4 &973648803
 Transform:
   m_ObjectHideFlags: 0
