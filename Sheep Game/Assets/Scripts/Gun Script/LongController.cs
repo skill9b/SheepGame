@@ -48,6 +48,11 @@ public class LongController : MonoBehaviour
 
         Vector3 difference = Target - Gun.transform.position;
 
+        if ((GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().isUpgradeUIActive))
+        {
+            ShearikinShot.Stop();
+        }
+
         if (bCanFire)
         {
             if (Input.GetMouseButtonDown(0))

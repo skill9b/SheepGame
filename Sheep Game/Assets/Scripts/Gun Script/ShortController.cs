@@ -41,6 +41,11 @@ public class ShortController : MonoBehaviour
 
         Vector3 difference = Target - Gun.transform.position;
 
+        if ((GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().isUpgradeUIActive))
+        {
+            ShotgunShot.Stop();
+        }
+
         if (bCanFire)
         {
             if (Input.GetMouseButtonDown(0))
