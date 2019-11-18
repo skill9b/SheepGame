@@ -19,7 +19,7 @@ public class LongController : MonoBehaviour
     private int BulletCount = 0;
 
     public float Damage = 1;
-    public int PassEnemies = 2;
+    public int PassEnemies = 0;
 
     private Vector3 Target;
     private float LastShot = 0;

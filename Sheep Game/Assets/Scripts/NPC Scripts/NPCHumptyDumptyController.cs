@@ -25,10 +25,11 @@ public class NPCHumptyDumptyController : MonoBehaviour
     public ProgressBarCircle cooldownBar;
     Vector3 target;
     public Transform suicideTarget;
-
+    public Vector3 startingPosition;
     // Start is called before the first frame update
     void Start()
     {
+        startingPosition = gameObject.transform.position;
         enableSuicide = false;
         isDead = false;
 
@@ -75,7 +76,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
 
         if (isEnemy)
         {
-            if (GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().isUpgradeUIActive)
+            if (!(GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().isUpgradeUIActive))
             {
                 if (canFire == true)
                 {
@@ -151,7 +152,10 @@ public class NPCHumptyDumptyController : MonoBehaviour
                sheep.GetComponent<ParentSheepController>().TakeDamage(3);
             }
             GameObject.FindGameObjectWithTag("ShootingRange").GetComponent<ShootingRangeController>().isEggDead = true;
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.transform.position = startingPosition;
+            gameObject.SetActive(false);
+            
         }
 
         

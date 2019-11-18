@@ -29,12 +29,12 @@ public class GameController : MonoBehaviour
     public GameObject ArcGun;
     public GameObject LongGun;
     public GameObject ShotGun;
-
+    public GameObject Egg;
     public Level currentlevel;
     public Level nextLevel;
     public int checkWin;
     public bool goToNextLevel;
-
+    public Sprite EggSprite;
     public bool isUpgradeUIActive;
 
 
@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
         DeactivateAllLevels();
         goToNextLevel = false;
         ChangeLevel(1);
-        //nextLevel = currentlevel + 1;
+        nextLevel = currentlevel + 1;
         //checkWin = 0;
     }
 
@@ -62,24 +62,41 @@ public class GameController : MonoBehaviour
     void Update()
     {
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject[] allSheep = GameObject.FindGameObjectsWithTag("Enemy");
+
+            foreach (GameObject sheep in allSheep)
+            {
+                sheep.GetComponent<ParentSheepController>().TakeDamage(100);
+            }
+
+
+        }
+
+
+
         if (currentlevel != Level.Inbetween)
         {
             ActivateLevel((int)currentlevel);
         }
         else if (currentlevel == Level.Inbetween)
         {
+            Egg.SetActive(true);
+            Egg.GetComponent<SpriteRenderer>().sprite = EggSprite; 
             CalculateWool();
             DeactivateAllLevels();
             DisableGunShooting();
             UpgradeUI.SetActive(true);
             isUpgradeUIActive = true;
             // if press Finish button then go to next level
-            if (goToNextLevel)
+            if (goToNextLevel) //When finish is pressed
             {
                 EnableGunShooting();
                 UpgradeUI.SetActive(false);
                 isUpgradeUIActive = false;
-                ChangeNextLevel( ((int)currentlevel) + 1 );
+                currentlevel = nextLevel;
+                ChangeNextLevel( (int)nextLevel + 1);
                 goToNextLevel = false;
             }
 
@@ -249,10 +266,6 @@ public class GameController : MonoBehaviour
         bulletsMissed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().missedBullets;
         healthLost = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalDamageTaken;
 
-        //WoolCount = WoolCount * (1 + (1 - bulletsMissed / bulletsFired));// * (2 - (float(healthLost * 0.05f)));
-        Debug.Log(WoolCount);
-        Debug.Log(bulletsFired);
-        Debug.Log(bulletsMissed);
         WoolCount = WoolCount * (2 - (int)(healthLost * 0.05));
 
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().score += WoolCount;
