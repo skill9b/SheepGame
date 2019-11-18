@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
         // Getting user input 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -39,15 +40,17 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Moving", true);
         }
 
-        // Player Movement
-        Vector2 position = rb2d.position;
-        position.x += speed * horizontal * Time.deltaTime;
-        position.y += speed * vertical * Time.deltaTime;
+        if (!(GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().isUpgradeUIActive))
+        {
+            // Player Movement
+            Vector2 position = rb2d.position;
+            position.x += speed * horizontal * Time.deltaTime;
+            position.y += speed * vertical * Time.deltaTime;
 
-        
 
-        rb2d.MovePosition(position);
 
+            rb2d.MovePosition(position);
+        }
         // woolCountDisplay.text = "Wool Count: " + woolCount.ToString();
         
     }
