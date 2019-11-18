@@ -9,7 +9,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
     bool canFire;
     public bool bSpin = false;
     public float eggCountdown; // adjusted for Rate of fire
-    float maxEggCountdown;
+    public float maxEggCountdown;
     public Vector3 sheepTarget;
     public Animator animator;
 

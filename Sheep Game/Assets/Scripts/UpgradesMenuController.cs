@@ -176,15 +176,15 @@ public class UpgradesMenuController : MonoBehaviour
     void DisplayAllCurrentProgressBars()  
     {
         // Humpty Dumpty Fire Rate
-        if (GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>().eggCountdown == 2.0f)
+        if (GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>().maxEggCountdown == 2.0f)
         {
             HumptyFireRateBar.sprite = twoIncrementEmpty;
         }
-        else if (GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>().eggCountdown == 1.5f)
+        else if (GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>().maxEggCountdown == 1.5f)
         {
             HumptyFireRateBar.sprite = twoIncrementHalf;
         }
-        else if (GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>().eggCountdown == 1.0f)
+        else if (GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>().maxEggCountdown == 1.0f)
         {
             HumptyFireRateBar.sprite = twoIncrementFull;
         }
@@ -273,15 +273,15 @@ public class UpgradesMenuController : MonoBehaviour
         }
 
         // K9 Fire Rate Increase 
-        if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().FireRate == 2.0f)
+        if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().FireRate == 0.75f)
         {
             K9CooldownBar.sprite = twoIncrementEmpty;
         }
-        else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().FireRate == 1.5f)
+        else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().FireRate == 0.5f)
         {
             K9CooldownBar.sprite = twoIncrementHalf;
         }
-        else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().FireRate == 1.0f)
+        else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().FireRate == 0.25f)
         {
             K9CooldownBar.sprite = twoIncrementFull;
         }
@@ -302,15 +302,15 @@ public class UpgradesMenuController : MonoBehaviour
         }
 
         // Sheariken Accuracy
-        if (GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().PassEnemies == 1)
+        if (GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().PassEnemies == 0)
         {
             ShearikenAccuracyBar.sprite = twoIncrementEmpty;
         }
-        else if (GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().PassEnemies == 2)
+        else if (GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().PassEnemies == 1)
         {
             ShearikenAccuracyBar.sprite = twoIncrementHalf;
         }
-        else if (GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().PassEnemies == 3)
+        else if (GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().PassEnemies == 2)
         {
             ShearikenAccuracyBar.sprite = twoIncrementFull;
         }
@@ -400,7 +400,7 @@ public class UpgradesMenuController : MonoBehaviour
 
     float GetHumptyFireRate()
     {
-        return GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>().eggCountdown;
+        return GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>().maxEggCountdown;
     }
 
     bool GetHumptySuicide()
@@ -676,13 +676,13 @@ public class UpgradesMenuController : MonoBehaviour
         if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
         {
             NPCHumptyDumptyController humptyDumpty = GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>();
-            switch (humptyDumpty.eggCountdown)
+            switch (humptyDumpty.maxEggCountdown)
             {
                 case 2.0f:
-                    humptyDumpty.eggCountdown = 1.5f;
+                    humptyDumpty.maxEggCountdown = 1.5f;
                     break;
                 case 1.5f:
-                    humptyDumpty.eggCountdown = 1.0f;
+                    humptyDumpty.maxEggCountdown = 1.0f;
                     break;
                 case 1.0f:
                     break;
@@ -816,15 +816,15 @@ public class UpgradesMenuController : MonoBehaviour
         {
             ArcController ArcGun = GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>();
 
-            switch (ArcGun.CooldowntimeFull)
+            switch (ArcGun.FireRate)
             {
-                case 2:
-                    ArcGun.CooldowntimeFull = 1.5f;
+                case 0.75f:
+                    ArcGun.FireRate = 0.5f;
                     break;
-                case 1.5f:
-                    ArcGun.CooldowntimeFull = 1;
+                case 0.5f:
+                    ArcGun.FireRate = 0.25f;
                     break;
-                case 1:
+                case 0.25f:
                     break;
             }
 
@@ -862,13 +862,13 @@ public class UpgradesMenuController : MonoBehaviour
 
             switch (sheariken.PassEnemies)
             {
+                case 0:
+                    sheariken.PassEnemies = 1;
+                    break;
                 case 1:
                     sheariken.PassEnemies = 2;
                     break;
                 case 2:
-                    sheariken.PassEnemies = 3;
-                    break;
-                case 3:
                     break;
             }
 

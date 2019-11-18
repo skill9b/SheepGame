@@ -2808,6 +2808,11 @@ PrefabInstance:
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 842366646}
+    - target: {fileID: 517199264281493597, guid: fb09e7c4befaacd4a81e7d9c4667f230,
+        type: 3}
+      propertyPath: CooldowntimeFull
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1289057070121217491, guid: fb09e7c4befaacd4a81e7d9c4667f230,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9063,6 +9068,11 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 842366646}
+    - target: {fileID: -358089596199565125, guid: 46c29c5a757080d46b84f93dcc78614d,
+        type: 3}
+      propertyPath: FireRate
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 1289057070121217484, guid: 46c29c5a757080d46b84f93dcc78614d,
         type: 3}
       propertyPath: m_SortingOrder

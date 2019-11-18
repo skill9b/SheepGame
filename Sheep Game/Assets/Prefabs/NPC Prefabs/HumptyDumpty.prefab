@@ -51,6 +51,7 @@ MonoBehaviour:
   isEnemy: 0
   bSpin: 0
   eggCountdown: 0
+  maxEggCountdown: 0
   sheepTarget: {x: 0, y: 0, z: 0}
   animator: {fileID: -638921752307641182}
   bUpgradesMenuActive: 0
@@ -63,6 +64,7 @@ MonoBehaviour:
   enableSuicide: 0
   suicideTarget: {fileID: 0}
   startingPosition: {x: 0, y: 0, z: 0}
+  canYeet: 0
   AoeAnimObject: {fileID: 0}
 --- !u!50 &1988872054262213470
 Rigidbody2D:
@@ -84,7 +86,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!212 &5266543527495820404
 SpriteRenderer:
   m_ObjectHideFlags: 0
