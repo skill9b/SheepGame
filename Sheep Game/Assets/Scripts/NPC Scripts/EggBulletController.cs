@@ -23,11 +23,12 @@ public class EggBulletController : MonoBehaviour
         if (target.x >= -2.0)
         {
 
-            xDistance = (xDistance / 1.60f) - 1.2f;
+            // xDistance = (xDistance / 1.60f) - 1.2f;
+            xDistance = (xDistance / 1.60f) - 1.0f;
         }
         else
         {
-            xDistance = (xDistance / 1.60f) + 0.6f;
+            xDistance = (xDistance / 1.60f) - 0.6f;
         }
 
         // Calculate init x velocity
@@ -51,7 +52,7 @@ public class EggBulletController : MonoBehaviour
     {
 
         // if target reached, destroy game object and switch on AoE object attached
-        if ((transform.position.x >= target.x) || (transform.position.y <= -4.98f))
+        if ((transform.position.x >= target.x))
         {
             bShowAoE = true;
         }

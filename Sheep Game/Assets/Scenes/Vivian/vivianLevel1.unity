@@ -4465,6 +4465,7 @@ MonoBehaviour:
   LongGun: {fileID: 2031144612}
   ShotGun: {fileID: 514811236}
   HumptyDumpty: {fileID: 0}
+  Wolf: {fileID: 0}
   currentlevel: 1
   nextLevel: 2
   checkWin: 0
@@ -6796,6 +6797,12 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1694398995}
+    - target: {fileID: 6294399771435813942, guid: eda2c08c923e9674e9133ffba2e14efe,
+        type: 3}
+      propertyPath: AoeAnimObject
+      value: 
+      objectReference: {fileID: 236332792751719123, guid: b70bd4eea48a425419e2a72b93aaaddd,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eda2c08c923e9674e9133ffba2e14efe, type: 3}
 --- !u!4 &1467592697 stripped
