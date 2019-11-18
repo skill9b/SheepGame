@@ -146,7 +146,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
         {
 
             Instantiate(AoeAnimObject, transform.position, transform.rotation);
-            //gameObject.GetComponent<Renderer>().enabled = false;
+            gameObject.GetComponent<Renderer>().enabled = false;
 
             GameObject[] allSheep = GameObject.FindGameObjectsWithTag("Enemy");
 
