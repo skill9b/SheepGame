@@ -28,9 +28,9 @@ public class ArcController : MonoBehaviour
     private float LastShot = 0;
     private float Speed;
 
-    private Vector2 MousePosRotation;
-    private float MouseRotation = 90 / 9.5f; //Initial Rotation and End of Screen X
-    private float Rot;
+    //private Vector2 MousePosRotation;
+    //private float MouseRotation = 90 / 9.5f; //Initial Rotation and End of Screen X
+    //private float Rot;
 
     public bool GunStats;
 
@@ -46,10 +46,10 @@ public class ArcController : MonoBehaviour
 
         Vector3 difference = Target - Gun.transform.position;
 
-        MousePosRotation = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        Rot = (MousePosRotation.x) * MouseRotation;
+        //MousePosRotation = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        //Rot = (MousePosRotation.x) * MouseRotation;
 
-        Gun.transform.rotation *= Quaternion.Euler(0, 0, -Rot);
+        //Gun.transform.rotation *= Quaternion.Euler(0, 0, -Rot);
 
         if (bCanFire)
         {
@@ -108,7 +108,7 @@ public class ArcController : MonoBehaviour
                 GameObject b = Instantiate(Bullet) as GameObject;
                 b.GetComponent<ArcBulletController>().xDistance = Mathf.Abs(transform.position.x - MousePosition.x);
                 b.transform.position = Gun.transform.position;
-                b.transform.rotation = Gun.transform.rotation;
+               // b.transform.rotation = Gun.transform.rotation;
                // b.GetComponent<Rigidbody2D>().velocity = -direction * Speed;
 
                 BulletCount += 1;
