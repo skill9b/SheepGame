@@ -60,7 +60,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
                 {
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        animator.SetBool("Flying", true);
+                        
 
 
                         YeetTheEgghead();
@@ -120,7 +120,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
     // Suicide function
     void YeetTheEgghead()
     {
-        
+        animator.SetBool("Flying", true);
         Vector3 difference = target - transform.position;
 
         float distance = difference.magnitude;
@@ -159,7 +159,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             bSpin = false;
-            
+            animator.SetBool("Flying", false); 
 
         }
     }
