@@ -6,8 +6,8 @@ public class NPCHumptyDumptyController : MonoBehaviour
 {
     public GameObject eggPrefab;
     public bool isEnemy;
-    bool canFire;
-    bool bSpin = false;
+    public bool canFire;
+    public bool bSpin;
     public float eggCountdown; // adjusted for Rate of fire
     float maxEggCountdown;
     public Vector3 sheepTarget;
@@ -25,13 +25,19 @@ public class NPCHumptyDumptyController : MonoBehaviour
     public Transform suicideTarget;
     public Vector3 startingPosition;
     // Start is called before the first frame update
+
+    public GameObject AoeAnimObject;
     void Start()
     {
-        startingPosition = gameObject.transform.position;
+        startingPosition = transform.position;
+        startingPosition -= new Vector3(1, 0, 0);
+        startingPosition += new Vector3(1, 0, 0);
+
         enableSuicide = false;
         isDead = false;
 
         isEnemy = false;
+        bSpin = false;
         canFire = true;
         maxEggCountdown = eggCountdown;
 
@@ -47,8 +53,6 @@ public class NPCHumptyDumptyController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //Play flying
-            //Debug.Log("Yeet");
             animator.SetBool("Flying", true);
             YeetTheEgghead();
         }
@@ -70,16 +74,6 @@ public class NPCHumptyDumptyController : MonoBehaviour
                     Fire(sheepTarget);
                     canFire = false;
                     //End Shoot
-                }
-
-                if (canFire == false)
-                {
-                    eggCountdown -= Time.deltaTime;
-                    if (eggCountdown <= 0)
-                    {
-                        eggCountdown = maxEggCountdown;
-                        canFire = true;
-                    }
                 }
             }
         }
@@ -112,21 +106,18 @@ public class NPCHumptyDumptyController : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity += new Vector2(0, 1);
         transform.rotation = Quaternion.Euler(0, 0, -1 * rotationZ);
 
-       // if (Time.time > fireRate + nextYeetTime)
-       // {
-            transform.rotation = Quaternion.Euler(0, 0, rotationZ);
-            ///transform.position += new Vector3(0, 0.5f, 0);
-            GetComponent<Rigidbody2D>().velocity = direction * yeetSpeed;
-            bSpin = true;
-
-           // nextYeetTime = Time.time;
-        //}
+        transform.rotation = Quaternion.Euler(0, 0, rotationZ);
+        ///transform.position += new Vector3(0, 0.5f, 0);
+        GetComponent<Rigidbody2D>().velocity = direction * yeetSpeed;
+        bSpin = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "HumptyDumptyFloor")
         {
+
+            Instantiate(AoeAnimObject, transform.position, transform.rotation);
             gameObject.GetComponent<Renderer>().enabled = false;
 
             GameObject[] allSheep = GameObject.FindGameObjectsWithTag("Enemy");
@@ -139,8 +130,11 @@ public class NPCHumptyDumptyController : MonoBehaviour
 
             transform.position = startingPosition;
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             bSpin = false;
+            canFire = false;
         }
+
 
         
     }

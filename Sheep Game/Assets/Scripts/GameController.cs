@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
     public GameObject LongGun;
     public GameObject ShotGun;
     public GameObject HumptyDumpty;
+    public GameObject Wolf;
     public Level currentlevel;
     public Level nextLevel;
     public int checkWin;
@@ -61,28 +62,15 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GameObject[] allSheep = GameObject.FindGameObjectsWithTag("Enemy");
-
-            foreach (GameObject sheep in allSheep)
-            {
-                sheep.GetComponent<ParentSheepController>().TakeDamage(100);
-            }
-
-
-        }
-
-
-
         if (currentlevel != Level.Inbetween)
         {
             ActivateLevel((int)currentlevel);
         }
         else if (currentlevel == Level.Inbetween)
         {
-            HumptyDumpty.GetComponent<Renderer>().enabled = true;
+
+            // Disable wolf blowing
+            Wolf.GetComponent<BigBadWolfController>().bUpgradesMenuActive = false;
 
             CalculateWool();
             DeactivateAllLevels();
@@ -92,6 +80,13 @@ public class GameController : MonoBehaviour
             // if press Finish button then go to next level
             if (goToNextLevel) //When finish is pressed
             {
+                // Reset Humpty Dumpty
+                HumptyDumpty.GetComponent<Renderer>().enabled = true;
+                HumptyDumpty.GetComponent<NPCHumptyDumptyController>().canFire = true;
+
+                // Reset Big Bad Wolf
+                Wolf.GetComponent<BigBadWolfController>().bUpgradesMenuActive = false;
+
                 EnableGunShooting();
                 UpgradeUI.SetActive(false);
                 isUpgradeUIActive = false;
