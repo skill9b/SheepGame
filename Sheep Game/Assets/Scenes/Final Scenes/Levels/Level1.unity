@@ -9073,6 +9073,11 @@ PrefabInstance:
       propertyPath: FireRate
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: -358089596199565125, guid: 46c29c5a757080d46b84f93dcc78614d,
+        type: 3}
+      propertyPath: Damage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1289057070121217484, guid: 46c29c5a757080d46b84f93dcc78614d,
         type: 3}
       propertyPath: m_SortingOrder

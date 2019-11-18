@@ -78,7 +78,7 @@ MonoBehaviour:
   baseController: {fileID: 0}
   animator: {fileID: -1206059512696264035}
   health: 3.5
-  speed: 2.5
+  speed: 2.45
   distanceFromEnemy: 1
   woolPoints: 20
   attackSpeed: 2

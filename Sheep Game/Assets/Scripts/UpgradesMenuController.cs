@@ -259,15 +259,15 @@ public class UpgradesMenuController : MonoBehaviour
         // K9 [ARCGUN]
 
         // K9 Damage Increase
-        if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().Damage == 1)
+        if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().Damage == 2)
         {
             K9DamageBar.sprite = twoIncrementEmpty;
         }
-        else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().Damage == 2)
+        else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().Damage == 3)
         {
             K9DamageBar.sprite = twoIncrementHalf;
         }
-        else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().Damage == 3)
+        else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().Damage == 4)
         {
             K9DamageBar.sprite = twoIncrementFull;
         }
@@ -416,13 +416,13 @@ public class UpgradesMenuController : MonoBehaviour
 
         switch(damage)
         {
-            case 1.0f:
-                currentWoolCost = 100;
-                break;
             case 2.0f:
-                currentWoolCost = 200;
+                currentWoolCost = 300;
                 break;
             case 3.0f:
+                currentWoolCost = 500;
+                break;
+            case 4.0f:
                 currentWoolCost = -1;
                 break;
         }
@@ -797,13 +797,13 @@ public class UpgradesMenuController : MonoBehaviour
 
             switch (ArcGun.Damage)
             {
-                case 1:
-                    ArcGun.Damage = 2;
-                    break;
                 case 2:
                     ArcGun.Damage = 3;
                     break;
                 case 3:
+                    ArcGun.Damage = 4;
+                    break;
+                case 4:
                     break;
             }
 
