@@ -47,8 +47,6 @@ public class PlayerController : MonoBehaviour
             position.x += speed * horizontal * Time.deltaTime;
             position.y += speed * vertical * Time.deltaTime;
 
-
-
             rb2d.MovePosition(position);
         }
         // woolCountDisplay.text = "Wool Count: " + woolCount.ToString();
