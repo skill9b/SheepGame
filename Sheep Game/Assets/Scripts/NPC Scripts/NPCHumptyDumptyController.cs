@@ -52,7 +52,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!enableSuicide)
+        if (enableSuicide)
         {
             if (!bUpgradesMenuActive)
             {
@@ -60,9 +60,6 @@ public class NPCHumptyDumptyController : MonoBehaviour
                 {
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        
-
-
                         YeetTheEgghead();
                         isDead = true;
                         canYeet = false;
@@ -84,7 +81,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
 
                     //Play Shoot
                     animator.SetTrigger("Shooting");
-                    if (!isDead)
+                    if (isDead == false)
                     {
                         Fire(sheepTarget);
                     }
