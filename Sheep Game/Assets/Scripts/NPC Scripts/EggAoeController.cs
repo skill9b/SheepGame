@@ -13,6 +13,7 @@ public class EggAoeController : MonoBehaviour
 
     private void Start()
     {
+        transform.localScale = new Vector2(1.5f, 1.5f);
         OnAoEImpact();
     }
 
