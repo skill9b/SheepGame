@@ -4265,7 +4265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7044d37804dd642ad423752d5c556d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 5
   animator: {fileID: 876119798}
   woolCountDisplay: {fileID: 1398741868}
   woolCount: 0
