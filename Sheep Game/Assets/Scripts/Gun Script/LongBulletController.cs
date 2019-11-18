@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LongBulletController : MonoBehaviour
 {
+    public GameObject gun;
     private float damage;
     private int PassEnemies;
 
@@ -21,7 +22,10 @@ public class LongBulletController : MonoBehaviour
 
             if (PassEnemies <= 0)
             {
-                GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().SheepImpact = true;
+                if (GameObject.FindGameObjectWithTag("Player").GetComponent<GunSwitching>().longGunCheck)
+                {
+                    GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().SheepImpact = true;
+                }
                 Destroy(gameObject);
             }
 

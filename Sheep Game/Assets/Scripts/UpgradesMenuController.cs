@@ -235,7 +235,7 @@ public class UpgradesMenuController : MonoBehaviour
         }
         else
         {
-            //BaseRepairBar.sprite = oneIncrementEmpty; 
+            BaseRepairBar.sprite = oneIncrementEmpty; 
         }
 
         // Base Health Increase
@@ -272,19 +272,19 @@ public class UpgradesMenuController : MonoBehaviour
             K9DamageBar.sprite = twoIncrementFull;
         }
 
-        // K9 Cooldown Increase 
-        //if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcBulletController>().CooldowntimeNotFull == 10)
-        //{
-        //    K9CooldownBar.sprite = twoIncrementEmpty;
-        //}
-        //else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<BaseController>().maxHealth == 15)
-        //{
-        //    K9CooldownBar.sprite = twoIncrementHalf;
-        //}
-        //else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<BaseController>().maxHealth == 20)
-        //{
-        //    K9CooldownBar.sprite = twoIncrementFull;
-        //}
+        // K9 Fire Rate Increase 
+        if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().FireRate == 2.0f)
+        {
+            K9CooldownBar.sprite = twoIncrementEmpty;
+        }
+        else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().FireRate == 1.5f)
+        {
+            K9CooldownBar.sprite = twoIncrementHalf;
+        }
+        else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().FireRate == 1.0f)
+        {
+            K9CooldownBar.sprite = twoIncrementFull;
+        }
 
         // Sheariken [LONGGUN]
         // Sheariken Damage
@@ -355,7 +355,7 @@ public class UpgradesMenuController : MonoBehaviour
 
     float GetK9CurrentCooldown()
     {
-        return GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().CooldowntimeFull;
+        return GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().FireRate;
     }
 
     float GetShearikenDamage()
@@ -370,12 +370,12 @@ public class UpgradesMenuController : MonoBehaviour
 
     float GetOldMacdonaldAngle()
     {
-        return GameObject.FindGameObjectWithTag("ShotGun").GetComponent<ShortController>().YScale;
+        return GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShortController>().YScale;
     }
 
     float GetOldMacdonaldCooldown()
     {
-        return GameObject.FindGameObjectWithTag("ShotGun").GetComponent<ShortController>().CooldowntimeFull;
+        return GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShortController>().CooldowntimeFull;
     }
 
     bool GetBaseRegen()
@@ -434,20 +434,20 @@ public class UpgradesMenuController : MonoBehaviour
 
     public void SetK9CooldownDescription()
     {
-        //float cooldown = GetK9CurrentCooldown();
+        float cooldown = GetK9CurrentCooldown();
 
-        //switch (cooldown)
-        //{
-        //    case 1.0f:
-        //        currentWoolCost = 100;
-        //        break;
-        //    case 2.0f:
-        //        currentWoolCost = 200;
-        //        break;
-        //    case 3.0f:
-        //        currentWoolCost = -1;
-        //        break;
-        //}
+        switch (cooldown)
+        {
+            case 2.0f:
+                currentWoolCost = 100;
+                break;
+            case 1.5f:
+                currentWoolCost = 200;
+                break;
+            case 1.0f:
+                currentWoolCost = -1;
+                break;
+        }
 
         currentDescription = K9CooldownDescription;
 
@@ -615,7 +615,7 @@ public class UpgradesMenuController : MonoBehaviour
             case 11.0f:
                 currentWoolCost = 100;
                 break;
-            case 2.5f:
+            case 7.5f:
                 currentWoolCost = 200;
                 break;
             case 5.5f:
@@ -693,10 +693,14 @@ public class UpgradesMenuController : MonoBehaviour
 
     void PurchaseHumptyDumptySuicide()
     {
-        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
+        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal)
+            && (currentWoolCost != -1)
+            && GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>().enableSuicide == false)
         {
             NPCHumptyDumptyController humptyDumpty = GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>();
-            humptyDumpty.enableSuicide = !humptyDumpty.enableSuicide;
+
+            humptyDumpty.enableSuicide = true;
+
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
         }
     }
@@ -729,13 +733,13 @@ public class UpgradesMenuController : MonoBehaviour
         {
             BigBadWolfController wolf = GameObject.FindGameObjectWithTag("Wolf").GetComponent<BigBadWolfController>();
 
-            switch (wolf.blowingCountdown)
+            switch (wolf.blowingCooldown)
             {
-                case 11.0f:
-                    wolf.blowingCountdown = 7.5f;
+                case 11:
+                    wolf.blowingCooldown = 7.5f;
                     break;
                 case 7.5f:
-                    wolf.blowingCountdown = 5.5f;
+                    wolf.blowingCooldown = 5.5f;
                     break;
                 case 5.5f:
                     break;
@@ -814,13 +818,13 @@ public class UpgradesMenuController : MonoBehaviour
 
             switch (ArcGun.CooldowntimeFull)
             {
-                case 1:
-                    ArcGun.CooldowntimeFull = 2;
-                    break;
                 case 2:
-                    ArcGun.CooldowntimeFull = 3;
+                    ArcGun.CooldowntimeFull = 1.5f;
                     break;
-                case 3:
+                case 1.5f:
+                    ArcGun.CooldowntimeFull = 1;
+                    break;
+                case 1:
                     break;
             }
 

@@ -9,7 +9,7 @@ public class GunSwitching : MonoBehaviour
     public GameObject LongGun; public Image Long;
     public GameObject ShortGun; public Image Short;
 
-
+    public bool longGunCheck;
     private void Start()
     {
         ArcGun.SetActive(false); Color Temp = Arc.color; Temp.a = 0.3f; Arc.color = Temp;
@@ -25,7 +25,7 @@ public class GunSwitching : MonoBehaviour
         {
             ShortGun.SetActive(false); Color Temp = Short.color; Temp.a = 0.3f; Short.color = Temp;
             LongGun.SetActive(false); Temp = Long.color; Temp.a = 0.3f; Long.color = Temp;
-
+            longGunCheck = false;
             ArcGun.SetActive(true); Temp = Arc.color; Temp.a = 1.0f; Arc.color = Temp;
         }
 
@@ -33,7 +33,7 @@ public class GunSwitching : MonoBehaviour
         {
             ShortGun.SetActive(false); Color Temp = Short.color; Temp.a = 0.3f; Short.color = Temp;
             ArcGun.SetActive(false); Temp = Arc.color; Temp.a = 0.3f; Arc.color = Temp;
-
+            longGunCheck = true;
             LongGun.SetActive(true); Temp = Long.color; Temp.a = 1.0f; Long.color = Temp;
         }
 
@@ -41,7 +41,7 @@ public class GunSwitching : MonoBehaviour
         {
             ArcGun.SetActive(false); Color Temp = Arc.color; Temp.a = 0.3f; Arc.color = Temp;
             LongGun.SetActive(false); Temp = Long.color; Temp.a = 0.3f; Long.color = Temp;
-
+            longGunCheck = false;
             ShortGun.SetActive(true); Temp = Short.color; Temp.a = 1.0f; Short.color = Temp;
         }
     }

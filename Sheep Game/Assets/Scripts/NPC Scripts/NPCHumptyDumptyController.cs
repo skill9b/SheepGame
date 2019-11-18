@@ -14,7 +14,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
     public Animator animator;
 
     public bool bUpgradesMenuActive;
-
+    public Rigidbody2D body;
     public bool isDead;
     // Suicide cooldown variables
     public float yeetSpeed;
@@ -26,6 +26,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
     Vector3 target;
     public Transform suicideTarget;
     public Vector3 startingPosition;
+    public bool canYeet;
     // Start is called before the first frame update
 
     public GameObject AoeAnimObject;
@@ -41,7 +42,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
         isEnemy = false;
         canFire = true;
         maxEggCountdown = eggCountdown;
-
+        canYeet = true;
         target = suicideTarget.position;
 
         // Ignore collisions between sheep and eggbullet layer
@@ -51,44 +52,58 @@ public class NPCHumptyDumptyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!bUpgradesMenuActive)
+        if (!enableSuicide)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (!bUpgradesMenuActive)
             {
-                animator.SetBool("Flying", true);
-                YeetTheEgghead();
-            }
-
-            if (bSpin)
-            {
-                transform.rotation = transform.rotation * Quaternion.Euler(0, 0, -10);
-            }
-
-            if (isEnemy)
-            {
-                if (!(GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().isUpgradeUIActive))
+                if (canYeet)
                 {
-                    if (canFire == true)
+                    if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        //Play Shoot
-                        animator.SetTrigger("Shooting");
-                        Fire(sheepTarget);
-                        canFire = false;
-                        //End Shoot
-                    }
+                        animator.SetBool("Flying", true);
 
-                    if (canFire == false)
-                    {
-                        eggCountdown -= Time.deltaTime;
-                        if (eggCountdown <= 0)
-                        {
-                            eggCountdown = maxEggCountdown;
-                            canFire = true;
-                        }
+
+                        YeetTheEgghead();
+                        isDead = true;
+                        canYeet = false;
                     }
                 }
             }
         }
+        if (bSpin)
+        {
+            transform.rotation = transform.rotation * Quaternion.Euler(0, 0, -10);
+        }
+
+        if (isEnemy)
+        {
+            if (!(GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().isUpgradeUIActive))
+            {
+                if (canFire == true)
+                {
+
+                    //Play Shoot
+                    animator.SetTrigger("Shooting");
+                    if (!isDead)
+                    {
+                        Fire(sheepTarget);
+                    }
+                    canFire = false;
+                    //End Shoot
+                }
+
+                if (canFire == false)
+                {
+                    eggCountdown -= Time.deltaTime;
+                    if (eggCountdown <= 0)
+                    {
+                        eggCountdown = maxEggCountdown;
+                        canFire = true;
+                    }
+                }
+            }
+        }
+        
     }
 
     public void Fire(Vector3 _target)
@@ -125,11 +140,11 @@ public class NPCHumptyDumptyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "HumptyDumptyFloor")
+        if ((other.gameObject.tag == "HumptyDumptyFloor") || (other.gameObject.tag == "Enemy"))
         {
 
             Instantiate(AoeAnimObject, transform.position, transform.rotation);
-            gameObject.GetComponent<Renderer>().enabled = false;
+            //gameObject.GetComponent<Renderer>().enabled = false;
 
             GameObject[] allSheep = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -140,9 +155,12 @@ public class NPCHumptyDumptyController : MonoBehaviour
             }
 
             transform.position = startingPosition;
+            body.constraints = RigidbodyConstraints2D.FreezeAll;
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             bSpin = false;
+            
+
         }
     }
 }
