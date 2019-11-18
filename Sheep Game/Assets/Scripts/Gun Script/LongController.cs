@@ -92,8 +92,6 @@ public class LongController : MonoBehaviour
     {
         if (Time.time > FireRate + LastShot)
         {
-            ShearikinShot.Play(0);
-
             if (BulletCount == Mag) //if the mag has been used up make player wait long
             {
                 StartCoroutine(Wait(CooldowntimeFull));
@@ -102,6 +100,7 @@ public class LongController : MonoBehaviour
             //Regular Shooting
             if (BulletCount != Mag)
             {
+                ShearikinShot.Play(0);
                 GameObject b = Instantiate(Bullet) as GameObject;
                 b.transform.position = Gun.transform.position;
                 b.GetComponent<Rigidbody2D>().velocity = //-direction * Speed;
