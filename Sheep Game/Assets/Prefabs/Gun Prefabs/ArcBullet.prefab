@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -1225120120979363274}
   - component: {fileID: 1197626557296392656}
   - component: {fileID: 4018850329217870228}
+  - component: {fileID: 6216023453095155016}
   m_Layer: 0
   m_Name: ArcBullet
   m_TagString: Bullet
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: c8cf1ae6216d2d245bac4678b923a3f1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1543c28f93d95dd428152a61edd869fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,18 +118,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00084245205, y: 0.00042125583}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 0.48, y: 0.26}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 0.5032948, y: 0.27498126}
   m_EdgeRadius: 0
 --- !u!114 &1197626557296392656
 MonoBehaviour:
@@ -142,6 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a58afd7b0274344a38b3a8359268b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bCanFire: 1
+  DogShot: {fileID: 0}
   Bullet: {fileID: 5116687139915379231}
   Gun: {fileID: 1289057070121217490, guid: 46c29c5a757080d46b84f93dcc78614d, type: 3}
   mainCamera: {fileID: 0}
@@ -152,9 +155,10 @@ MonoBehaviour:
   CooldowntimeNotFull: 2
   Damage: 1
   MousePosition: {x: 0, y: 0}
+  GunStats: 0
+  xDistance: 0
   ColX: 0.2
   ColY: 0.2
-  xDistance: 0
 --- !u!82 &4018850329217870228
 AudioSource:
   m_ObjectHideFlags: 0
@@ -251,3 +255,39 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!66 &6216023453095155016
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5116687139915379231}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: -1225120120979363274}
+    m_ColliderPaths:
+    - - X: 2524869
+        Y: -1370693
+      - X: 2524869
+        Y: 1379118
+      - X: -2508049
+        Y: 1379089
+      - X: -2508020
+        Y: -1370693
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 0.252484, y: -0.1370693}
+      - {x: 0.252484, y: 0.1379118}
+      - {x: -0.2508049, y: 0.137906}
+      - {x: -0.2507991, y: -0.1370693}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.000005

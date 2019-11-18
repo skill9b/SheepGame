@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour
     public int checkWin;
     public bool goToNextLevel;
 
-
+    public bool isUpgradeUIActive;
 
 
 
@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-
+        isUpgradeUIActive = false;
         UpgradeUI.SetActive(false);
         DeactivateAllLevels();
         goToNextLevel = false;
@@ -72,11 +72,13 @@ public class GameController : MonoBehaviour
             DeactivateAllLevels();
             DisableGunShooting();
             UpgradeUI.SetActive(true);
+            isUpgradeUIActive = true;
             // if press Finish button then go to next level
             if (goToNextLevel)
             {
                 EnableGunShooting();
                 UpgradeUI.SetActive(false);
+                isUpgradeUIActive = false;
                 ChangeNextLevel( ((int)currentlevel) + 1 );
                 goToNextLevel = false;
             }
@@ -247,7 +249,10 @@ public class GameController : MonoBehaviour
         bulletsMissed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().missedBullets;
         healthLost = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalDamageTaken;
 
-        WoolCount = WoolCount * (1 + (1 - bulletsMissed / bulletsFired));// * (2 - (float(healthLost * 0.05f)));
+        //WoolCount = WoolCount * (1 + (1 - bulletsMissed / bulletsFired));// * (2 - (float(healthLost * 0.05f)));
+        Debug.Log(WoolCount);
+        Debug.Log(bulletsFired);
+        Debug.Log(bulletsMissed);
         WoolCount = WoolCount * (2 - (int)(healthLost * 0.05));
 
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().score += WoolCount;

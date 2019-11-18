@@ -13,6 +13,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
     public Vector3 sheepTarget;
     public Animator animator;
 
+    public bool isDead;
     // Suicide cooldown variables
     public float yeetSpeed;
     float nextYeetTime;
@@ -29,8 +30,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
     void Start()
     {
         enableSuicide = false;
-
-        nextYeetTime = 0f;
+        isDead = false;
 
         cooldownBar.BarValue = 100;
         cooldownObject.SetActive(false);
@@ -48,16 +48,25 @@ public class NPCHumptyDumptyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (enableSuicide)
-       // {
-            if (Input.GetKeyDown(KeyCode.Space))
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject[] allSheep = GameObject.FindGameObjectsWithTag("Enemy");
+
+            foreach (GameObject sheep in allSheep)
             {
-                //Play flying
-                //Debug.Log("Yeet");
-                animator.SetBool("Flying", true);
-                YeetTheEgghead();
+                sheep.GetComponent<ParentSheepController>().TakeDamage(100);
             }
-        //}
+
+            //Play flying
+            //Debug.Log("Yeet");
+            animator.SetBool("Flying", true);
+            YeetTheEgghead();
+
+
+
+        }
+
 
         if (bSpin)
         {
@@ -66,22 +75,25 @@ public class NPCHumptyDumptyController : MonoBehaviour
 
         if (isEnemy)
         {
-            if (canFire == true)
+            if (GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().isUpgradeUIActive)
             {
-                //Play Shoot
-                animator.SetTrigger("Shooting");
-                Fire(sheepTarget);
-                canFire = false;
-                //End Shoot
-            }
-
-            if (canFire == false)
-            {
-                eggCountdown -= Time.deltaTime;
-                if (eggCountdown <= 0)
+                if (canFire == true)
                 {
-                    eggCountdown = maxEggCountdown;
-                    canFire = true;
+                    //Play Shoot
+                    animator.SetTrigger("Shooting");
+                    Fire(sheepTarget);
+                    canFire = false;
+                    //End Shoot
+                }
+
+                if (canFire == false)
+                {
+                    eggCountdown -= Time.deltaTime;
+                    if (eggCountdown <= 0)
+                    {
+                        eggCountdown = maxEggCountdown;
+                        canFire = true;
+                    }
                 }
             }
         }
@@ -102,7 +114,7 @@ public class NPCHumptyDumptyController : MonoBehaviour
     // Suicide function
     void YeetTheEgghead()
     {
-
+        
         Vector3 difference = target - transform.position;
 
         float distance = difference.magnitude;
@@ -110,16 +122,19 @@ public class NPCHumptyDumptyController : MonoBehaviour
         direction.Normalize();
 
         float rotationZ = -(Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg);
+        //transform.position += new Vector3(0, 0.5f, 0);
+        GetComponent<Rigidbody2D>().velocity += new Vector2(0, 1);
         transform.rotation = Quaternion.Euler(0, 0, -1 * rotationZ);
 
-        if (Time.time > fireRate + nextYeetTime)
-        {
+       // if (Time.time > fireRate + nextYeetTime)
+       // {
             transform.rotation = Quaternion.Euler(0, 0, rotationZ);
+            ///transform.position += new Vector3(0, 0.5f, 0);
             GetComponent<Rigidbody2D>().velocity = direction * yeetSpeed;
             bSpin = true;
 
-            nextYeetTime = Time.time;
-        }
+           // nextYeetTime = Time.time;
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -135,6 +150,10 @@ public class NPCHumptyDumptyController : MonoBehaviour
             {
                sheep.GetComponent<ParentSheepController>().TakeDamage(3);
             }
+            GameObject.FindGameObjectWithTag("ShootingRange").GetComponent<ShootingRangeController>().isEggDead = true;
+            Destroy(gameObject);
         }
+
+        
     }
 }

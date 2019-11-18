@@ -18,7 +18,7 @@ public class SceneController : MonoBehaviour
             SceneManager.LoadScene(2);
         }
 
-        if (SceneManager.GetActiveScene().buildIndex == 7)  // If currently on tutorial scene
+        if (SceneManager.GetActiveScene().buildIndex == 1)  // If currently on tutorial scene
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
@@ -30,12 +30,12 @@ public class SceneController : MonoBehaviour
 
     public void ShowTutorial()
     {
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene(1);
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public void ReplayLevel()

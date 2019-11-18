@@ -24,7 +24,6 @@ public class BaseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = 50;
         // currentHealth = maxHealth;
         healthRegenActive = true;
         inCombat = false;
