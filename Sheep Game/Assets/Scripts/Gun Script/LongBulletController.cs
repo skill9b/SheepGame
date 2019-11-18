@@ -14,6 +14,14 @@ public class LongBulletController : MonoBehaviour
         PassEnemies = GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().PassEnemies;
     }
 
+    private void Update()
+    {
+        if (transform.position.x > 0)
+        {
+            GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().SoundCut = true;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")

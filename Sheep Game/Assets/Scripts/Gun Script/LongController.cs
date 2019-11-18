@@ -9,6 +9,7 @@ public class LongController : MonoBehaviour
    
     public AudioSource ShearikinShot;
     public bool SheepImpact = false;
+    public bool SoundCut = false;
 
     public GameObject Bullet;
     public GameObject Gun;
@@ -74,6 +75,12 @@ public class LongController : MonoBehaviour
                 Fire(direction, Speed);
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets++;
             }
+        }
+
+        if (SoundCut)
+        {
+            ShearikinShot.Stop();
+            SoundCut = false;
         }
 
         if (SheepImpact)
