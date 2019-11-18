@@ -6,12 +6,14 @@ public class NPCHumptyDumptyController : MonoBehaviour
 {
     public GameObject eggPrefab;
     public bool isEnemy;
-    public bool canFire;
-    public bool bSpin;
+    bool canFire;
+    public bool bSpin = false;
     public float eggCountdown; // adjusted for Rate of fire
     float maxEggCountdown;
     public Vector3 sheepTarget;
     public Animator animator;
+
+    public bool bUpgradesMenuActive;
 
     public bool isDead;
     // Suicide cooldown variables
@@ -29,15 +31,14 @@ public class NPCHumptyDumptyController : MonoBehaviour
     public GameObject AoeAnimObject;
     void Start()
     {
+        bUpgradesMenuActive = false;
+
         startingPosition = transform.position;
-        startingPosition -= new Vector3(1, 0, 0);
-        startingPosition += new Vector3(1, 0, 0);
 
         enableSuicide = false;
         isDead = false;
 
         isEnemy = false;
-        bSpin = false;
         canFire = true;
         maxEggCountdown = eggCountdown;
 
@@ -50,34 +51,44 @@ public class NPCHumptyDumptyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!bUpgradesMenuActive)
         {
-            animator.SetBool("Flying", true);
-            YeetTheEgghead();
-        }
-
-
-        if (bSpin)
-        {
-            transform.rotation =  transform.rotation * Quaternion.Euler(0, 0, -10);
-        }
-
-        if (isEnemy)
-        {
-            if (!(GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().isUpgradeUIActive))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (canFire == true)
+                animator.SetBool("Flying", true);
+                YeetTheEgghead();
+            }
+
+            if (bSpin)
+            {
+                transform.rotation = transform.rotation * Quaternion.Euler(0, 0, -10);
+            }
+
+            if (isEnemy)
+            {
+                if (!(GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().isUpgradeUIActive))
                 {
-                    //Play Shoot
-                    animator.SetTrigger("Shooting");
-                    Fire(sheepTarget);
-                    canFire = false;
-                    //End Shoot
+                    if (canFire == true)
+                    {
+                        //Play Shoot
+                        animator.SetTrigger("Shooting");
+                        Fire(sheepTarget);
+                        canFire = false;
+                        //End Shoot
+                    }
+
+                    if (canFire == false)
+                    {
+                        eggCountdown -= Time.deltaTime;
+                        if (eggCountdown <= 0)
+                        {
+                            eggCountdown = maxEggCountdown;
+                            canFire = true;
+                        }
+                    }
                 }
             }
         }
-
     }
 
     public void Fire(Vector3 _target)
@@ -132,10 +143,6 @@ public class NPCHumptyDumptyController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             bSpin = false;
-            canFire = false;
         }
-
-
-        
     }
 }

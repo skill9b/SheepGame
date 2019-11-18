@@ -70,7 +70,8 @@ public class GameController : MonoBehaviour
         {
 
             // Disable wolf blowing
-            Wolf.GetComponent<BigBadWolfController>().bUpgradesMenuActive = false;
+            Wolf.GetComponent<BigBadWolfController>().bUpgradesMenuActive = true;
+            HumptyDumpty.GetComponent<NPCHumptyDumptyController>().bUpgradesMenuActive = true;
 
             CalculateWool();
             DeactivateAllLevels();
@@ -82,7 +83,7 @@ public class GameController : MonoBehaviour
             {
                 // Reset Humpty Dumpty
                 HumptyDumpty.GetComponent<Renderer>().enabled = true;
-                HumptyDumpty.GetComponent<NPCHumptyDumptyController>().canFire = true;
+                HumptyDumpty.GetComponent<NPCHumptyDumptyController>().bUpgradesMenuActive = false;
 
                 // Reset Big Bad Wolf
                 Wolf.GetComponent<BigBadWolfController>().bUpgradesMenuActive = false;
