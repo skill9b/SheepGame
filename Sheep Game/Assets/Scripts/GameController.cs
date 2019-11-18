@@ -29,12 +29,11 @@ public class GameController : MonoBehaviour
     public GameObject ArcGun;
     public GameObject LongGun;
     public GameObject ShotGun;
-    public GameObject Egg;
+    public GameObject HumptyDumpty;
     public Level currentlevel;
     public Level nextLevel;
     public int checkWin;
     public bool goToNextLevel;
-    public Sprite EggSprite;
     public bool isUpgradeUIActive;
 
     public int healthMultiplyer;
@@ -83,8 +82,8 @@ public class GameController : MonoBehaviour
         }
         else if (currentlevel == Level.Inbetween)
         {
-            Egg.SetActive(true);
-            Egg.GetComponent<SpriteRenderer>().sprite = EggSprite; 
+            HumptyDumpty.GetComponent<Renderer>().enabled = true;
+
             CalculateWool();
             DeactivateAllLevels();
             DisableGunShooting();

@@ -141,8 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579afd924bb36aa45a8429b22b7a177f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 3.7934747, y: -1.7950463, z: 0}
-  xDistance: 11.52928
+  target: {x: 0.8275838, y: -1.9407134, z: 0}
+  xDistance: 8.563389
   damage: 1
-  AoeObject: {fileID: 101303286558475408, guid: ae3c79b2fbc4205478e2dc2ff6875b27,
+  AoeObject: {fileID: 236332792751719123, guid: ae3c79b2fbc4205478e2dc2ff6875b27,
     type: 3}
