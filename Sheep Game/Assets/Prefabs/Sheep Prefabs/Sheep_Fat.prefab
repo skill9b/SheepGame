@@ -78,11 +78,11 @@ MonoBehaviour:
   baseController: {fileID: 0}
   animator: {fileID: 4739635115909862005}
   health: 4
-  speed: 1.1
+  speed: 1
   distanceFromEnemy: 1
   woolPoints: 10
-  attackSpeed: 2.5
-  attackDamage: 2
+  attackSpeed: 2
+  attackDamage: 1
   body: {fileID: -2842702860101175851}
   currentState: 0
   tinySheepObject: {fileID: 7915623186855024290, guid: 07ecfa84f8e2ef442b6a03b9f45f995f,

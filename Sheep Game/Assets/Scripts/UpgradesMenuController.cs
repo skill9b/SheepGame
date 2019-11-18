@@ -229,7 +229,7 @@ public class UpgradesMenuController : MonoBehaviour
         }
 
         // Base Regen
-        if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().healthRegenActive == false)
+        if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().healthRegenActive == true)
         {
             BaseRepairBar.sprite = oneIncrementFull;
         }
@@ -239,19 +239,19 @@ public class UpgradesMenuController : MonoBehaviour
         }
 
         // Base Health Increase
-        if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().maxHealth == 10)
+        if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().maxHealth == 15)
         {
             BaseHealthBar.sprite = threeIncrementEmpty;
         }
-        else if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().maxHealth == 15)
+        else if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().maxHealth == 20)
         {
             BaseHealthBar.sprite = threeIncrementOne;
         }
-        else if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().maxHealth == 20)
+        else if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().maxHealth == 25)
         {
             BaseHealthBar.sprite = threeIncrementTwo;
         }
-        else if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().maxHealth == 25)
+        else if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().maxHealth == 30)
         {
             BaseHealthBar.sprite = threeIncrementFull;
         }
@@ -259,18 +259,18 @@ public class UpgradesMenuController : MonoBehaviour
         // K9 [ARCGUN]
 
         // K9 Damage Increase
-        //if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcBulletController>().Damage == 10)
-        //{
-        //    K9DamageBar.sprite = twoIncrementEmpty;
-        //}
-        //else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcBulletController>().Damage == 15)
-        //{
-        //    K9DamageBar.sprite = twoIncrementHalf;
-        //}
-        //else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcBulletController>().Damage == 20)
-        //{
-        //    K9DamageBar.sprite = twoIncrementFull;
-        //}
+        if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().Damage == 1)
+        {
+            K9DamageBar.sprite = twoIncrementEmpty;
+        }
+        else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().Damage == 2)
+        {
+            K9DamageBar.sprite = twoIncrementHalf;
+        }
+        else if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().Damage == 3)
+        {
+            K9DamageBar.sprite = twoIncrementFull;
+        }
 
         // K9 Cooldown Increase 
         //if (GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcBulletController>().CooldowntimeNotFull == 10)
@@ -350,7 +350,7 @@ public class UpgradesMenuController : MonoBehaviour
     
     float GetK9CurrentDamage()
     {
-        return GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcBulletController>().Damage;
+        return GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().Damage;
     }
 
     float GetK9CurrentCooldown()
@@ -383,7 +383,7 @@ public class UpgradesMenuController : MonoBehaviour
         return GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().healthRegenActive;
     }
 
-    float GetBaseMaxHealth()
+    int GetBaseMaxHealth()
     {
         return GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().maxHealth;
     }
@@ -412,20 +412,20 @@ public class UpgradesMenuController : MonoBehaviour
 
     public void SetK9DamageDescription()
     {
-        //float damage = GetK9CurrentDamage();
+        float damage = GetK9CurrentDamage();
 
-        //switch(damage)
-        //{
-        //    case 1.0f:
-        //        currentWoolCost = 100;
-        //        break;
-        //    case 2.0f:
-        //        currentWoolCost = 200;
-        //        break;
-        //    case 3.0f:
-        //        currentWoolCost = -1;
-        //        break;
-        //}
+        switch(damage)
+        {
+            case 1.0f:
+                currentWoolCost = 100;
+                break;
+            case 2.0f:
+                currentWoolCost = 200;
+                break;
+            case 3.0f:
+                currentWoolCost = -1;
+                break;
+        }
 
         currentDescription = K9DamageDescription;
 
@@ -544,20 +544,23 @@ public class UpgradesMenuController : MonoBehaviour
 
     public void SetBaseHealthDescription()
     {
-        //float cooldown = GetBaseHealth();
+        int health = GetBaseMaxHealth();
 
-        //switch (cooldown)
-        //{
-        //    case 3.0f:
-        //        currentWoolCost = 150;
-        //        break;
-        //    case 2.5f:
-        //        currentWoolCost = 200;
-        //        break;
-        //    case 2.0f:
-        //        currentWoolCost = -1;
-        //        break;
-        //}
+        switch (health)
+        {
+            case 15:
+                currentWoolCost = 150;
+                break;
+            case 20:
+                currentWoolCost = 200;
+                break;
+            case 25:
+                currentWoolCost = 200;
+                break;
+            case 30:
+                currentWoolCost = -1;
+                break;
+        }
 
         currentDescription = BaseHealthDescription;
 
@@ -744,7 +747,9 @@ public class UpgradesMenuController : MonoBehaviour
 
     void PurchaseBaseRegen()
     { 
-        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1) && (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().healthRegenActive == false))
+        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) 
+            && (currentWoolCost != -1) 
+            && (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().healthRegenActive == false))
         {
             BaseController baseObject = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>();
 
@@ -762,9 +767,6 @@ public class UpgradesMenuController : MonoBehaviour
 
             switch (baseObject.maxHealth)
             {
-                case 10:
-                    baseObject.maxHealth = 10;
-                    break;
                 case 15:
                     baseObject.maxHealth = 20;
                     break;
@@ -772,6 +774,9 @@ public class UpgradesMenuController : MonoBehaviour
                     baseObject.maxHealth = 25;
                     break;
                 case 25:
+                    baseObject.maxHealth = 30;
+                    break;
+                case 30:
                     break;
             }
 
@@ -781,52 +786,46 @@ public class UpgradesMenuController : MonoBehaviour
 
     void PurchaseK9Damage()
     {
-        //if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
-        //{
-        //    BaseController baseObject = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>();
+        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
+        {
+            ArcController ArcGun = GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>();
 
-        //    switch (baseObject.maxHealth)
-        //    {
-        //        case 10:
-        //            baseObject.maxHealth = 10;
-        //            break;
-        //        case 15:
-        //            baseObject.maxHealth = 20;
-        //            break;
-        //        case 20:
-        //            baseObject.maxHealth = 25;
-        //            break;
-        //        case 25:
-        //            break;
-        //    }
+            switch (ArcGun.Damage)
+            {
+                case 1:
+                    ArcGun.Damage = 2;
+                    break;
+                case 2:
+                    ArcGun.Damage = 3;
+                    break;
+                case 3:
+                    break;
+            }
 
-        //    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
-        //}
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
+        }
     }
 
     void PurchaseK9Cooldown()
     {
-        //if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
-        //{
-        //    BaseController baseObject = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>();
+        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
+        {
+            ArcController ArcGun = GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>();
 
-        //    switch (baseObject.cooldown)
-        //    {
-        //        case 10:
-        //            baseObject.maxHealth = 10;
-        //            break;
-        //        case 15:
-        //            baseObject.maxHealth = 20;
-        //            break;
-        //        case 20:
-        //            baseObject.maxHealth = 25;
-        //            break;
-        //        case 25:
-        //            break;
-        //    }
+            switch (ArcGun.CooldowntimeFull)
+            {
+                case 1:
+                    ArcGun.CooldowntimeFull = 2;
+                    break;
+                case 2:
+                    ArcGun.CooldowntimeFull = 3;
+                    break;
+                case 3:
+                    break;
+            }
 
-        //    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
-        //}
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
+        }
     }
 
     void PurchaseShearikenDamage()

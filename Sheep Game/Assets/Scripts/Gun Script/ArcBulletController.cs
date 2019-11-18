@@ -23,7 +23,7 @@ public class ArcBulletController : ArcController
 
     Vector3 STUPIDMOUSEPOSITION;
     Vector3 MOUSEPOSITION;
-
+    public float blastRadius = 1.5f;
     private void Start()
     {
         damage = GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().Damage;
@@ -87,7 +87,16 @@ public class ArcBulletController : ArcController
                 transform.localScale = new Vector3(0.001f, 0.001f, 0);
                 DogHasImpact.Stop();
                 DogImpact.Play(0);
-                other.GetComponent<ParentSheepController>().TakeDamage(damage);
+                GameObject[] allSheep = GameObject.FindGameObjectsWithTag("Enemy");
+
+                foreach (GameObject sheep in allSheep)
+                {
+                    if (blastRadius >= Vector2.Distance(transform.position, sheep.transform.position))
+                    {
+                        Debug.Log("Sheep took damage!");
+                        sheep.GetComponent<ParentSheepController>().TakeDamage(damage);
+                    }
+                }
                 //Add Code to instantiate animation and then only destroy the bullet   
             }
         }
