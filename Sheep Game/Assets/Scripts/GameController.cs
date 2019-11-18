@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour
     public Sprite EggSprite;
     public bool isUpgradeUIActive;
 
+    public int healthMultiplyer;
 
 
     public int WoolCount;
@@ -266,7 +267,12 @@ public class GameController : MonoBehaviour
         bulletsMissed = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().missedBullets;
         healthLost = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalDamageTaken;
 
-        WoolCount = WoolCount * (2 - (int)(healthLost * 0.05));
+        healthMultiplyer = (int)(2 - (healthLost * 0.05));
+
+        if ( healthMultiplyer > 0)
+        {
+            WoolCount = WoolCount * healthMultiplyer;
+        }
 
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().score += WoolCount;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal += WoolCount;

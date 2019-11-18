@@ -15,7 +15,7 @@ public class ParentSheepController : MonoBehaviour
     private Vector2 target;
     public float attackSpeed;
     float nextAttackTime;
-    public float attackDamage;
+    public int attackDamage;
     public Rigidbody2D body;
     bool IsIdle;
     public enum State
