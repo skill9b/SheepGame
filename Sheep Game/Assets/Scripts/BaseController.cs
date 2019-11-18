@@ -25,7 +25,7 @@ public class BaseController : MonoBehaviour
     void Start()
     {
         // currentHealth = maxHealth;
-        healthRegenActive = true;
+        healthRegenActive = false;
         inCombat = false;
         sheepAttackingCounter = 0;
     }

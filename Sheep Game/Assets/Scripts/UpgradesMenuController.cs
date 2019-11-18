@@ -231,11 +231,11 @@ public class UpgradesMenuController : MonoBehaviour
         // Base Regen
         if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().healthRegenActive == true)
         {
-            BaseRepairBar.sprite = oneIncrementEmpty;
+            BaseRepairBar.sprite = oneIncrementFull;
         }
         else
         {
-            BaseRepairBar.sprite = oneIncrementFull;
+            BaseRepairBar.sprite = oneIncrementEmpty; 
         }
 
         // Base Health Increase

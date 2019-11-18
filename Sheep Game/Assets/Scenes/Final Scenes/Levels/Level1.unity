@@ -2640,7 +2640,7 @@ PrefabInstance:
     - target: {fileID: 103594734325402332, guid: 25994170128b93b4386305952b887887,
         type: 3}
       propertyPath: healthRegenActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 103594734325402332, guid: 25994170128b93b4386305952b887887,
         type: 3}
@@ -5819,6 +5819,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 236332792751719123, guid: b70bd4eea48a425419e2a72b93aaaddd,
         type: 3}
+    - target: {fileID: 6294399771435813942, guid: eda2c08c923e9674e9133ffba2e14efe,
+        type: 3}
+      propertyPath: isDead
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eda2c08c923e9674e9133ffba2e14efe, type: 3}
 --- !u!1 &1250081928
