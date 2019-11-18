@@ -9,6 +9,8 @@ public class ArcBulletController : ArcController
 
     private BoxCollider2D AOE;
 
+    Vector3 initialPosition;
+
     private Vector2 acceleration;
 
     public float xDistance;
@@ -21,6 +23,7 @@ public class ArcBulletController : ArcController
 
     Vector3 STUPIDMOUSEPOSITION;
     Vector3 MOUSEPOSITION;
+
     private void Start()
     {
         damage = GameObject.FindGameObjectWithTag("ArcGun").GetComponent<ArcController>().Damage;
@@ -52,6 +55,8 @@ public class ArcBulletController : ArcController
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(velocityX, velocityY);
 
+        initialPosition = transform.position;
+        initialPosition += new Vector3(0,-1,0);
     }
 
     private void Update()
@@ -61,6 +66,12 @@ public class ArcBulletController : ArcController
             STUPIDMOUSEPOSITION = Input.mousePosition;
             STUPIDMOUSEPOSITION.z = 10;
             MOUSEPOSITION = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        }
+
+
+        if (transform.position.y < initialPosition.y)
+        {
+            Destroy(gameObject);
         }
     }
 
