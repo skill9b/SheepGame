@@ -85,14 +85,13 @@ public class SceneController : MonoBehaviour
 
     public void LoseScreen()
     {
-        SceneManager.LoadScene(8);
+        SceneManager.LoadScene(3);
     }
 
     public void WinScreen()
     {
-        //SceneManager.LoadScene(9);
+        SceneManager.LoadScene(4);
     }
-
 }
 
 

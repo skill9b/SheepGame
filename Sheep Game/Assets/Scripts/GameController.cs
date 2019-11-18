@@ -40,7 +40,6 @@ public class GameController : MonoBehaviour
 
     public int healthMultiplyer;
 
-
     public int WoolCount;
     public int bulletsFired;
     public int bulletsMissed;
@@ -112,7 +111,7 @@ public class GameController : MonoBehaviour
 
         if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().currentHealth <= 0)
         {
-            //GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().LoseScreen();
+            GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().LoseScreen();
         }
 
     }
@@ -159,7 +158,7 @@ public class GameController : MonoBehaviour
             case 7:
                 {
                     //Go to win screen
-                    //GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().LoseScreen();
+                    GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().WinScreen();
                     break;
                 }
         }
