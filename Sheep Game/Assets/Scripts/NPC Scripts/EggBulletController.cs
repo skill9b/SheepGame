@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EggBulletController : MonoBehaviour
 {
+    public AudioSource EggBull;
+
     public Vector3 target;
     public float xDistance;
     public int damage;
@@ -17,6 +19,8 @@ public class EggBulletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EggBull = GetComponent<AudioSource>();
+
         float t = 1;
         float s = 3;
 
@@ -35,6 +39,7 @@ public class EggBulletController : MonoBehaviour
         // u = s / t
         velocityX = xDistance / t;
         // Debug.Log("x velocity: " + velocityX);
+
 
         // Calculate init y velocity
         // s = ut + (0.5 * a * t^2)
@@ -65,6 +70,7 @@ public class EggBulletController : MonoBehaviour
     {
         AoeObject.GetComponent<EggAoeController>().damage = damage;
         Instantiate(AoeObject, transform.position, transform.rotation);
+        EggBull.Play(0);
         Destroy(gameObject);
     }
 
