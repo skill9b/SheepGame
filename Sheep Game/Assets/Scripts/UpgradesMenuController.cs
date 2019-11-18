@@ -88,8 +88,8 @@ public class UpgradesMenuController : MonoBehaviour
     private void Start()
     {
         // Display initial values for player wool, K9 Damage description and K9 damage cost
-        playerCurrentWool = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal;
-        playerWoolDisplay.text = playerCurrentWool.ToString();
+        //playerCurrentWool = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal;
+        playerWoolDisplay.text = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal.ToString();
 
         SetK9DamageDescription(); // sets description and current woolcost to be K9 as default
         descriptionBox.sprite = currentDescription;
@@ -99,16 +99,19 @@ public class UpgradesMenuController : MonoBehaviour
 
     void Update()
     {
+
         // Display current description & woolcost
         descriptionBox.sprite = currentDescription;
+        currentWoolCostDisplay.text = currentWoolCost.ToString();
+
         if (currentWoolCost == -1)
         {
             currentWoolCostDisplay.text = "";
         }
 
         // Set current wool points
-        playerCurrentWool = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal;
-        playerWoolDisplay.text = playerCurrentWool.ToString();
+        //playerCurrentWool = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal;
+        playerWoolDisplay.text = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal.ToString();
 
         DisplayAllCurrentProgressBars();
     }
@@ -667,7 +670,7 @@ public class UpgradesMenuController : MonoBehaviour
   
     void PurchaseHumptyDumptyFireRate()   // Purchase 
     {
-        if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
         {
             NPCHumptyDumptyController humptyDumpty = GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>();
             switch (humptyDumpty.eggCountdown)
@@ -681,23 +684,23 @@ public class UpgradesMenuController : MonoBehaviour
                 case 1.0f:
                     break;
             }
-            playerCurrentWool -= currentWoolCost;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
         }
     }
 
     void PurchaseHumptyDumptySuicide()
     {
-        if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
         {
             NPCHumptyDumptyController humptyDumpty = GameObject.FindGameObjectWithTag("HumptyDumpty").GetComponent<NPCHumptyDumptyController>();
-            humptyDumpty.enableSuicide = !humptyDumpty.enableSuicide; 
-            playerCurrentWool -= currentWoolCost;
+            humptyDumpty.enableSuicide = !humptyDumpty.enableSuicide;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
         }
     }
 
     void PurchaseWolfBlowingPower()
     {
-        if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
         {
             BigBadWolfController wolf = GameObject.FindGameObjectWithTag("Wolf").GetComponent<BigBadWolfController>();
             
@@ -713,13 +716,13 @@ public class UpgradesMenuController : MonoBehaviour
                     break;
             }
 
-            playerCurrentWool -= currentWoolCost;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
         }
     }
 
     void PurchaseWolfCooldown()
     {
-        if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
         {
             BigBadWolfController wolf = GameObject.FindGameObjectWithTag("Wolf").GetComponent<BigBadWolfController>();
 
@@ -735,25 +738,25 @@ public class UpgradesMenuController : MonoBehaviour
                     break;
             }
 
-            playerCurrentWool -= currentWoolCost;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
         }
     }
 
     void PurchaseBaseRegen()
     {
-        if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
         {
             BaseController baseObject = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>();
 
             baseObject.healthRegenActive = !baseObject.healthRegenActive;
 
-            playerCurrentWool -= currentWoolCost;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
         }
     }
 
     void PurchaseBaseHealth()
     {
-        if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
         {
             BaseController baseObject = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>();
 
@@ -772,13 +775,13 @@ public class UpgradesMenuController : MonoBehaviour
                     break;
             }
 
-            playerCurrentWool -= currentWoolCost;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
         }
     }
 
     void PurchaseK9Damage()
     {
-        //if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        //if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
         //{
         //    BaseController baseObject = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>();
 
@@ -797,13 +800,13 @@ public class UpgradesMenuController : MonoBehaviour
         //            break;
         //    }
 
-        //    playerCurrentWool -= currentWoolCost;
+        //    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
         //}
     }
 
     void PurchaseK9Cooldown()
     {
-        //if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        //if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
         //{
         //    BaseController baseObject = GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>();
 
@@ -822,13 +825,13 @@ public class UpgradesMenuController : MonoBehaviour
         //            break;
         //    }
 
-        //    playerCurrentWool -= currentWoolCost;
+        //    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
         //}
     }
 
     void PurchaseShearikenDamage()
     {
-        if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
         {
             LongController sheariken = GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>();
 
@@ -844,13 +847,13 @@ public class UpgradesMenuController : MonoBehaviour
                     break;
             }
 
-            playerCurrentWool -= currentWoolCost;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
         }
     }
 
     void PurchaseShearikenAccuracy()
     {
-        if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
         {
             LongController sheariken = GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>();
 
@@ -866,13 +869,13 @@ public class UpgradesMenuController : MonoBehaviour
                     break;
             }
 
-            playerCurrentWool -= currentWoolCost;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
         }
     }
 
     void PurchaseOldMacdonaldAoE()
     {
-        if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
         {
             ShortController oldMacdonald = GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShortController>();
 
@@ -888,13 +891,13 @@ public class UpgradesMenuController : MonoBehaviour
                     break;
             }
 
-            playerCurrentWool -= currentWoolCost;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
         }
     }
 
     void PurchaseOldMacdonaldCooldown()
     {
-        if ((currentWoolCost <= playerCurrentWool) && (currentWoolCost != -1))
+        if ((currentWoolCost <= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal) && (currentWoolCost != -1))
         {
             ShortController oldMacdonald = GameObject.FindGameObjectWithTag("Shotgun").GetComponent<ShortController>();
 
@@ -910,7 +913,7 @@ public class UpgradesMenuController : MonoBehaviour
                     break;
             }
 
-            playerCurrentWool -= currentWoolCost;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal -= currentWoolCost;
         }
     }
 }

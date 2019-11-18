@@ -4472,6 +4472,7 @@ MonoBehaviour:
   EggSprite: {fileID: -2430884549058471417, guid: 6310e4ac970ae1a4980dc981fa8da029,
     type: 3}
   isUpgradeUIActive: 0
+  healthMultiplyer: 0
   WoolCount: 0
   bulletsFired: 0
   bulletsMissed: 0
