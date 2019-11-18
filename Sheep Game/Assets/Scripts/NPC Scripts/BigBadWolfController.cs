@@ -45,6 +45,7 @@ public class BigBadWolfController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (!bUpgradesMenuActive)
         {
             if (Input.GetKeyDown(KeyCode.Q) && (canBlow == true) && (isBlowing == false))
@@ -53,18 +54,19 @@ public class BigBadWolfController : MonoBehaviour
                 animator.SetTrigger("Blowing");
                 canBlow = false;
                 isBlowing = true;
+                
             }
 
             if (canBlow == false && isBlowing == true)
             {
-                animator.SetBool("Idle", true);
+                //animator.SetBool("Idle", true);
                 // Move all sheep instances back a few steps
                 sheepInstances = GameObject.FindGameObjectsWithTag("Enemy");
                 foreach (GameObject sheep in sheepInstances)
                 {
                     sheep.transform.position += new Vector3(0.1f, 0, 0);
                 }
-
+                animator.SetBool("Idle", true);
                 blowingCountdown -= Time.deltaTime;
             }
 
