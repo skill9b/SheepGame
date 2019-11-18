@@ -44,19 +44,19 @@ public class BigBadWolfController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && (canBlow == true) && (isBlowing == false))
         {
             WolfBlow.Play(0);
-            animator.SetBool("Blowing", true);
+            animator.SetTrigger("Blowing");
             canBlow = false;
             isBlowing = true;
         }
 
-        if (isBlowing)
-        {
-            animator.SetBool("Blowing", false);
-        }
+        //if (isBlowing)
+        //{
+        //    animator.SetBool("Blowing", false);
+        //}
 
         if (canBlow == false && isBlowing == true)
         {
-
+            animator.SetBool("Idle", true);
             // Move all sheep instances back a few steps
             sheepInstances = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject sheep in sheepInstances)
