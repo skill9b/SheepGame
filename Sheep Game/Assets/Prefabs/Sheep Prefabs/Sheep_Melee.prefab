@@ -81,7 +81,7 @@ MonoBehaviour:
   distanceFromEnemy: 1
   woolPoints: 10
   attackSpeed: 2
-  attackDamage: 0
+  attackDamage: 1
   body: {fileID: 7112583546173061006}
   currentState: 0
 --- !u!95 &1926422251672084765
