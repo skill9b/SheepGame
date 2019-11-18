@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public int totalFiredBullets;
     public int missedBullets;
 
-    public float totalDamageTaken;
+    public int totalDamageTaken;
 
     void Start()
     {

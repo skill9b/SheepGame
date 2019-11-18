@@ -88,7 +88,7 @@ public class UpgradesMenuController : MonoBehaviour
     private void Start()
     {
         // Display initial values for player wool, K9 Damage description and K9 damage cost
-        playerCurrentWool = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolCount;
+        playerCurrentWool = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal;
         playerWoolDisplay.text = playerCurrentWool.ToString();
 
         SetK9DamageDescription(); // sets description and current woolcost to be K9 as default
@@ -107,7 +107,7 @@ public class UpgradesMenuController : MonoBehaviour
         }
 
         // Set current wool points
-        playerCurrentWool = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolCount;
+        playerCurrentWool = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().woolTotal;
         playerWoolDisplay.text = playerCurrentWool.ToString();
 
         DisplayAllCurrentProgressBars();
