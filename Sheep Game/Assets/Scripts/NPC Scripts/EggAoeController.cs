@@ -43,30 +43,4 @@ public class EggAoeController : MonoBehaviour
             }
         }
     }
-
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-
-    //    Debug.Log("Triggering something here...");
-
-    //    if (other.gameObject.CompareTag("Enemy"))
-
-    //    // if (other.gameObject.tag == "Enemy")
-    //    {
-    //        Debug.Log("Enemy taking damage!");
-    //        other.GetComponent<ParentSheepController>().TakeDamage(damage);
-    //    }
-    //}
-
-    //private void OnTriggerStay2D(Collider2D other)
-    //{
-    //    Debug.Log("Triggering something here too");
-
-    //    // if (other.gameObject.tag == "Enemy")
-    //    if (other.gameObject.CompareTag("Enemy"))
-    //    {
-    //        Debug.Log("Enemy taking damage!");
-    //        other.GetComponent<ParentSheepController>().TakeDamage(damage);
-    //    }
-    //}
 }
