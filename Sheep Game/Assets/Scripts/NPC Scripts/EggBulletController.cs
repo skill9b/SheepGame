@@ -45,9 +45,8 @@ public class EggBulletController : MonoBehaviour
     {
 
         // if target reached, destroy game object and switch on AoE object attached
-        if (transform.position.x >= target.x)
+        if ((transform.position.x >= target.x) || (transform.position.y <= -4.2f))
         {
-            Debug.Log("Target reached.");
             bShowAoE = true;
         }
 
@@ -61,7 +60,6 @@ public class EggBulletController : MonoBehaviour
     {
         AoeObject.GetComponent<EggAoeController>().damage = damage;
         Instantiate(AoeObject, transform.position, transform.rotation);
-        // Debug.Log("Created AoE");
         Destroy(gameObject);
     }
 
@@ -74,9 +72,10 @@ public class EggBulletController : MonoBehaviour
 
         }
 
-        if (other.gameObject.tag == "Floor")
-        {
-            Destroy(gameObject);
-        }
+        //if (other.gameObject.tag == "HumptyDumptyFloor")
+        //{
+        //    CreateAoE();
+        //    Destroy(gameObject);
+        //}
     }
 }

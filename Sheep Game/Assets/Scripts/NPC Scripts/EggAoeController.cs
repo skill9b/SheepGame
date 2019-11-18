@@ -9,7 +9,7 @@ public class EggAoeController : MonoBehaviour
 
     void Update()
     {
-        // destroy after a countdown
+        // Destroy after a countdown
         if (lifespan >= 0)
         {
             lifespan -= Time.deltaTime;
@@ -24,7 +24,22 @@ public class EggAoeController : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
+            Debug.Log("Enemy taking damage!");
             other.GetComponent<ParentSheepController>().TakeDamage(damage);
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Enemy taking damage!");
+            other.GetComponent<ParentSheepController>().TakeDamage(damage);
+        }
+    }
+
+    private void OnParticleTrigger()
+    {
+        
     }
 }
