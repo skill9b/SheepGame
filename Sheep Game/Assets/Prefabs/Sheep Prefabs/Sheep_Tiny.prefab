@@ -78,7 +78,7 @@ MonoBehaviour:
   baseController: {fileID: 0}
   animator: {fileID: 2823700103383918022}
   health: 2
-  speed: 2
+  speed: 1.95
   distanceFromEnemy: 1
   woolPoints: 2
   attackSpeed: 1.5
@@ -185,7 +185,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1ccd4af94da17fe46a637a17d2fda54c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

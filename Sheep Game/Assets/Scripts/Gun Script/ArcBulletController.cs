@@ -73,6 +73,11 @@ public class ArcBulletController : ArcController
         {
             Destroy(gameObject);
         }
+
+        if ((GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().isUpgradeUIActive))
+        {
+            DogImpact.Stop(); DogHasImpact.Stop();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

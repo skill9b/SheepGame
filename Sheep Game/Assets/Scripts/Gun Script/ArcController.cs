@@ -52,6 +52,11 @@ public class ArcController : MonoBehaviour
 
         //Gun.transform.rotation *= Quaternion.Euler(0, 0, -Rot);
 
+        if ((GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().isUpgradeUIActive))
+        {
+            DogShot.Stop();
+        }
+
         if (bCanFire)
         {
             if (Input.GetMouseButtonDown(0))

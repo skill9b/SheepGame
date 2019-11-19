@@ -40,7 +40,6 @@ public class GameController : MonoBehaviour
 
     public int healthMultiplyer;
 
-
     public int WoolCount;
     public int bulletsFired;
     public int bulletsMissed;
@@ -51,6 +50,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        Application.targetFrameRate = 30;
         isUpgradeUIActive = false;
         UpgradeUI.SetActive(false);
         DeactivateAllLevels();
@@ -85,6 +85,13 @@ public class GameController : MonoBehaviour
                 // Reset Humpty Dumpty
                 HumptyDumpty.GetComponent<Renderer>().enabled = true;
                 HumptyDumpty.GetComponent<NPCHumptyDumptyController>().bUpgradesMenuActive = false;
+                HumptyDumpty.GetComponent<NPCHumptyDumptyController>().canYeet = true;
+                HumptyDumpty.GetComponent<NPCHumptyDumptyController>().isDead = false;
+                HumptyDumpty.GetComponent<NPCHumptyDumptyController>().GetComponent<Rigidbody2D>().transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                HumptyDumpty.GetComponent<NPCHumptyDumptyController>().GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                HumptyDumpty.GetComponent<NPCHumptyDumptyController>().body.constraints = RigidbodyConstraints2D.None;
+
+
 
                 // Reset Big Bad Wolf
                 Wolf.GetComponent<BigBadWolfController>().bUpgradesMenuActive = false;
@@ -105,7 +112,7 @@ public class GameController : MonoBehaviour
 
         if (GameObject.FindGameObjectWithTag("Base").GetComponent<BaseController>().currentHealth <= 0)
         {
-            //GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().LoseScreen();
+            GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().LoseScreen();
         }
 
     }
@@ -152,7 +159,7 @@ public class GameController : MonoBehaviour
             case 7:
                 {
                     //Go to win screen
-                    //GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().LoseScreen();
+                    GameObject.FindGameObjectWithTag("SceneController").GetComponent<SceneController>().WinScreen();
                     break;
                 }
         }

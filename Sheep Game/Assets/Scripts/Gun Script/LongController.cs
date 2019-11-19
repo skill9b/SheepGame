@@ -9,6 +9,7 @@ public class LongController : MonoBehaviour
    
     public AudioSource ShearikinShot;
     public bool SheepImpact = false;
+    public bool SoundCut = false;
 
     public GameObject Bullet;
     public GameObject Gun;
@@ -48,6 +49,11 @@ public class LongController : MonoBehaviour
 
         Vector3 difference = Target - Gun.transform.position;
 
+        if ((GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().isUpgradeUIActive))
+        {
+            ShearikinShot.Stop();
+        }
+
         if (bCanFire)
         {
             if (Input.GetMouseButtonDown(0))
@@ -69,6 +75,12 @@ public class LongController : MonoBehaviour
                 Fire(direction, Speed);
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().totalFiredBullets++;
             }
+        }
+
+        if (SoundCut)
+        {
+            ShearikinShot.Stop();
+            SoundCut = false;
         }
 
         if (SheepImpact)
@@ -121,6 +133,4 @@ public class LongController : MonoBehaviour
             }
         }
     }
-
-
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LongBulletController : MonoBehaviour
 {
+    public GameObject gun;
     private float damage;
     private int PassEnemies;
 
@@ -11,6 +12,15 @@ public class LongBulletController : MonoBehaviour
     {
         damage = GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().Damage;
         PassEnemies = GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().PassEnemies;
+    }
+
+    private void Update()
+    {
+        if ((transform.position.x > 0) || (GameObject.FindGameObjectWithTag("Player").GetComponent<GunSwitching>().longGunCheck))
+        {
+            GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().SoundCut = true;
+            
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -21,7 +31,10 @@ public class LongBulletController : MonoBehaviour
 
             if (PassEnemies <= 0)
             {
-                GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().SheepImpact = true;
+                if (GameObject.FindGameObjectWithTag("Player").GetComponent<GunSwitching>().longGunCheck)
+                {
+                    GameObject.FindGameObjectWithTag("LongGun").GetComponent<LongController>().SheepImpact = true;
+                }
                 Destroy(gameObject);
             }
 

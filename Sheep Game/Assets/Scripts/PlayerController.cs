@@ -19,8 +19,13 @@ public class PlayerController : MonoBehaviour
 
     public int totalDamageTaken;
 
+    float horizontal;
+    float vertical;
+
     void Start()
     {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -28,9 +33,9 @@ public class PlayerController : MonoBehaviour
     {
 
         // Getting user input 
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-    
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+
         if ((vertical == 0) && (horizontal == 0))
         {
             animator.SetBool("Moving", false) ;
@@ -46,8 +51,6 @@ public class PlayerController : MonoBehaviour
             Vector2 position = rb2d.position;
             position.x += speed * horizontal * Time.deltaTime;
             position.y += speed * vertical * Time.deltaTime;
-
-
 
             rb2d.MovePosition(position);
         }
